@@ -20,6 +20,7 @@
     --active-star-color: #EEA10C;
     --base-button-color:#7E847F;
     --hover-button-color:#5F6560;
+    --container-bg-color:#E8E8E8;
     
     font-family: var(--main-font);
     font-size: 16px;
@@ -43,6 +44,7 @@
     margin: 0 auto;
     border-radius: 30px;
     overflow: hidden;
+    background-color: var(--container-bg-color);
   }
   
   @media screen and (min-width: 768px) {
