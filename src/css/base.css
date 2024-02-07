@@ -40,7 +40,7 @@
   .container {
     min-width: 320px;
     max-width: var(--mobile);
-    padding: 0 20px;
+    padding: 40px 20px;
     border-radius: 30px;
     overflow: hidden;
     background-color: var(--container-bg-color);
@@ -51,6 +51,7 @@
     .container {
       max-width: var(--tablet);
       border-radius: 50px;
+      padding: 64px 48px;
     }
   }
   
