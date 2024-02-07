@@ -1,9 +1,10 @@
 /* Common styles and variables for site */
 @font-face {
     font-family: 'DM Sans';
-    src: local('DM Sans'),
-      url('./fonts/DMSans-VariableFont_opsz_wght.ttf') format('truetype'),
-      url('./fonts/DMSans-Italic-VariableFont_opsz_wght.ttf') format('truetype');
+    src: 
+      local('DM Sans'),
+      /*url('./fonts/DMSans-Italic-VariableFont_opsz_wght.ttf') format('truetype'),*/
+      url('./fonts/DMSans-VariableFont_opsz_wght.ttf') format('truetype');
     font-display: swap;
   }
 
