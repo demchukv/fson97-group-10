@@ -44,9 +44,15 @@
       </h2>
       <div class="footer-subscribe">
         <p class="subscribe-title">Subscribe and learn about new exercises!</p>
-        <form action="#" class="footer-form">
+        <form action="#" class="footer-form" method="post">
           <label for="email">
-            <input type="email" id="email" name="email" placeholder="Email" />
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Email"
+              pattern="/^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/"
+            />
           </label>
           <button type="submit" class="subscribe-btn">Send</button>
         </form>

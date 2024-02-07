@@ -1,0 +1,41 @@
+.footer {
+}
+.container {
+}
+.footer-container {
+}
+.footer-up {
+}
+.footer-left {
+}
+.footer-logo {
+}
+.footer-social-links {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.footer-social-item {
+}
+.footer-social-link {
+}
+.footer-social-icon {
+  width: 16px;
+  height: 16px;
+}
+.footer-title {
+}
+.footer-subscribe {
+}
+.subscribe-title {
+}
+.footer-form {
+}
+.subscribe-btn {
+}
+.footer-down {
+}
+.footer-text {
+}
+.footer-privacy {
+}
