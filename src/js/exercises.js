@@ -26,6 +26,8 @@ async function getData() {
 
 getData()
 
+createMarkup()
+
 async function handleMuscleSearch() {
 
 }
@@ -61,5 +63,5 @@ function createMarkup(arr) {
     )
     .join('');
 
-  gallery.insertAdjacentHTML('beforeend', markup);
+  refs.gallery.insertAdjacentHTML('beforeend', markup);
 }
