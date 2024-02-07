@@ -16,6 +16,7 @@
     
     --page-bg-color: #BFBABA;
     --text-base-color: #1B1B1B;
+    --accent-color: #7E847F;
 
     font-family: var(--main-font);
     font-size: 16px;
@@ -75,33 +76,7 @@
       padding-bottom: 150px;
     }
   }
-  
-  .section-title {
-    font-size: 28px;
-    font-weight: 500;
-    line-height: 1.14;
-    letter-spacing: -0.04em;
-  }
-  
-  @media screen and (min-width: 768px) {
-    .section-title {
-      font-size: 48px;
-      line-height: 1.12;
-    }
-  }
-  
-  .section-text {
-    font-size: 14px;
-    line-height: 1.28;
-    letter-spacing: -0.02em;
-  }
-  
-  @media screen and (min-width: 768px) {
-    .section-text {
-      font-size: 16px;
-      line-height: 1.25;
-    }
-  }
+
   .accent-text {
     color: var(--accent-color);
   }
