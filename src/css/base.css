@@ -45,11 +45,13 @@
     border-radius: 30px;
     overflow: hidden;
     background-color: var(--container-bg-color);
+    margin: 0 auto;
   }
   
   @media screen and (min-width: 768px) {
     .container {
       max-width: var(--tablet);
+      border-radius: 50px;
     }
   }
   
