@@ -7,4 +7,4 @@ import{a}from"./vendor-8dea2054.js";(function(){const s=document.createElement("
             </ul>
         </a>
     </li>`).join("");n.gallery.insertAdjacentHTML("beforeend",s)}
-//# sourceMappingURL=main-25667eb7.js.map
+//# sourceMappingURL=main-61ba6afd.js.map
