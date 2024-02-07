@@ -1,5 +1,5 @@
 .exercises-div {
-    background: #E8E8E8;
+    background: var(--container-bg-color);
     border-radius: 50px;
     padding: 64px 48px;
 }
@@ -9,13 +9,12 @@
     height: 48px;
     top: 64px;
     left: 48px;
-    font-family: DM Sans;
     font-size: 44px;
     font-weight: 400;
     line-height: 1.09;
     letter-spacing: -0.02em;
     text-align: left;
-    color: #1B1B1B;
+    color: var(--text-base-color);
 
 }
 
@@ -30,19 +29,17 @@ padding: 10px, 20px;
 border-radius: 30px;
 border: none;
 gap: 10px;
-font-family: DM Sans;
 font-size: 16px;
 font-weight: 400;
 line-height: 1.5;
 letter-spacing: 0px;
-background-color: #F6F6F6;
-color: #1B1B1B;
+background-color: var(--page-bg-color);
+color: var(--text-base-color);
 }
 
 .exercises-button:active {
-    background-color: #7E847F;
-    color: #F6F6F6;
-    font-family: DM Sans;
+    background-color: var(--base-button-color);
+    color: var(--page-bg-color);
     font-size: 16px;
     font-weight: 400;
     line-height: 1.5;
@@ -81,17 +78,15 @@ color: #1B1B1B;
 
         
         .name {
-            font-family: DM Sans;
             font-size: 24px;
             font-weight: 400;
             line-height: 24px;
             letter-spacing: 0px;
             text-align: center;
-            color: #F6F6F6;
+            color: var(--page-bg-color);
         }
 
         .filter {
-            font-family: DM Sans;
             font-size: 12px;
             font-weight: 400;
             line-height: 18px;
@@ -116,13 +111,12 @@ color: #1B1B1B;
         height: 32px;
         border-radius: 50%;
         border: none;
-        font-family: DM Sans;
         font-size: 24px;
         font-weight: 400;
         line-height: 1.3;
         letter-spacing: 0.04em;
         color: #1B1B1B66;
-        background-color: #E8E8E8;
+        background-color: var(--container-bg-color);
 
         &:active {
             width: 32px;
@@ -132,8 +126,7 @@ color: #1B1B1B;
             border: 1px;
             gap: 10px;
             color: #1B1B1B;
-            border: 1px solid #1B1B1B;
+            border: 1px solid var(--text-base-color);
         }
     }
 }
-
