@@ -41,7 +41,6 @@
     min-width: 320px;
     max-width: var(--mobile);
     padding: 0 20px;
-    margin: 0 auto;
     border-radius: 30px;
     overflow: hidden;
     background-color: var(--container-bg-color);
