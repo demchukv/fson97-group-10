@@ -17,8 +17,10 @@
     --page-bg-color: #F6F6F6;
     --white-color: #fff;
     --text-base-color: #1B1B1B;
-    --accent-color: #7E847F;
-
+    --active-star-color: #EEA10C;
+    --base-button-color:#7E847F;
+    --hover-button-color:#5F6560;
+    
     font-family: var(--main-font);
     font-size: 16px;
     line-height: 24px;
@@ -72,13 +74,13 @@
       padding-bottom: 16px;
     }
     .section:first-child{
-        padding-top: 16px;
-      }  
+      padding-top: 16px;
+    }  
   }
   
 
   .accent-text {
-    color: var(--accent-color);
+    color: var(--base-button-color);
   }
 
   /*
