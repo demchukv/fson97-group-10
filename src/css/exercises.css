@@ -37,7 +37,7 @@ background-color: var(--page-bg-color);
 color: var(--text-base-color);
 }
 
-.exercises-button:active {
+.active {
     background-color: var(--base-button-color);
     color: var(--page-bg-color);
     font-size: 16px;
