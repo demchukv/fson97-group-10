@@ -2,7 +2,10 @@
     width: 1408px;
     height: 1178px;
     border-radius: 50px;
-    margin: 16px;
+    margin-top: 16px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 16px;
     padding: 64px 48px;
     background: #E8E8E8;
 }
@@ -52,7 +55,24 @@ color: #1B1B1B;
 }
 
 .muscles-gallery {
+    display: flex;
+    /* height: 800px; */
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: space-between;
+    justify-content: space-between;
+    gap: 40px 20px;
     margin-top: 32px;
+    margin-left: auto;
+    margin-right: auto;
+
+    .gallery-item {
+        width: 313px;
+        height: 250px;
+        padding: 45px, 105px, 45px, 105px;
+        border-radius: 12px;
+        border: solid 1px #1B1B1B;
+    }
 }
 
 .number-btns {
