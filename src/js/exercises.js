@@ -1,6 +1,7 @@
 import axios from "axios";
 
 const refs = {
+gallery: document.querySelector('.gallery'),
 musclesBtn: document.querySelector('.muscles'),
 bodyPartsBtn: document.querySelector('.body-parts'),
 equipBtn: document.querySelector('.equipment'),
@@ -13,14 +14,14 @@ refs.equipBtn.addEventListener('click', handleEquipSearch);
 axios.defaults.baseURL = 'https://energyflow.b.goit.study/api';
 
 async function getData() {
-    const { data } = await axios.get("/filter", {
+    const { data } = await axios.get("/filters", {
         params: {
             filter: 'Muscles',
             page: 1,
             perPage: 12,
         }
     });
-    return data;
+    return data
 }
 
 getData()
