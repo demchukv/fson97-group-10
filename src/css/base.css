@@ -1,7 +1,9 @@
 /* Common styles and variables for site */
 @font-face {
     font-family: 'DM Sans';
-    src: local('DM Sans'),
+    src: 
+      local('DM Sans'),
+      /*url('./fonts/DMSans-Italic-VariableFont_opsz_wght.ttf') format('truetype'),*/
       url('./fonts/DMSans-VariableFont_opsz_wght.ttf') format('truetype');
     font-display: swap;
   }
@@ -40,7 +42,7 @@
   .container {
     min-width: 320px;
     max-width: var(--mobile);
-    padding: 0 20px;
+    padding: 40px 20px;
     border-radius: 30px;
     overflow: hidden;
     background-color: var(--container-bg-color);
@@ -51,18 +53,13 @@
     .container {
       max-width: var(--tablet);
       border-radius: 50px;
+      padding: 64px 48px;
     }
   }
   
   @media screen and (min-width: 1280px) {
     .container {
-      max-width: 1110px;
-    }
-  }
-  
-  @media screen and (min-width: 1440px) {
-    .container {
-      max-width: 1270px;
+      max-width: 1440px;
     }
   }
   
