@@ -39,44 +39,43 @@
     max-width: var(--mobile);
     padding: 0 20px;
     margin: 0 auto;
+    border-radius: 30px;
+    overflow: hidden;
   }
   
   @media screen and (min-width: 768px) {
     .container {
       max-width: var(--tablet);
-      padding: 0 32px;
     }
   }
   
   @media screen and (min-width: 1280px) {
     .container {
       max-width: 1110px;
-      padding: 0 15px;
     }
   }
   
   @media screen and (min-width: 1440px) {
     .container {
       max-width: 1270px;
-      padding: 0 15px;
     }
   }
   
   .section {
-    padding-bottom: 80px;
+    padding-bottom: 20px;
   }
-  
+  .section:first-child{
+    padding-top: 20px;
+  }  
   @media screen and (min-width: 768px) {
     .section {
-      padding-bottom: 100px;
+      padding-bottom: 16px;
     }
+    .section:first-child{
+        padding-top: 16px;
+      }  
   }
   
-  @media screen and (min-width: 1280px) {
-    .section {
-      padding-bottom: 150px;
-    }
-  }
 
   .accent-text {
     color: var(--accent-color);
