@@ -1,7 +1,9 @@
 /* Common styles and variables for site */
 @font-face {
     font-family: 'DM Sans';
-    src: local('DM Sans'),
+    src: 
+      local('DM Sans'),
+      /*url('./fonts/DMSans-Italic-VariableFont_opsz_wght.ttf') format('truetype'),*/
       url('./fonts/DMSans-VariableFont_opsz_wght.ttf') format('truetype');
     font-display: swap;
   }
@@ -14,11 +16,14 @@
 
     --main-font:'DM Sans', sans-serif;
     
-    --page-bg-color: #BFBABA;
+    --page-bg-color: #F6F6F6;
     --white-color: #fff;
     --text-base-color: #1B1B1B;
-    --accent-color: #7E847F;
-
+    --active-star-color: #EEA10C;
+    --base-button-color:#7E847F;
+    --hover-button-color:#5F6560;
+    --container-bg-color:#E8E8E8;
+    
     font-family: var(--main-font);
     font-size: 16px;
     line-height: 24px;
@@ -37,49 +42,45 @@
   .container {
     min-width: 320px;
     max-width: var(--mobile);
-    padding: 0 20px;
+    padding: 40px 20px;
+    border-radius: 30px;
+    overflow: hidden;
+    background-color: var(--container-bg-color);
     margin: 0 auto;
   }
   
   @media screen and (min-width: 768px) {
     .container {
       max-width: var(--tablet);
-      padding: 0 32px;
+      border-radius: 50px;
+      padding: 64px 48px;
     }
   }
   
   @media screen and (min-width: 1280px) {
     .container {
-      max-width: 1110px;
-      padding: 0 15px;
-    }
-  }
-  
-  @media screen and (min-width: 1440px) {
-    .container {
-      max-width: 1270px;
-      padding: 0 15px;
+      max-width: 1440px;
     }
   }
   
   .section {
-    padding-bottom: 80px;
+    padding-bottom: 20px;
   }
-  
+  .section:first-child{
+    padding-top: 20px;
+  }  
   @media screen and (min-width: 768px) {
     .section {
-      padding-bottom: 100px;
+      padding-bottom: 16px;
     }
+    .section:first-child{
+      padding-top: 16px;
+    }  
   }
   
-  @media screen and (min-width: 1280px) {
-    .section {
-      padding-bottom: 150px;
-    }
-  }
 
   .accent-text {
-    color: var(--accent-color);
+    color: var(--base-button-color);
   }
 
   /*
