@@ -7,14 +7,14 @@ bodyPartsBtn: document.querySelector('.body-parts'),
 equipBtn: document.querySelector('.equipment'),
 };
 
-refs.musclesBtn.addEventListener('click', handleMuscleSearch);
-refs.bodyPartsBtn.addEventListener('click', handleBodyPartsSearch);
-refs.equipBtn.addEventListener('click', handleEquipSearch);
+// refs.musclesBtn.addEventListener('click', handleMuscleSearch);
+// refs.bodyPartsBtn.addEventListener('click', handleBodyPartsSearch);
+// refs.equipBtn.addEventListener('click', handleEquipSearch);
 
 axios.defaults.baseURL = 'https://energyflow.b.goit.study/api';
 
 async function getData() {
-    const { data } = await axios.get("/filters", {
+    const data  = await axios.get("/filters", {
         params: {
             filter: 'Muscles',
             page: 1,
@@ -22,27 +22,28 @@ async function getData() {
         }
     });
     return data
-}
+  }
 
-getData()
+getData().then(({data:{results}}) => createMarkup(results))
 
-createMarkup()
 
-async function handleMuscleSearch() {
 
-}
 
-async function handleBodyPartsSearch() {
+// async function handleMuscleSearch() {
 
-}
+// }
 
-async function handleEquipSearch() {
+// async function handleBodyPartsSearch() {
 
-}
+// }
 
-async function handleExerciseSearch() {
+// async function handleEquipSearch() {
 
-}
+// }
+
+// async function handleExerciseSearch() {
+
+// }
 
 function createMarkup(arr) {
   const markup = arr
