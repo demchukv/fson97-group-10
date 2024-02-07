@@ -2,7 +2,8 @@
 @font-face {
     font-family: 'DM Sans';
     src: local('DM Sans'),
-      url('./fonts/DMSans-VariableFont_opsz_wght.ttf') format('truetype');
+      url('./fonts/DMSans-VariableFont_opsz_wght.ttf') format('truetype'),
+      url('./fonts/DMSans-Italic-VariableFont_opsz_wght.ttf') format('truetype');
     font-display: swap;
   }
 
@@ -57,13 +58,7 @@
   
   @media screen and (min-width: 1280px) {
     .container {
-      max-width: 1110px;
-    }
-  }
-  
-  @media screen and (min-width: 1440px) {
-    .container {
-      max-width: 1270px;
+      max-width: 1440px;
     }
   }
   
