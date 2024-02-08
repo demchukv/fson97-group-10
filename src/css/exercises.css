@@ -1,49 +1,31 @@
-.exercises-div {
-    background: var(--container-bg-color);
-    border-radius: 50px;
-    padding: 64px 48px;
-}
-
 .exercises-header {
-    width: 184px;
-    height: 48px;
-    top: 64px;
-    left: 48px;
     font-size: 44px;
     font-weight: 400;
     line-height: 1.09;
     letter-spacing: -0.02em;
     text-align: left;
-    color: var(--text-base-color);
-
+    margin-bottom: 32px;
 }
 
-.exercises-btns-div {
-    margin-top: 32px;
+.exercises-btns-div{
+    display: flex;
+    gap:10px;
+    margin-bottom: 32px;
 }
-
 .exercises-button {
-width: 101px;
-height: 44px;
-padding: 10px, 20px;
-border-radius: 30px;
-border: none;
-gap: 10px;
-font-size: 16px;
-font-weight: 400;
-line-height: 1.5;
-letter-spacing: 0px;
-background-color: var(--page-bg-color);
-color: var(--text-base-color);
-}
-
-.exercises-button:active {
-    background-color: var(--base-button-color);
-    color: var(--page-bg-color);
+    padding: 10px 20px;
+    border-radius: 30px;
+    border: none;
     font-size: 16px;
     font-weight: 400;
     line-height: 1.5;
-    letter-spacing: 0px;
+    background-color: var(--page-bg-color);
+    color: var(--text-base-color);
+}
+
+.active {
+    background-color: var(--base-button-color);
+    color: var(--page-bg-color);
 }
 
 .gallery {
@@ -51,28 +33,32 @@ color: var(--text-base-color);
     flex-wrap: wrap;
     align-content: space-between;
     justify-content: space-between;
-    gap: 40px;
-    margin-top: 32px;
-
-    .gallery-item .gallery-image {
-        width: 313px;
-        height: 250px;
-        padding: 45px, 105px, 45px, 105px;
-        border-radius: 12px;
-        position: absolute;
-    }
+    gap: 20px;
+    row-gap: 40px;
+    margin-bottom: 32px;
+}
+.gallery-item{
+    padding: 45px, 105px, 45px, 105px;
+    border-radius: 12px;
+    border: 1px solid rgba(246, 246, 246, 0.3);
+    width: 313px;
+    height: 250px;
+    overflow: hidden;
+    position: relative;
+}
+.gallery-image {
+    max-width: 100%;
+}
 
     .gallery-item-description {
-        position: relative;
+        position: absolute;
+        inset:0;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        width: 313px;
-        height: 250px;
+        width: 100%;
         padding: 45px, 105px, 45px, 105px;
-        border-radius: 12px;
-        border: 1px solid #F6F6F64D;
         background: linear-gradient(0deg, rgba(16, 16, 16, 0.7), rgba(16, 16, 16, 0.7)),
         linear-gradient(0deg, rgba(246, 246, 246, 0.3), rgba(246, 246, 246, 0.3));
 
@@ -95,19 +81,18 @@ color: var(--text-base-color);
             color: #F6F6F666;
         }
     }
-}
+
 
 .number-btns {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 32px;
-
+}
     .number-btn {
         display: flex;
         justify-content: center;
         align-items: center;
-        width: 14px;
+        width: 32px;
         height: 32px;
         border-radius: 50%;
         border: none;
@@ -123,10 +108,8 @@ color: var(--text-base-color);
             height: 32px;
             padding: 0px, 12px, 0px, 12px;
             border-radius: 50%;
-            border: 1px;
             gap: 10px;
             color: #1B1B1B;
             border: 1px solid var(--text-base-color);
         }
     }
-}
