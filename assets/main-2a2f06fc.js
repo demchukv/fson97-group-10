@@ -7,4 +7,4 @@ import{a as n}from"./vendor-8dea2054.js";(function(){const s=document.createElem
             </ul>
         </a>
     </li>`).join("");l.gallery.insertAdjacentHTML("beforeend",s)}l.buttons.addEventListener("click",f);let a=null;function f(r){const s=r.target.nodeName==="BUTTON";l.musclesBtn.classList.remove("active"),s&&(r.target.classList.add("active"),a!==null&&a.classList.remove("active"),a=r.target,a===a&&a.classList.add("active"))}
-//# sourceMappingURL=main-94ff1003.js.map
+//# sourceMappingURL=main-2a2f06fc.js.map
