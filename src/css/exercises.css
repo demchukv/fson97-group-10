@@ -31,14 +31,11 @@
 .gallery {
     display: flex;
     flex-wrap: wrap;
-    align-content: space-between;
-    justify-content: space-between;
     gap: 20px;
     row-gap: 40px;
     margin-bottom: 32px;
 }
 .gallery-item{
-    padding: 45px, 105px, 45px, 105px;
     border-radius: 12px;
     border: 1px solid rgba(246, 246, 246, 0.3);
     width: 313px;
@@ -112,4 +109,36 @@
             color: #1B1B1B;
             border: 1px solid var(--text-base-color);
         }
+    }
+
+    @media screen and (max-width: 768px) {
+        .exercises-btns-div{
+            gap:8px;
+        }
+        .gallery{
+            column-gap: 14px;
+            row-gap: 14px;
+        }
+    }
+    
+    @media screen and (max-width: 375px) {
+        .exercises-header {
+            margin-bottom: 20px;
+        }
+        .exercises-btns-div{
+            gap:6px;
+            margin-bottom: 40px;
+        }
+        .exercises-button {
+            padding: 7px 14px;
+            font-size: 14px;
+        }        
+        .gallery{
+            column-gap: 20px;
+            row-gap: 20px;
+        }
+        .gallery-item{
+            width: 295px;
+            height: 232px;
+        }        
     }

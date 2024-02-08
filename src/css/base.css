@@ -7,10 +7,6 @@
 }
 
 :root {
-    --mobile: 375px;
-    --tablet: 768px;
-    --desktop: 1440px;
-
     --main-font:'DM Sans', sans-serif;
     
     --page-bg-color: #F6F6F6;
@@ -56,7 +52,7 @@
   
   .container {
     min-width: 320px;
-    max-width: var(--mobile);
+    max-width: 335px;
     padding: 40px 20px;
     border-radius: 30px;
     overflow: hidden;
@@ -66,7 +62,7 @@
   
   @media screen and (min-width: 768px) {
     .container {
-      max-width: var(--tablet);
+      max-width: 736px;
       border-radius: 50px;
       padding: 64px 48px;
     }
@@ -74,7 +70,7 @@
   
   @media screen and (min-width: 1440px) {
     .container {
-      max-width: 1440px;
+      max-width: 1408px;
     }
   }
 
