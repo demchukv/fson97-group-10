@@ -52,7 +52,7 @@ handleSearch()
 refs.musclesBtn.classList.add('active');
 
 refs.buttons.addEventListener("click", (event) => {
-  event.preventDefault()
+  selected(event)
   const targetMenu = event.target;
 
   if (targetMenu === event.currentTarget) {
@@ -71,8 +71,6 @@ refs.buttons.addEventListener("click", (event) => {
     return
   }
 })
-
-refs.buttons.addEventListener('click', selected);
 
 let prevButton = null;
 
