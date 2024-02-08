@@ -30,7 +30,7 @@ function createMarkup(arr) {
       ({ name, filter, imgUrl }) => `<li class="gallery-item">
         <a href="">
         <img class="gallery-image" src="${imgUrl}" alt="Galllery Image">
-            <ul class="gallery-item-description">
+            <ul class="gallery-item-description" data-exercises="${name}">
                 <li class="name">${name}</li>
                 <li class="filter">${filter}</li>
             </ul>
