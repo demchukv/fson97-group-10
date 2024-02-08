@@ -15,9 +15,9 @@ function handleCardClick(event){
         const filterBtn = document.querySelector(".exercises-button.active");
         const filter = filterBtn.dataset.filter;
         const filterGroup = event.target.closest('ul').dataset.exercises;
-        const data = loadExercisesList(filter, filterGroup);
-        markupExercisesList(data.results);
-        console.log(data.results);
+        loadExercisesList(filter, filterGroup).then(
+            data => markupExercisesList(data.results)
+        );
     }
 }
 
@@ -29,15 +29,23 @@ async function loadExercisesList(filter, filterGroup){
           limit,
         },
       });
-      return data;
+  return data.data;
 }
 
 function markupExercisesList(data){
     const markup = data
     .map(i =>
-      `<li class="exercise-item">${i._id}</li>`
+      `<li class="exercise-item" data-id="${i._id}">
+      <span>WORKOUT</span>
+      <span>${i.rating}</span>
+      <span>Start</span>
+      <span>${i.name.charAt(0).toUpperCase() + i.name.slice(1)}</span>
+      <span>Burned calories: ${i.burnedCalories}/${i.time} min</span>
+      <span>Body part: ${i.bodyPart.charAt(0).toUpperCase() + i.bodyPart.slice(1)}</span>
+      <span>Target: ${i.target.charAt(0).toUpperCase() + i.target.slice(1)}</span>
+      </li>`
     )
     .join('');
 
-  refs.gallery.innerHTML = markup;
+    galleryObj.innerHTML = markup;
 }
