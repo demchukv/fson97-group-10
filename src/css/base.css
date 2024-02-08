@@ -1,17 +1,12 @@
 /* Common styles and variables for site */
 @font-face {
-    font-family: 'DM Sans';
-    src: local('DM Sans'),
-      url('./fonts/DMSans-VariableFont_opsz_wght.ttf') format('truetype');
-    font-display: swap;
-  }
+  font-family: 'DM Sans';
+  src: local('DM Sans'),
+    url('./fonts/DMSans-VariableFont_opsz_wght.ttf') format('truetype');
+  font-display: swap;
+}
 
 :root {
-    --mobile: 375px;
-    --tablet: 768px;
-    --desktop: 1280px;
-    --secondary-desktop: 1440px;
-
     --main-font:'DM Sans', sans-serif;
     
     --page-bg-color: #F6F6F6;
@@ -24,22 +19,40 @@
     
     font-family: var(--main-font);
     font-size: 16px;
-    line-height: 24px;
+    line-height: 1.5;
     font-weight: 400;
   
     background-color: var(--page-bg-color);
     color: var(--text-base-color);
   
-    font-synthesis: none;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     -webkit-text-size-adjust: 100%;
   }
-
+  
+  .section {
+    padding-bottom: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+  .section:first-child{
+    padding-top: 20px;
+  }  
+  @media screen and (min-width: 768px) {
+    .section {
+      padding-bottom: 16px;
+      padding-left: 16px;
+      padding-right: 16px;
+    }
+    .section:first-child{
+      padding-top: 16px;
+    }  
+  }
+  
   .container {
     min-width: 320px;
-    max-width: var(--mobile);
+    max-width: 335px;
     padding: 40px 20px;
     border-radius: 30px;
     overflow: hidden;
@@ -49,39 +62,18 @@
   
   @media screen and (min-width: 768px) {
     .container {
-      max-width: var(--tablet);
+      max-width: 736px;
       border-radius: 50px;
       padding: 64px 48px;
     }
   }
   
-  @media screen and (min-width: 1280px) {
-    .container {
-      max-width: 1110px;
-    }
-  }
-  
   @media screen and (min-width: 1440px) {
     .container {
-      max-width: 1270px;
+      max-width: 1408px;
     }
   }
-  
-  .section {
-    padding-bottom: 20px;
-  }
-  .section:first-child{
-    padding-top: 20px;
-  }  
-  @media screen and (min-width: 768px) {
-    .section {
-      padding-bottom: 16px;
-    }
-    .section:first-child{
-      padding-top: 16px;
-    }  
-  }
-  
+
 
   .accent-text {
     color: var(--base-button-color);
