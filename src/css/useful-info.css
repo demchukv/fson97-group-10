@@ -1,0 +1,15 @@
+.useful-info-container {
+  display: flex;
+}
+
+.useful-info-background {
+  flex: 1;
+
+  background-image: url(../img/useful-info/info_bg_mobile-min.png);
+  background-size: cover;
+}
+
+.useful-info-text {
+  flex: 1;
+  padding: 20px;
+}
