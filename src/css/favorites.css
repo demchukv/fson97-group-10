@@ -65,3 +65,32 @@
     margin-bottom: 146px;
   }
 }
+.card {
+  background-color: #ffffff;
+  width: 313px;
+  height: 165px;
+  padding: 16px;
+  outline: 3px solid blueviolet;
+  color: #1b1b1b;
+}
+.badge-card {
+  background-color: #7e847f;
+  color: #f6f6f6;
+  width: 76px;
+  height: 26px;
+  border-radius: 25px;
+  padding: 5px 8px;
+  font-size: 12px;
+  line-height: normal;
+  text-align: center;
+  margin-right: 8px;
+  /* opacity: 50%; */
+}
+.header-card {
+  display: flex;
+  outline: 2px solid burlywood;
+  margin-bottom: 25px;
+}
+.btn-start {
+  margin-left: auto;
+}
