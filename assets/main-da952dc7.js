@@ -7,4 +7,4 @@ import{a as d}from"./vendor-8dea2054.js";(function(){const r=document.createElem
             </ul>
         </a>
     </li>`).join("");i.gallery.innerHTML=r}function c(){p().then(({data:{results:t}})=>y(t))}c();i.musclesBtn.classList.add("active");i.buttons.addEventListener("click",t=>{g(t);const r=t.target;if(r!==t.currentTarget){if(r===i.musclesBtn){n="Muscles",c();return}else if(r===i.bodypartsBtn){n="Body parts",c();return}else if(r===i.equipBtn){n="Equipment",c();return}}});let l=null;function g(t){const r=t.target.nodeName==="BUTTON";i.musclesBtn.classList.remove("active"),r&&(t.target.classList.add("active"),l!==null&&l.classList.remove("active"),l=t.target,l===l&&l.classList.add("active"))}
-//# sourceMappingURL=main-277ebbd2.js.map
+//# sourceMappingURL=main-da952dc7.js.map
