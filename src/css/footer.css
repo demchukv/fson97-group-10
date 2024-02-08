@@ -187,7 +187,7 @@
 /* Styles for desktop */
 /* **************************** */
 
-@media screen and (min-width: 1280px) {
+@media screen and (min-width: 1440px) {
   .footer-container {
     background-image: url(../img/footer/bg-footer-desktop-min.png);
     background-repeat: no-repeat;
