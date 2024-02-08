@@ -23,21 +23,21 @@
 }
 
 .exercises-button {
-width: 101px;
-height: 44px;
-padding: 10px, 20px;
-border-radius: 30px;
-border: none;
-gap: 10px;
-font-size: 16px;
-font-weight: 400;
-line-height: 1.5;
-letter-spacing: 0px;
-background-color: var(--page-bg-color);
-color: var(--text-base-color);
+    width: 101px;
+    height: 44px;
+    padding: 10px, 20px;
+    border-radius: 30px;
+    border: none;
+    gap: 10px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5;
+    letter-spacing: 0px;
+    background-color: var(--page-bg-color);
+    color: var(--text-base-color);
 }
 
-.exercises-button:active {
+.active {
     background-color: var(--base-button-color);
     color: var(--page-bg-color);
     font-size: 16px;
