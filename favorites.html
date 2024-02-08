@@ -8,9 +8,9 @@
     <meta name="description" content="Transforming your body shape with us">
     
     <script type="module" crossorigin src="/fson97-group-10/assets/vendor-db25513e.js"></script>
-    <script type="module" crossorigin src="/fson97-group-10/assets/main-73766970.js"></script>
+    <script type="module" crossorigin src="/fson97-group-10/assets/main-4534acba.js"></script>
     <link rel="stylesheet" href="/fson97-group-10/assets/vendor-e5212ee8.css">
-    <link rel="stylesheet" href="/fson97-group-10/assets/main-240c2e90.css">
+    <link rel="stylesheet" href="/fson97-group-10/assets/main-2e86bca7.css">
   </head>
   <body>
     <header class="section">
@@ -22,7 +22,35 @@
 </div>
 </header>
     
-    <h1>Favorite</h1>
+    
+<!-- <div>
+    <ul>
+        <li id=${data._id}>
+            <div>
+                <button>WORKOUT</button>
+                <button>DELETE</button>
+                <button>START</button>
+            </div>
+            <h2>${data.name}</h2>
+            <p>Burned calories:<span>${data.burnedCalories}</span></p>
+            <p>Body part:<span>${data.bodyPart}</span></p>
+            <p>Target: <span>${data.target}</span></p>
+        </li>
+    </ul>
+</div> -->
+<section class="section">
+    <div class="favorites-section container">
+        <h1 class="favorites-title">Favorites</h1>
+        <div class="favorites-content">
+            <img srcset="../public/favorites.png 1x, ../public/favorites.2x.png 2x" src="../public/favorites.png"
+                alt="Image favorites" width="85" height="52">
+    
+            <p class="favorites-text">It appears that you haven't added any exercises to your favorites yet. To get started,
+                you can add exercises that you
+                like to your favorites for easier access in the future.</p>
+        </div>
+    </div>
+</section>
     <span class="loader"></span>
     
   </body>
