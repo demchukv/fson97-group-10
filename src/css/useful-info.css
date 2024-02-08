@@ -9,7 +9,22 @@
   background-size: cover;
 }
 
-.useful-info-text {
+.useful-info-icon-wrap {
+  border-radius: 100%;
+  fill: rgba(246, 246, 246, 0.1);
+}
+
+.useful-info-icon {
+  fill: #f6f6f6;
+  width: 34px;
+  height: 34px;
+  transition-property: fill;
+  transition-duration: 0.25s;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.useful-info-text-wrap {
+  background: #1b1b1b;
   flex: 1;
-  padding: 20px;
+  color: rgba(246, 246, 246, 0.6);
 }
