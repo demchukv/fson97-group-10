@@ -24,7 +24,7 @@
 }
 
 .useful-info-text-wrap {
-  background: #1b1b1b;
+  background: var(--text-base-color);
   flex: 1;
   color: rgba(246, 246, 246, 0.6);
 }
