@@ -70,13 +70,17 @@ function markupExercisesList(data){
     let markup = data
     .map(i =>
       `<li class="exercise-item" data-id="${i._id}">
-      <span>WORKOUT</span>
-      <span>${i.rating}</span>
-      <span>Start</span>
-      <span>${i.name.charAt(0).toUpperCase() + i.name.slice(1)}</span>
-      <span>Burned calories: ${i.burnedCalories}/${i.time} min</span>
-      <span>Body part: ${i.bodyPart.charAt(0).toUpperCase() + i.bodyPart.slice(1)}</span>
-      <span>Target: ${i.target.charAt(0).toUpperCase() + i.target.slice(1)}</span>
+      <p class="ex-item-head">
+      <span class="ex-item-workout">WORKOUT</span>
+      <span class="ex-item-rating">${i.rating}</span>
+      <span class="ex-item=start">Start</span>
+      </p>
+      <p class="ex-item-name">${i.name.charAt(0).toUpperCase() + i.name.slice(1)}</p>
+      <p class="ex-item-info">
+      <span class="ex-item-desc">Burned calories:</span> <span class="ex-item-value">${i.burnedCalories}/${i.time} min</span>
+      <span class="ex-item-desc">Body part:</span> <span class="ex-item-value">${i.bodyPart.charAt(0).toUpperCase() + i.bodyPart.slice(1)}</span>
+      <span class="ex-item-desc">Target:</span> <span class="ex-item-value">${i.target.charAt(0).toUpperCase() + i.target.slice(1)}</span>
+      </p>
       </li>`
     )
     .join('');
