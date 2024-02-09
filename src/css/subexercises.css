@@ -7,8 +7,103 @@
     border-radius: 15px;
     padding: 16px;
     background-color: var(--white-color);
+    overflow: hidden;
+}
+.ex-item-head{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+.ex-item-head-group{
+    display: flex;
+    gap:16px;
+}
+.ex-item-workout{
+    border-radius: 15px;
+    background-color: var(--base-button-color);
+    padding: 5px 8px;
+    color:var(--page-bg-color);
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.5;
+}
+.ex-rating-group{
+    display: flex;
+    gap: 2px;
+    align-items: center;
+}
+.ex-item-rating{
+    font-size: 12px;
+    line-height: 1.5;
+    color:var(--text-base-color);
+    align-self: center;
+}
+.ex-star-icon{
+    width: 18px;
+    height: 18px;
+    fill: var(--active-star-color);
+    align-self: center;
+}
+.ex-item-start{
+    display: flex;
+    gap:8px;
+    font-size: 14px;
+    line-height: 1.29;
+    color:var(--text-base-color);
+    align-self: center;
+}
+.ex-arrow-icon{
+    width: 14px;
+    height: 14px;
+    fill: var(--text-base-color);
+    align-self: center;
 }
 
+.ex-title{
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    margin-bottom: 16px;
+}
+.ex-run-men{
+    width: 24px;
+    height: 24px;
+    background-color: var(--base-button-color);
+    border-radius: 100%;
+    flex-shrink: 0;
+    padding: 4px 5px;
+}
+.ex-icon-run{
+    width: 14px;
+    height: 16px;
+    fill:var(--page-bg-color);
+}
+.ex-item-name{
+    font-size: 20px;
+    line-height: 1.2;
+    text-wrap: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.ex-item-info{
+    font-size: 12px;
+    line-height: 1.5;
+
+    display: flex;
+    gap:16px;
+    row-gap: 4px;
+    flex-wrap: wrap;
+}
+
+.ex-item-desc{
+    color: rgba(27, 27, 27, 0.4);
+}
+.ex-item-value{
+}
+
+/* Search form */
 .search-form{
     position: relative;
 }
@@ -46,6 +141,7 @@
     fill:var(--text-base-color);
 }
 
+/* Media queries  */
 @media screen and (min-width: 768px) {
     .exercise-item{
         width: 313px;
