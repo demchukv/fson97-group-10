@@ -1,0 +1,7 @@
+.exercise-item{
+    width: 295px;
+    height: 165px;
+    border-radius: 15px;
+    padding: 16px;
+    background-color: var(--white-color);
+}
