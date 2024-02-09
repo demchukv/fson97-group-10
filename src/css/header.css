@@ -29,24 +29,29 @@ ul {
     height: 52px;
     border-radius: 60px;
     padding: 8px;
-    color: var(--white-color);
+    color: var(--page-bg-color);
     background-color: var(--base-button-color);
     border-radius: 60px;
-    gap: 42px;
+    gap: 16px;
 }
-.page:hover {
+
+.page {
+    cursor: pointer;
+}
+
+.page.active {
     display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 96px;
-        height: 36px;
-        border-radius: 30px;
-        padding: 8px;
-        color: var(--text-base-color);
-        background-color: var(--white-color);
-        border-radius: 60px;
-        transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    align-items: center;
+    justify-content: center;
+    width: 96px;
+    height: 36px;
+    border-radius: 30px;
+    color: var(--text-base-color);
+    background-color: var(--white-color);
+    border-radius: 60px;
+    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
+
 
 .header-social-link {
     margin-left: auto;
