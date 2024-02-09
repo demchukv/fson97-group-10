@@ -12,7 +12,7 @@ async function onClickExercisesCard(event) {
   if (event.target === event.curentTarget) {
     return;
   }
-  const element = event.target.closest('.exercise-item');
+  const element = event.target.closest('.ex-item-start');
   if (element === null) {
     return;
   }
@@ -29,10 +29,43 @@ async function onClickExercisesCard(event) {
   getLoader('none');
   modalCard.classList.remove('visually-hidden');
 
+  const addToFavoriteBtn = document.querySelector('.add-favorite-btn');
+  addToFavoriteBtn.addEventListener('click', addToFavoriteOnClick);
+
   const closeBtn = document.querySelector('.close-modal-btn');
   closeBtn.addEventListener('click', onClick);
   backdrop.addEventListener('click', backdropOnClick);
   document.addEventListener('keydown', onEscape);
+}
+
+async function addToFavoriteOnClick(event) {
+  const element = event.target.closest('.add-favorite-btn');
+  const elementId = element.dataset.id;
+  const favorites = localStorage.getItem('favorites');
+
+  if (favorites) {
+    const favoriteList = JSON.parse(favorites);
+    const condition = favoriteList.some(({ _id }) => _id === elementId);
+
+    if (condition) {
+      localStorage.setItem(
+        'favorites',
+        favoriteList.filter(({ _id }) => _id !== elementId)
+      );
+      element.innerHTML = addInerHTML();
+    } else {
+      const exercisesCardInfo = await getExercisesCardInfo(elementId);
+      localStorage.setItem(
+        'favorites',
+        JSON.stringify([...favoriteList, exercisesCardInfo])
+      );
+      element.innerHTML = addInerHTML('remove');
+    }
+  } else {
+    const exercisesCardInfo = await getExercisesCardInfo(elementId);
+    localStorage.setItem('favorites', JSON.stringify([exercisesCardInfo]));
+    element.innerHTML = addInerHTML('remove');
+  }
 }
 
 function onClick() {
@@ -74,6 +107,20 @@ async function getExercisesCardInfo(id) {
   }
 }
 
+function addInerHTML(value = 'add') {
+  if (value === 'add') {
+    return `Add to favorites
+        <svg class="icon-heart" width="18" height="18">
+          <use href="./img/icons.svg#icon-heart"></use>
+        </svg>`;
+  } else {
+    return `Remove from
+        <svg class="icon-heart" width="18" height="18">
+          <use href="./img/icons.svg#icon-heart"></use>
+        </svg>`;
+  }
+}
+
 function createMarkupExercisesCard({
   _id,
   bodyPart,
@@ -87,7 +134,13 @@ function createMarkupExercisesCard({
   time,
   popularity,
 }) {
-  //перевірити чи він наявний localStorage
+  let isAdded = false;
+  const favorites = localStorage.getItem('favorites');
+
+  if (favorites) {
+    const favoriteList = JSON.parse(favorites);
+    isAdded = favoriteList.some(item => item._id === _id);
+  }
 
   return `    <div class="modal-description-container">
       <button class="close-modal-btn">
@@ -135,7 +188,9 @@ function createMarkupExercisesCard({
       <p class="modal-description-text">${description}</p>
     </div>
     <div class="modal-buttons-container">
-      <button data-id="${_id}" class="add-favorite-btn">Add to favorite        
+      <button data-id="${_id}" class="add-favorite-btn">${
+    isAdded ? 'Remove from' : 'Add to favorites'
+  }        
       <svg class="icon-heart" width="18" height="18">
           <use href="${icons}#icon-heart"></use>
         </svg></button>
