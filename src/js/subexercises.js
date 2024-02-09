@@ -1,8 +1,17 @@
 import axios from "axios";
-/*import {filter} from "./exercises";*/
+import Pagination from "tui-pagination";
+import 'tui-pagination/dist/tui-pagination.css';
+import {getLoader, showAlert} from "./common";
 
-let page = 1;
-const limit = 12;
+const exParams = {
+    page : 1,
+    totalPages : 1,
+    totalItems : 0,
+    keyword : '',
+    filter : '',
+    filterGroup : '',
+    limit : 12,
+}
 
 const galleryObj = document.querySelector(".gallery");
 if(galleryObj){
@@ -13,27 +22,47 @@ function handleCardClick(event){
     event.preventDefault();
     if(event.target.closest('ul').dataset.exercises){
         const filterBtn = document.querySelector(".exercises-button.active");
-        const filter = filterBtn.dataset.filter;
-        const filterGroup = event.target.closest('ul').dataset.exercises;
-        loadExercisesList(filter, filterGroup).then(
-            data => markupExercisesList(data.results)
-        );
+        exParams.filter = filterBtn.dataset.filter;
+        exParams.filterGroup = event.target.closest('ul').dataset.exercises;
+        updateExercisesList(exParams.filter, exParams.filterGroup);
     }
+    return;
+}
+
+function updateExercisesList(filter, filterGroup, newPagination = true){
+    loadExercisesList(filter, filterGroup)
+    .then(data => {
+        exParams.totalPages = data.totalPages;
+        exParams.totalItems = exParams.limit * data.totalPages;
+        markupExercisesList(data.results);
+        if(newPagination){
+            makePagination();
+        }else{
+            getLoader('hide');
+        }
+        }
+    )
+    .catch(error => {
+        getLoader('hide');
+        showAlert(error.message, 'ERROR');
+    });
 }
 
 async function loadExercisesList(filter, filterGroup){
+    getLoader();
     const data = await axios.get('/exercises', {
         params: {
-          [filter] : filterGroup,
-          page,
-          limit,
+          [filter] : exParams.filterGroup,
+          keyword : exParams.keyword,
+          page : exParams.page,
+          limit : exParams.limit,
         },
       });
   return data.data;
 }
 
 function markupExercisesList(data){
-    const markup = data
+    let markup = data
     .map(i =>
       `<li class="exercise-item" data-id="${i._id}">
       <span>WORKOUT</span>
@@ -46,6 +75,19 @@ function markupExercisesList(data){
       </li>`
     )
     .join('');
-
+    
     galleryObj.innerHTML = markup;
+}
+
+function makePagination(){
+    const pagination = new Pagination('pagination', {
+        totalItems : exParams.totalItems,
+        itemsPerPage: exParams.limit,
+        visiblePages: 3
+    });
+    pagination.on('afterMove', function(eventData) {
+        exParams.page = eventData.page;
+        updateExercisesList(exParams.filter, exParams.filterGroup, false);
+    });
+    getLoader('hide');
 }
