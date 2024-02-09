@@ -23,10 +23,6 @@
 }
 
 @media screen and (min-width: 1440px) {
-  .useful-info-container {
-    height: 302px;
-  }
-
   .useful-info-background {
     background-image: url(../img/useful-info/info_bg_desktop-min.png);
   }
@@ -57,7 +53,6 @@
   padding: 64px;
   border-radius: 50px;
   background: var(--text-base-color);
-  flex: 1;
   color: rgba(246, 246, 246, 0.6);
 }
 
