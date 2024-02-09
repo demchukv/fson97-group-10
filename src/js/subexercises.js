@@ -14,8 +14,10 @@ const exParams = {
 }
 
 const galleryObj = document.querySelector(".gallery");
-if(galleryObj){
+const searchObj = document.querySelector(".search-btn");
+if(galleryObj && searchObj){
     galleryObj.addEventListener('click', handleCardClick);
+    searchObj.addEventListener('click', handleSearchBtnClick);
 }
 
 function handleCardClick(event){
@@ -24,8 +26,14 @@ function handleCardClick(event){
         const filterBtn = document.querySelector(".exercises-button.active");
         exParams.filter = filterBtn.dataset.filter;
         exParams.filterGroup = event.target.closest('ul').dataset.exercises;
-        updateExercisesList(exParams.filter, exParams.filterGroup);
+        updateExercisesList(exParams.filter, exParams.filterGroup, exParams.keyword);
     }
+    return;
+}
+
+function handleSearchBtnClick(event){
+    event.preventDefault();
+    updateExercisesList(exParams.filter, exParams.filterGroup, exParams.keyword);
     return;
 }
 
