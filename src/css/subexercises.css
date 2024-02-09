@@ -1,6 +1,12 @@
 .gallery{
     min-height: 378px;
 }
+.head-small{
+    font-size: 24px;
+    line-height: 1.33;
+    letter-spacing: -0.02em;
+    color: rgba(27, 27, 27, 0.5);
+}
 .exercise-item{
     width: 295px;
     height: 165px;
@@ -185,19 +191,24 @@
 
 
 /* Pagination styles for tui-pagination */
-#pagination{
+#pager{
+    display: none;
+}
+#pagination, #pager{
     font-size: 24px;
     margin-bottom: 0;
 }
-#pagination .tui-page-btn{
+#pagination .tui-page-btn, #pager .tui-page-btn{
     font-size: 24px;
     border:none;
     color: rgba(27, 27, 27, 0.4);
 }
-#pagination .tui-page-btn:hover{
+#pagination .tui-page-btn:hover,
+#pager .tui-page-btn:hover{
     background: none;
 }
-#pagination .tui-is-selected{
+#pagination .tui-is-selected,
+#pager .tui-is-selected{
     display: inline-block;
     width: 32px;
     height: 32px;
