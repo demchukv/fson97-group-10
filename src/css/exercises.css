@@ -7,10 +7,15 @@
     margin-bottom: 32px;
 }
 
+.exercises-filter{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 32px;
+}
 .exercises-btns-div{
     display: flex;
     gap:10px;
-    margin-bottom: 32px;
 }
 .exercises-button {
     padding: 10px 20px;
