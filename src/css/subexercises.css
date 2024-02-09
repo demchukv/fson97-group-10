@@ -1,3 +1,6 @@
+.gallery{
+    min-height: 378px;
+}
 .exercise-item{
     width: 295px;
     height: 165px;
