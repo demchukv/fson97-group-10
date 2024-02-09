@@ -30,7 +30,9 @@
     -moz-osx-font-smoothing: grayscale;
     -webkit-text-size-adjust: 100%;
   }
-  
+  html{
+    scroll-behavior: smooth;
+  }
   .section {
     padding-bottom: 20px;
     padding-left: 20px;
