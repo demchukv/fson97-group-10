@@ -1,11 +1,10 @@
 import axios from 'axios';
-import Pagination from 'tui-pagination';
-import 'tui-pagination/dist/tui-pagination.css';
 import { getLoader, showAlert } from './common';
 
 const refs = {
   gallery: document.querySelector('.gallery'),
   buttons: document.querySelector('.exercises-btns-div'),
+  pagination: document.getElementById('pagination'),
   musclesBtn: document.querySelector('[data-filter="muscles"]'),
   bodypartsBtn: document.querySelector('[data-filter="bodypart"]'),
   equipBtn: document.querySelector('[data-filter="equipment"]'),
@@ -17,6 +16,8 @@ const params = {
   perPage: 12,
   page: 1,
   filter: 'Muscles',
+  totalPages: 1,
+  totalItems: 0,
 }
 
 async function getData() {
@@ -28,12 +29,12 @@ async function getData() {
       limit: params.perPage,
     },
   });
-  return data;
+  return data.data;
 }
 
-function createMarkup(arr) {
+function createMarkup(results) {
   refs.gallery.innerHTML = "";
-  const markup = arr
+  const markup = results
     .map(
       ({ name, filter, imgUrl }) => `<li class="gallery-item">
         <a href="">
@@ -51,17 +52,28 @@ function createMarkup(arr) {
   getLoader('hide');
 }
 
-function handleSearch(){
+function handleSearch() {
+  params.page = 1
   getData()
-    .then(({ data: { results } }) => createMarkup(results))
+    .then(data => {
+      const { results, totalPages, page } = data;
+      createMarkup(results);
+      if (totalPages > 1) {
+        const pag = paginationPages(page, totalPages);
+        refs.pagination.innerHTML = pag;
+      } else {
+        refs.pagination.innerHTML = '';
+      }
+    })
     .catch(error => {
       getLoader('hide');
       showAlert(error.message, 'ERROR');
     });
 }
 
-handleSearch()
+handleSearch();
 refs.musclesBtn.classList.add('active');
+refs.musclesBtn.disabled = true;
 
 refs.buttons.addEventListener("click", (event) => {
   selected(event)
@@ -70,10 +82,19 @@ refs.buttons.addEventListener("click", (event) => {
   if (targetMenu === event.currentTarget) {
     return
   } else if (targetMenu === refs.musclesBtn) {
+    refs.musclesBtn.disabled = true;
+    refs.bodypartsBtn.disabled = false;
+    refs.equipBtn.disabled = false;
     params.filter = 'Muscles'
   } else if (targetMenu === refs.bodypartsBtn) {
+    refs.musclesBtn.disabled = false;
+    refs.bodypartsBtn.disabled = true;
+    refs.equipBtn.disabled = false;
     params.filter = 'Body parts'
   } else if (targetMenu === refs.equipBtn) {
+    refs.musclesBtn.disabled = false;
+    refs.bodypartsBtn.disabled = false;
+    refs.equipBtn.disabled = true;
     params.filter = 'Equipment'
   }
   handleSearch()
@@ -98,5 +119,27 @@ function selected(e) {
 
   if (prevButton === prevButton) {
     prevButton.classList.add('active')
+  }
+}
+
+refs.pagination.addEventListener('click', handlePagination);
+
+function paginationPages(page, totalPages) {
+  let paginationHtml = '';
+  for (; page <= totalPages; page++) {
+    paginationHtml += `<button class="pagination-btn" type="button">${page}</button>`;
+  }
+  return paginationHtml;
+}
+
+async function handlePagination(e) {
+  params.page = e.target.textContent;
+  refs.gallery.innerHTML = '';
+  try {
+    const { results } = await getData();
+
+    createMarkup(results);
+  } catch (error) {
+    console.log(error);
   }
 }
