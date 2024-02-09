@@ -15,25 +15,36 @@ const exParams = {
 
 const galleryObj = document.querySelector(".gallery");
 const searchObj = document.querySelector(".search-btn");
+const clearObj = document.querySelector(".search-clear-btn");
+const searchInput = document.querySelector(".search-input");
+const filterBtns =  document.querySelector('.exercises-btns-div');
+const searchFormBlock = document.querySelector(".ex-search");
 if(galleryObj && searchObj){
     galleryObj.addEventListener('click', handleCardClick);
     searchObj.addEventListener('click', handleSearchBtnClick);
+    clearObj.addEventListener('click', handleClearSearchInput);
+    searchInput.addEventListener('input', handleSearchInput);
+    filterBtns.addEventListener('click', handleClickOnFilterBtn);
 }
 
 function handleCardClick(event){
     event.preventDefault();
     if(event.target.closest('ul').dataset.exercises){
-        const filterBtn = document.querySelector(".exercises-button.active");
+        searchFormBlock.classList.remove("visually-hidden");    
+            const filterBtn = document.querySelector(".exercises-button.active");
         exParams.filter = filterBtn.dataset.filter;
         exParams.filterGroup = event.target.closest('ul').dataset.exercises;
-        updateExercisesList(exParams.filter, exParams.filterGroup, exParams.keyword);
+        updateExercisesList(exParams.filter, exParams.filterGroup);
     }
     return;
 }
 
 function handleSearchBtnClick(event){
     event.preventDefault();
-    updateExercisesList(exParams.filter, exParams.filterGroup, exParams.keyword);
+    if(searchInput.value.length > 3) {
+        exParams.keyword = searchInput.value.trim().toLowerCase();
+        updateExercisesList(exParams.filter, exParams.filterGroup);
+    }
     return;
 }
 
@@ -45,9 +56,11 @@ function updateExercisesList(filter, filterGroup, newPagination = true){
         exParams.totalItems = exParams.limit * data.totalPages;
         if(data.results.length === 0){
             galleryObj.innerHTML = '<p class="ex-list-no-result">Unfortunately, <span class="accent-text">no results</span> were found. You may want to consider other search options to find the exercise you are looking for. Our range is wide and you have the opportunity to find more options that suit your needs.</p>'
+            getLoader('hide');
         }else{
             markupExercisesList(data.results);
-            if(newPagination){
+            console.log(data.results);
+            if(newPagination && data.totalPages > 1){
                 makePagination();
             }else{
                 getLoader('hide');
@@ -63,6 +76,11 @@ function updateExercisesList(filter, filterGroup, newPagination = true){
 
 async function loadExercisesList(filter, filterGroup){
     getLoader();
+    if(searchInput.value.length > 3) {
+        exParams.keyword = searchInput.value.trim().toLowerCase();
+    }else{
+        exParams.keyword = '';  
+    }
     const data = await axios.get('/exercises', {
         params: {
           [filter] : exParams.filterGroup,
@@ -107,4 +125,26 @@ function makePagination(){
         updateExercisesList(exParams.filter, exParams.filterGroup, false);
     });
     getLoader('hide');
+}
+
+function handleClearSearchInput(){
+    searchInput.value = '';
+    clearObj.style.visibility = 'hidden';
+    updateExercisesList(exParams.filter, exParams.filterGroup);
+}
+
+function handleSearchInput(){
+    if(searchInput.value.length > 0){
+        clearObj.style.visibility = 'visible';
+    }else{
+        clearObj.style.visibility = 'hidden';
+    }
+}
+
+function handleClickOnFilterBtn(event){
+    if(event.target.tagName === "BUTTON"){
+        searchInput.value = '';
+        searchFormBlock.classList.add("visually-hidden");
+        galleryObj.innerHTML = '';
+    }
 }
