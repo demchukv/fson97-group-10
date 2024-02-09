@@ -54,7 +54,7 @@ function handleSearchBtnClick(event){
     if(searchInput.value.length > 3) {
         exParams.page = 1;
         exParams.keyword = searchInput.value.trim().toLowerCase();
-        updateExercisesList(exParams.filter);
+        updateExercisesList(exParams.filter, true);
     }
     return;
 }
@@ -76,7 +76,7 @@ function updateExercisesList(filter, newPagination = true){
             
         }else{
             markupExercisesList(data.results);
-            if(newPagination && data.totalPages > 1){
+            if(newPagination){
                 makePagination();
             }
         }
