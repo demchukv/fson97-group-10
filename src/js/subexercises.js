@@ -67,8 +67,8 @@ function markupExercisesList(data){
       `<li class="exercise-item" data-id="${i._id}">
       <span>WORKOUT</span>
       <span>${i.rating}</span>
-      <span>Start</span>
-      <span>${i.name.charAt(0).toUpperCase() + i.name.slice(1)}</span>
+      <a href="#" data-id="${i._id}">Start</a>
+      <h3>${i.name.charAt(0).toUpperCase() + i.name.slice(1)}</h3>
       <span>Burned calories: ${i.burnedCalories}/${i.time} min</span>
       <span>Body part: ${i.bodyPart.charAt(0).toUpperCase() + i.bodyPart.slice(1)}</span>
       <span>Target: ${i.target.charAt(0).toUpperCase() + i.target.slice(1)}</span>
