@@ -17,6 +17,7 @@ const exParams = {
 const galleryObj = document.querySelector(".gallery");
 if(galleryObj){
     galleryObj.addEventListener('click', handleCardClick);
+    galleryObj.classList.add('exercises-card');
 }
 const searchObj = document.querySelector(".search-btn");
 const clearObj = document.querySelector(".search-clear-btn");
@@ -198,6 +199,7 @@ function handleClickOnFilterBtn(event){
         searchInput.value = '';
         searchFormBlock.classList.add("visually-hidden");
         galleryObj.innerHTML = '';
+        galleryObj.classList.remove('exercises-card');
         searchObj.removeEventListener('click', handleSearchBtnClick);
         clearObj.removeEventListener('click', handleClearSearchInput);
         searchInput.removeEventListener('input', handleSearchInput);
