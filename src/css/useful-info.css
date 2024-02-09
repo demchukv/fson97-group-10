@@ -5,27 +5,8 @@
 }
 
 .useful-info-background {
-  border-radius: 50px;
   flex: 1;
   background-size: cover;
-}
-
-@media screen and (max-width: 767px) {
-  .useful-info-background {
-    background-image: url(../img/useful-info/info_bg_mobile-min.png);
-  }
-}
-
-@media screen and (min-width: 768px) {
-  .useful-info-background {
-    background-image: url(../img/useful-info/info_bg_tablet-min.png);
-  }
-}
-
-@media screen and (min-width: 1440px) {
-  .useful-info-background {
-    background-image: url(../img/useful-info/info_bg_desktop-min.png);
-  }
 }
 
 .useful-info-icon-wrap {
@@ -50,14 +31,11 @@
 .useful-info-content {
   display: flex;
   gap: 16px;
-  padding: 64px;
-  border-radius: 50px;
+
   background: var(--text-base-color);
   color: rgba(246, 246, 246, 0.6);
-}
-
-.useful-info-text {
-  max-width: 526px;
+  border-top-left-radius: 50px;
+  border-top-right-radius: 50px;
 }
 
 .useful-info-header {
@@ -65,6 +43,78 @@
   margin-bottom: 2px;
 }
 
-.useful-info-second-header {
-  margin-bottom: 25px;
+/* Mobile */
+@media screen and (max-width: 767px) {
+  .useful-info-background {
+    background-image: url(../img/useful-info/info_bg_mobile-min.png);
+    flex: 1 2 269px;
+  }
+
+  .useful-info-container {
+    flex-direction: column;
+  }
+
+  .useful-info-content {
+    max-height: 269px;
+    padding: 40px 20px;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+  }
+
+  .useful-info-second-header {
+    margin-bottom: 14px;
+    font-size: 14px;
+    line-height: 1.29;
+  }
+
+  .useful-info-paragraph {
+    font-size: 14px;
+    line-height: 1.29;
+    max-width: 245px;
+  }
+}
+
+/* Tablet */
+@media screen and (min-width: 768px) {
+  .useful-info-background {
+    background-image: url(../img/useful-info/info_bg_tablet-min.png);
+    flex: 1 2 302px;
+  }
+
+  .useful-info-container {
+    flex-direction: column;
+  }
+
+  .useful-info-content {
+    padding: 64px;
+    border-top-left-radius: 50px;
+    border-bottom-left-radius: 50px;
+  }
+
+  .useful-info-text {
+    max-width: 526px;
+  }
+
+  .useful-info-header {
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 1.33;
+  }
+
+  .useful-info-second-header {
+    margin-bottom: 25px;
+    font-size: 14px;
+    line-height: 1.29;
+  }
+}
+
+/* Desktop */
+@media screen and (min-width: 1440px) {
+  .useful-info-background {
+    background-image: url(../img/useful-info/info_bg_desktop-min.png);
+  }
+
+  .useful-info-container {
+    flex-direction: row;
+  }
 }
