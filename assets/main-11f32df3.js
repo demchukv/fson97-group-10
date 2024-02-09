@@ -44,7 +44,7 @@ import{i as E,a as b,P as U}from"./vendor-e8675f53.js";(function(){const t=docum
       <div class="rating-container">
         <p class="modal-exercises-rating">${R}</p>
         <svg class="star" width="18" height="18">
-          <use href="${f}svg#icon-star"></use>
+          <use href="${f}#icon-star"></use>
         </svg>
       </div>
       <ul class="description-list">
@@ -79,4 +79,4 @@ import{i as E,a as b,P as U}from"./vendor-e8675f53.js";(function(){const t=docum
       <button data-id="${e}" class="give-rating-btn">Give a rating</button>
     </div>
   </div>`}
-//# sourceMappingURL=main-a4babb2f.js.map
+//# sourceMappingURL=main-11f32df3.js.map
