@@ -1,4 +1,7 @@
 import axios from 'axios';
+import Pagination from 'tui-pagination';
+import 'tui-pagination/dist/tui-pagination.css';
+import { getLoader, showAlert } from './common';
 
 const refs = {
   gallery: document.querySelector('.gallery'),
@@ -9,22 +12,27 @@ const refs = {
 };
 
 axios.defaults.baseURL = 'https://energyflow.b.goit.study/api';
-const perPage = 12;
-let page = 1;
-let filter = 'Muscles';
+
+const params = {
+  perPage: 12,
+  page: 1,
+  filter: 'Muscles',
+}
 
 async function getData() {
+  getLoader();
   const data = await axios.get('/filters', {
     params: {
-      filter,
-      page,
-      limit: perPage,
+      filter: params.filter,
+      page: params.page,
+      limit: params.perPage,
     },
   });
   return data;
 }
 
 function createMarkup(arr) {
+  refs.gallery.innerHTML = "";
   const markup = arr
     .map(
       ({ name, filter, imgUrl }) => `<li class="gallery-item">
@@ -40,12 +48,16 @@ function createMarkup(arr) {
     .join('');
 
   refs.gallery.innerHTML = markup;
+  getLoader('hide');
 }
 
 function handleSearch(){
-  getData().then(
-    ({ data: { results } }) => createMarkup(results),
-  );
+  getData()
+    .then(({ data: { results } }) => createMarkup(results))
+    .catch(error => {
+      getLoader('hide');
+      showAlert(error.message, 'ERROR');
+    });
 }
 
 handleSearch()
@@ -58,18 +70,13 @@ refs.buttons.addEventListener("click", (event) => {
   if (targetMenu === event.currentTarget) {
     return
   } else if (targetMenu === refs.musclesBtn) {
-    filter = 'Muscles'
-    handleSearch()
-    return
-  } else if (targetMenu === refs.bodypartsBtn){
-    filter = 'Body parts'
-    handleSearch()
-    return
+    params.filter = 'Muscles'
+  } else if (targetMenu === refs.bodypartsBtn) {
+    params.filter = 'Body parts'
   } else if (targetMenu === refs.equipBtn) {
-    filter = 'Equipment'
-    handleSearch()
-    return
+    params.filter = 'Equipment'
   }
+  handleSearch()
 })
 
 let prevButton = null;
