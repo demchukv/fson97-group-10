@@ -111,7 +111,7 @@
         }
     }
 
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 1407px) {
         .exercises-btns-div{
             gap:8px;
         }
@@ -121,7 +121,7 @@
         }
     }
     
-    @media screen and (max-width: 375px) {
+    @media screen and (max-width: 767px) {
         .exercises-header {
             margin-bottom: 20px;
         }

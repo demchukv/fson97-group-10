@@ -4,7 +4,7 @@ const refs = {
   gallery: document.querySelector('.gallery'),
   buttons: document.querySelector('.exercises-btns-div'),
   musclesBtn: document.querySelector('[data-filter="muscles"]'),
-  bodypartsBtn: document.querySelector('[data-filter="bodyparts"]'),
+  bodypartsBtn: document.querySelector('[data-filter="bodypart"]'),
   equipBtn: document.querySelector('[data-filter="equipment"]'),
 };
 
