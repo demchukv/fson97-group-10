@@ -24,6 +24,12 @@ const clearObj = document.querySelector(".search-clear-btn");
 const searchInput = document.querySelector(".search-input");
 const filterBtns =  document.querySelector('.exercises-btns-div');
 const searchFormBlock = document.querySelector(".ex-search");
+const sectionHeader = document.querySelector(".exercises-header");
+const pagination = document.querySelector("#pagination");
+const pager = document.querySelector("#pager");
+/*
+pager.id = 'pager';
+*/
 
 /**
  * обробляємо клік по карточці для групи вправ
@@ -33,6 +39,8 @@ const searchFormBlock = document.querySelector(".ex-search");
 function handleCardClick(event){
     event.preventDefault();
     if(event.target.closest('ul').dataset.exercises){
+            pagination.style.display = 'none';
+            pager.style.display = 'block';
             searchObj.addEventListener('click', handleSearchBtnClick);
             clearObj.addEventListener('click', handleClearSearchInput);
             searchInput.addEventListener('input', handleSearchInput);
@@ -41,6 +49,8 @@ function handleCardClick(event){
         const filterBtn = document.querySelector(".exercises-button.active");
         exParams.filter = filterBtn.dataset.filter;
         exParams.filterGroup = event.target.closest('ul').dataset.exercises;
+        const headContent = `Exercises / <span class="head-small">${exParams.filterGroup.charAt(0).toUpperCase() + exParams.filterGroup.slice(1)}</span>`;
+        sectionHeader.innerHTML = headContent;
         updateExercisesList(exParams.filter);
     }
     return;
@@ -146,6 +156,13 @@ function markupExercisesList(data){
     .join('');
     
     galleryObj.innerHTML = markup;
+
+    const rect = filterBtns.getBoundingClientRect();
+    window.scrollBy({
+        top: rect.y + rect.height,
+        left: 0,
+        behavior: "smooth",
+      });
 }
 
 /**
@@ -153,7 +170,7 @@ function markupExercisesList(data){
  */
 function makePagination(){
     if(exParams.totalItems > exParams.limit){
-        const pagination = new Pagination('pagination', {
+        const pagination = new Pagination('pager', {
             totalItems : exParams.totalItems,
             itemsPerPage: exParams.limit,
             visiblePages: 3
@@ -163,7 +180,7 @@ function makePagination(){
             updateExercisesList(exParams.filter, false);
         });
     }else{
-        const paginationContainer = document.querySelector("#pagination");
+        const paginationContainer = document.querySelector("#pager");
         paginationContainer.innerHTML = '';
     }
     getLoader('hide');
@@ -204,8 +221,9 @@ function handleClickOnFilterBtn(event){
         clearObj.removeEventListener('click', handleClearSearchInput);
         searchInput.removeEventListener('input', handleSearchInput);
         filterBtns.removeEventListener('click', handleClickOnFilterBtn);
-        const paginationContainer = document.querySelector("#pagination");
-        paginationContainer.innerHTML = '';
+        pager.style.display = 'none';
+        pagination.style.display = 'block';
         exParams.page = 1;
+        sectionHeader.innerHTML = 'Exercises';
     }
 }
