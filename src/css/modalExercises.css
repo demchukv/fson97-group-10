@@ -44,7 +44,8 @@
     border: none;
 
     .close-modal-icon {
-      stroke: var(--text-base-color);
+      stroke: transparent;
+      fill: var(--text-base-color);
     }
   }
   .modal-description-container {
@@ -123,6 +124,16 @@
       color: var(--page-bg-color);
       background-color: var(--base-button-color);
       border: 1px solid var(--base-button-color);
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+
+      .icon-heart {
+        fill: transparent;
+        stroke: var(--page-bg-color);
+      }
     }
 
     .add-favorite-btn:hover,

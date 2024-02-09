@@ -134,7 +134,10 @@ function createMarkupExercisesCard({
       <p class="modal-description-text">${description}</p>
     </div>
     <div class="modal-buttons-container">
-      <button data-id="${_id}" class="add-favorite-btn">Add to favorite</button>
+      <button data-id="${_id}" class="add-favorite-btn">Add to favorite        
+      <svg class="icon-heart" width="18" height="18">
+          <use href="./img/icons.svg#icon-heart"></use>
+        </svg></button>
       <button data-id="${_id}" class="give-rating-btn">Give a rating</button>
     </div>
   </div>`;
