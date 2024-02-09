@@ -14,58 +14,73 @@ const exParams = {
 }
 
 const galleryObj = document.querySelector(".gallery");
+if(galleryObj){
+    galleryObj.addEventListener('click', handleCardClick);
+}
 const searchObj = document.querySelector(".search-btn");
 const clearObj = document.querySelector(".search-clear-btn");
 const searchInput = document.querySelector(".search-input");
 const filterBtns =  document.querySelector('.exercises-btns-div');
 const searchFormBlock = document.querySelector(".ex-search");
-if(galleryObj && searchObj){
-    galleryObj.addEventListener('click', handleCardClick);
-    searchObj.addEventListener('click', handleSearchBtnClick);
-    clearObj.addEventListener('click', handleClearSearchInput);
-    searchInput.addEventListener('input', handleSearchInput);
-    filterBtns.addEventListener('click', handleClickOnFilterBtn);
-}
 
+/**
+ * обробляємо клік по карточці для групи вправ
+ * @param {*} event 
+ * @returns 
+ */
 function handleCardClick(event){
     event.preventDefault();
     if(event.target.closest('ul').dataset.exercises){
-        searchFormBlock.classList.remove("visually-hidden");    
-            const filterBtn = document.querySelector(".exercises-button.active");
+            searchObj.addEventListener('click', handleSearchBtnClick);
+            clearObj.addEventListener('click', handleClearSearchInput);
+            searchInput.addEventListener('input', handleSearchInput);
+            filterBtns.addEventListener('click', handleClickOnFilterBtn);
+            searchFormBlock.classList.remove("visually-hidden");    
+        const filterBtn = document.querySelector(".exercises-button.active");
         exParams.filter = filterBtn.dataset.filter;
         exParams.filterGroup = event.target.closest('ul').dataset.exercises;
-        updateExercisesList(exParams.filter, exParams.filterGroup);
+        updateExercisesList(exParams.filter);
     }
     return;
 }
 
+/**
+ * обробляємо клік по кнопці пошуку
+ * @param {*} event 
+ * @returns 
+ */
 function handleSearchBtnClick(event){
     event.preventDefault();
     if(searchInput.value.length > 3) {
+        exParams.page = 1;
         exParams.keyword = searchInput.value.trim().toLowerCase();
-        updateExercisesList(exParams.filter, exParams.filterGroup);
+        updateExercisesList(exParams.filter);
     }
     return;
 }
 
-function updateExercisesList(filter, filterGroup, newPagination = true){
+/**
+ * Попередня обробка даних, що прийшли з бекенду
+ * @param {*} filter 
+ * @param {*} filterGroup 
+ * @param {*} newPagination 
+ */
+function updateExercisesList(filter, newPagination = true){
     galleryObj.innerHTML = '';
-    loadExercisesList(filter, filterGroup)
+    loadExercisesList(filter)
     .then(data => {
         exParams.totalPages = data.totalPages;
         exParams.totalItems = exParams.limit * data.totalPages;
         if(data.results.length === 0){
             galleryObj.innerHTML = '<p class="ex-list-no-result">Unfortunately, <span class="accent-text">no results</span> were found. You may want to consider other search options to find the exercise you are looking for. Our range is wide and you have the opportunity to find more options that suit your needs.</p>'
-            getLoader('hide');
+            
         }else{
             markupExercisesList(data.results);
-            console.log(data.results);
             if(newPagination && data.totalPages > 1){
                 makePagination();
-            }else{
-                getLoader('hide');
             }
         }
+        getLoader('hide');
         }
     )
     .catch(error => {
@@ -74,7 +89,12 @@ function updateExercisesList(filter, filterGroup, newPagination = true){
     });
 }
 
-async function loadExercisesList(filter, filterGroup){
+/**
+ * Відправляємо пощуковий запит на бекенд. Повертає масив даних
+ * @param {*} filter 
+ * @returns 
+ */
+async function loadExercisesList(filter){
     getLoader();
     if(searchInput.value.length > 3) {
         exParams.keyword = searchInput.value.trim().toLowerCase();
@@ -92,6 +112,10 @@ async function loadExercisesList(filter, filterGroup){
   return data.data;
 }
 
+/**
+ * Створюємо html-розмітку на основі отиманих даних
+ * @param {*} data 
+ */
 function markupExercisesList(data){
     let markup = data
     .map(i =>
@@ -114,25 +138,40 @@ function markupExercisesList(data){
     galleryObj.innerHTML = markup;
 }
 
+/**
+ * Створюємо блок з рагінацією
+ */
 function makePagination(){
-    const pagination = new Pagination('pagination', {
-        totalItems : exParams.totalItems,
-        itemsPerPage: exParams.limit,
-        visiblePages: 3
-    });
-    pagination.on('afterMove', function(eventData) {
-        exParams.page = eventData.page;
-        updateExercisesList(exParams.filter, exParams.filterGroup, false);
-    });
+    if(exParams.totalItems > exParams.limit){
+        const pagination = new Pagination('pagination', {
+            totalItems : exParams.totalItems,
+            itemsPerPage: exParams.limit,
+            visiblePages: 3
+        });
+        pagination.on('afterMove', function(eventData) {
+            exParams.page = eventData.page;
+            updateExercisesList(exParams.filter, false);
+        });
+    }else{
+        const paginationContainer = document.querySelector("#pagination");
+        paginationContainer.innerHTML = '';
+    }
     getLoader('hide');
 }
 
+/**
+ * Очищаємо поле пошуку при натисканні на кнопку
+ */
 function handleClearSearchInput(){
     searchInput.value = '';
     clearObj.style.visibility = 'hidden';
+    exParams.page = 1;
     updateExercisesList(exParams.filter, exParams.filterGroup);
 }
 
+/**
+ * Обробка пошукового тексту в полі пошуку
+ */
 function handleSearchInput(){
     if(searchInput.value.length > 0){
         clearObj.style.visibility = 'visible';
@@ -141,10 +180,21 @@ function handleSearchInput(){
     }
 }
 
+/**
+ * Обробляємо клік по одній з трьох кнопок. Видаляємо слухачі подій. Очищаємо поле пошуку.
+ * @param {*} event 
+ */
 function handleClickOnFilterBtn(event){
     if(event.target.tagName === "BUTTON"){
         searchInput.value = '';
         searchFormBlock.classList.add("visually-hidden");
         galleryObj.innerHTML = '';
+        searchObj.removeEventListener('click', handleSearchBtnClick);
+        clearObj.removeEventListener('click', handleClearSearchInput);
+        searchInput.removeEventListener('input', handleSearchInput);
+        filterBtns.removeEventListener('click', handleClickOnFilterBtn);
+        const paginationContainer = document.querySelector("#pagination");
+        paginationContainer.innerHTML = '';
+        exParams.page = 1;
     }
 }
