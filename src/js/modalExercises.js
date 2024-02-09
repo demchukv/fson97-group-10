@@ -107,7 +107,7 @@ function createMarkupExercisesCard({
       <div class="rating-container">
         <p class="modal-exercises-rating">${rating}</p>
         <svg class="star" width="18" height="18">
-          <use href="${icons}svg#icon-star"></use>
+          <use href="${icons}#icon-star"></use>
         </svg>
       </div>
       <ul class="description-list">
