@@ -29,7 +29,7 @@ import{i as b,a as v,P as I}from"./vendor-e8675f53.js";(function(){const t=docum
       </li>`).join("");f.innerHTML=t}function j(){if(i.totalItems>i.limit)new I("pagination",{totalItems:i.totalItems,itemsPerPage:i.limit,visiblePages:3}).on("afterMove",function(t){i.page=t.page,L(i.filter,!1)});else{const e=document.querySelector("#pagination");e.innerHTML=""}o("hide")}function q(){c.value="",h.style.visibility="hidden",i.page=1,L(i.filter,i.filterGroup)}function T(){c.value.length>0?h.style.visibility="visible":h.style.visibility="hidden"}function B(e){if(e.target.tagName==="BUTTON"){c.value="",S.classList.add("visually-hidden"),f.innerHTML="",w.removeEventListener("click",$),h.removeEventListener("click",q),c.removeEventListener("input",T),k.removeEventListener("click",B);const t=document.querySelector("#pagination");t.innerHTML="",i.page=1}}const C=document.querySelector(".footer-form");async function F(e){return v.post("https://energyflow.b.goit.study/api/subscription",e)}C.addEventListener("submit",K);function K(e){e.preventDefault();const t=e.currentTarget.email.value.trim().toLowerCase();if(t===""){p("The email field is empty!","ERROR");return}const s={email:t};o("show"),F(s).then(({data:n,status:a})=>{a===201&&(o("hide"),p(n.message,"OK"))}).catch(n=>{n.response.status===409?(o("hide"),p("Subscription already exists!")):(p(n.message,"ERROR"),o("hide"))}).finally(C.reset())}const _=document.querySelector(".gallery"),y=document.querySelector(".backdrop"),l=document.querySelector(".modal");_.addEventListener("click",z);async function z(e){if(e.target===e.curentTarget)return;const t=e.target.closest(".exercise-item");if(t===null)return;o();const s=t.dataset.id,n=await J(s);y.classList.remove("visually-hidden"),l.innerHTML="";const a=Q(n);l.innerHTML=a,o("none"),l.classList.remove("visually-hidden"),document.querySelector(".close-modal-btn").addEventListener("click",W),y.addEventListener("click",Y),document.addEventListener("keydown",x)}function W(){l.classList.add("visually-hidden"),y.classList.add("visually-hidden"),l.innerHTML="",document.removeEventListener("keydown",x)}function Y(e){e.target.closest(".modal")||(l.classList.add("visually-hidden"),y.classList.add("visually-hidden"),l.innerHTML="",document.removeEventListener("keydown",x))}function x(e){e.preventDefault(),e.key==="Escape"&&(l.classList.add("visually-hidden"),y.classList.add("visually-hidden"),l.innerHTML="",document.removeEventListener("keydown",x))}async function J(e){try{const t="https://energyflow.b.goit.study/api",s="exercises",{data:n}=await v.get(`${t}/${s}/${e}`);return n}catch(t){console.error(t)}}function Q({_id:e,bodyPart:t,equipment:s,gifUrl:n,name:a,target:r,description:g,rating:O,burnedCalories:P,time:M,popularity:R}){return`    <div class="modal-description-container">
       <button class="close-modal-btn">
         <svg class="close-modal-icon" width="24" height="24">
-          <use href="../img/icons.svg#icon-cross"></use>
+          <use href="./img/icons.svg#icon-cross"></use>
         </svg>
       </button>
       <img
@@ -44,7 +44,7 @@ import{i as b,a as v,P as I}from"./vendor-e8675f53.js";(function(){const t=docum
       <div class="rating-container">
         <p class="modal-exercises-rating">${O}</p>
         <svg class="star" width="18" height="18">
-          <use href="../img/icons.svg#icon-star"></use>
+          <use href="./img/icons.svg#icon-star"></use>
         </svg>
       </div>
       <ul class="description-list">
@@ -76,4 +76,4 @@ import{i as b,a as v,P as I}from"./vendor-e8675f53.js";(function(){const t=docum
       <button data-id="${e}" class="give-rating-btn">Give a rating</button>
     </div>
   </div>`}
-//# sourceMappingURL=main-1b94917b.js.map
+//# sourceMappingURL=main-7cc19ba3.js.map
