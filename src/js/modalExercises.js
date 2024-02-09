@@ -50,7 +50,7 @@ async function addToFavoriteOnClick(event) {
     if (condition) {
       localStorage.setItem(
         'favorites',
-        favoriteList.filter(({ _id }) => _id !== elementId)
+        JSON.stringify(favoriteList.filter(({ _id }) => _id !== elementId))
       );
       element.innerHTML = addInerHTML();
     } else {
