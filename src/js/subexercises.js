@@ -30,15 +30,20 @@ function handleCardClick(event){
 }
 
 function updateExercisesList(filter, filterGroup, newPagination = true){
+    galleryObj.innerHTML = '';
     loadExercisesList(filter, filterGroup)
     .then(data => {
         exParams.totalPages = data.totalPages;
         exParams.totalItems = exParams.limit * data.totalPages;
-        markupExercisesList(data.results);
-        if(newPagination){
-            makePagination();
+        if(data.results.length === 0){
+            galleryObj.innerHTML = '<p class="ex-list-no-result">Unfortunately, <span class="accent-text">no results</span> were found. You may want to consider other search options to find the exercise you are looking for. Our range is wide and you have the opportunity to find more options that suit your needs.</p>'
         }else{
-            getLoader('hide');
+            markupExercisesList(data.results);
+            if(newPagination){
+                makePagination();
+            }else{
+                getLoader('hide');
+            }
         }
         }
     )
@@ -65,13 +70,17 @@ function markupExercisesList(data){
     let markup = data
     .map(i =>
       `<li class="exercise-item" data-id="${i._id}">
-      <span>WORKOUT</span>
-      <span>${i.rating}</span>
-      <a href="#" data-id="${i._id}">Start</a>
-      <h3>${i.name.charAt(0).toUpperCase() + i.name.slice(1)}</h3>
-      <span>Burned calories: ${i.burnedCalories}/${i.time} min</span>
-      <span>Body part: ${i.bodyPart.charAt(0).toUpperCase() + i.bodyPart.slice(1)}</span>
-      <span>Target: ${i.target.charAt(0).toUpperCase() + i.target.slice(1)}</span>
+      <p class="ex-item-head">
+      <span class="ex-item-workout">WORKOUT</span>
+      <span class="ex-item-rating">${i.rating}</span>
+      <a class="ex-item-start" href="#" data-id="${i._id}">Start</a>
+      </p>
+      <h3 class="ex-item-name">${i.name.charAt(0).toUpperCase() + i.name.slice(1)}</h3>
+      <p class="ex-item-info">
+      <span class="ex-item-desc">Burned calories:</span> <span class="ex-item-value">${i.burnedCalories}/${i.time} min</span>
+      <span class="ex-item-desc">Body part:</span> <span class="ex-item-value">${i.bodyPart.charAt(0).toUpperCase() + i.bodyPart.slice(1)}</span>
+      <span class="ex-item-desc">Target:</span> <span class="ex-item-value">${i.target.charAt(0).toUpperCase() + i.target.slice(1)}</span>
+      </p>
       </li>`
     )
     .join('');

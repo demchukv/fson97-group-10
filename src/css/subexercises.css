@@ -1,7 +1,32 @@
+.gallery{
+    min-height: 378px;
+}
 .exercise-item{
     width: 295px;
     height: 165px;
     border-radius: 15px;
     padding: 16px;
     background-color: var(--white-color);
+}
+
+/**
+Pagination styles for tui-pagination
+*/
+.tui-pagination{
+    font-size: 24px;
+    line-height: 32px;
+    color:rgba(27, 27, 27, 0.4);
+}
+.tui-pagination .tui-page-btn{
+    display: inline-block;
+    border:none;
+}
+.tui-pagination .tui-is-selected{
+    border: 1px solid var(--text-base-color);
+    border-radius: 18px;
+    color:var(--text-base-color);
+    width: 32px;
+    height: 32px;
+    text-align: center;
+    background-color: none;
 }
