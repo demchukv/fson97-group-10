@@ -1,4 +1,5 @@
 import axios from 'axios';
+import icons from '../img/icons.svg';
 import { getLoader } from './common';
 
 const gallery = document.querySelector('.gallery');
@@ -91,7 +92,7 @@ function createMarkupExercisesCard({
   return `    <div class="modal-description-container">
       <button class="close-modal-btn">
         <svg class="close-modal-icon" width="24" height="24">
-          <use href="./img/icons.svg#icon-cross"></use>
+          <use href="${icons}#icon-cross"></use>
         </svg>
       </button>
       <img
@@ -106,7 +107,7 @@ function createMarkupExercisesCard({
       <div class="rating-container">
         <p class="modal-exercises-rating">${rating}</p>
         <svg class="star" width="18" height="18">
-          <use href="./img/icons.svg#icon-star"></use>
+          <use href="${icons}.svg#icon-star"></use>
         </svg>
       </div>
       <ul class="description-list">
@@ -136,7 +137,7 @@ function createMarkupExercisesCard({
     <div class="modal-buttons-container">
       <button data-id="${_id}" class="add-favorite-btn">Add to favorite        
       <svg class="icon-heart" width="18" height="18">
-          <use href="./img/icons.svg#icon-heart"></use>
+          <use href="${icons}#icon-heart"></use>
         </svg></button>
       <button data-id="${_id}" class="give-rating-btn">Give a rating</button>
     </div>
