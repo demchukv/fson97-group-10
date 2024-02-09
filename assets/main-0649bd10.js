@@ -19,4 +19,4 @@ import{i as y,a as m,P as b}from"./vendor-e8675f53.js";(function(){const t=docum
       <span class="ex-item-desc">Target:</span> <span class="ex-item-value">${s.target.charAt(0).toUpperCase()+s.target.slice(1)}</span>
       </p>
       </li>`).join("");d.innerHTML=t}function R(){new b("pagination",{totalItems:i.totalItems,itemsPerPage:i.limit,visiblePages:3}).on("afterMove",function(t){i.page=t.page,h(i.filter,i.filterGroup,!1)}),o("hide")}const x=document.querySelector(".footer-form");async function S(e){return m.post("https://energyflow.b.goit.study/api/subscription",e)}x.addEventListener("submit",T);function T(e){e.preventDefault();const t=e.currentTarget.email.value.trim().toLowerCase();if(t===""){u("The email field is empty!","ERROR");return}const s={email:t};o("show"),S(s).then(({data:r,status:a})=>{a===201&&(o("hide"),u(r.message,"OK"))}).catch(r=>{r.response.status===409?(o("hide"),u("Subscription already exists!")):(u(r.message,"ERROR"),o("hide"))}).finally(x.reset())}
-//# sourceMappingURL=main-0d5386fe.js.map
+//# sourceMappingURL=main-0649bd10.js.map
