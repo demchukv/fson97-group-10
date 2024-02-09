@@ -5,6 +5,7 @@
 }
 
 .useful-info-background {
+  border-radius: 50px;
   flex: 1;
   background-size: cover;
 }
@@ -54,6 +55,7 @@
   display: flex;
   gap: 16px;
   padding: 64px;
+  border-radius: 50px;
   background: var(--text-base-color);
   flex: 1;
   color: rgba(246, 246, 246, 0.6);
