@@ -79,4 +79,4 @@ import{i as E,a as b,P as U}from"./vendor-e8675f53.js";(function(){const t=docum
       <button data-id="${e}" class="give-rating-btn">Give a rating</button>
     </div>
   </div>`}
-//# sourceMappingURL=main-99ef887c.js.map
+//# sourceMappingURL=main-6a56b67b.js.map
