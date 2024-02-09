@@ -100,8 +100,6 @@
 .ex-item-desc{
     color: rgba(27, 27, 27, 0.4);
 }
-.ex-item-value{
-}
 
 /* Search form */
 .search-form{
@@ -143,6 +141,10 @@
 
 /* Media queries  */
 @media screen and (min-width: 768px) {
+    .exercises-card{
+        row-gap: 20px;
+    }
+    
     .exercise-item{
         width: 313px;
         height: 165px;
@@ -150,11 +152,68 @@
     .search-input{
         width: 246px;
     }
+    .ex-item-start{
+        font-size: 16px;
+        line-height: 1.5;
+    }
+    .ex-arrow-icon{
+        width: 16px;
+        height: 16px;
+    }
+    .ex-title{
+        margin-bottom: 12px;
+    }
+        .ex-item-name{
+        font-size: 24px;
+        line-height: 1.33;
+    }
+       
 }
 
 @media screen and (min-width: 1440px) {
+    .exercises-card{
+        row-gap: 28px;
+    }
+   
     .exercise-item{
         width: 424px;
         height: 141px;
     }
+}
+
+
+/*
+  <div id="pagination" class="tui-pagination">
+    <a href="#" class="tui-page-btn tui-first"><span class="tui-ico-first">first</span></a>
+    <a href="#" class="tui-page-btn tui-prev"><span class="tui-ico-prev">prev</span></a>
+    <a href="#" class="tui-page-btn tui-first-child">1</a>
+    <strong class="tui-page-btn tui-is-selected">2</strong>
+    <a href="#" class="tui-page-btn">3</a>
+    <a href="#" class="tui-page-btn tui-next-is-ellip tui-last-child"><span class="tui-ico-ellip">...</span></a>
+    <a href="#" class="tui-page-btn tui-next"><span class="tui-ico-next">next</span></a>
+    <a href="#" class="tui-page-btn tui-last"><span class="tui-ico-last">last</span></a>
+</div>
+*/
+/* Pagination styles for tui-pagination */
+#pagination{
+    font-size: 24px;
+}
+#pagination .tui-page-btn{
+    font-size: 24px;
+    border:none;
+    color: rgba(27, 27, 27, 0.4);
+}
+#pagination .tui-page-btn:hover{
+    background: none;
+}
+#pagination .tui-is-selected{
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    text-align: center;
+    line-height: 0.7;
+    color: var(--text-base-color);
+    border: 1px solid var(--text-base-color);
+    border-radius: 100%;
+    background: none;
 }
