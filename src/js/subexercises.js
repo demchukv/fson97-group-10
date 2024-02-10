@@ -86,7 +86,7 @@ function updateExercisesList(filter, newPagination = true){
         exParams.totalItems = exParams.limit * data.totalPages;
         if(data.results.length === 0){
             galleryObj.innerHTML = '<p class="ex-list-no-result">Unfortunately, <span class="accent-text">no results</span> were found. You may want to consider other search options to find the exercise you are looking for. Our range is wide and you have the opportunity to find more options that suit your needs.</p>'
-            
+            makePagination();
         }else{
             markupExercisesList(data.results);
             if(newPagination){

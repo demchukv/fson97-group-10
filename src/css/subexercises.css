@@ -10,6 +10,14 @@
     letter-spacing: -0.02em;
     color: rgba(27, 27, 27, 0.5);
 }
+.ex-list-no-result{
+    padding-top: 164px;
+    padding-bottom: 320px;
+    font-size: 14px;
+    line-height: 1.29;
+    letter-spacing: -0.01em;
+    text-align: center;
+}
 .exercise-item{
     width: 295px;
     height: 165px;
@@ -156,6 +164,12 @@
         letter-spacing: -0.02em;
         color: rgba(27, 27, 27, 0.5);
     }
+    .ex-list-no-result{
+        padding-top: 222px;
+        padding-bottom: 585px;
+        padding-left: 50px;
+        padding-right: 50px;
+    }
     .exercises-card{
         row-gap: 20px;
     }
@@ -188,6 +202,12 @@
 @media screen and (min-width: 1440px) {
     .exercises-card{
         row-gap: 28px;
+    }
+    .ex-list-no-result{
+        padding-top: 217px;
+        padding-bottom: 350px;
+        padding-left: 340px;
+        padding-right: 340px;
     }
     .ex-item-info{
         gap: 10px;
