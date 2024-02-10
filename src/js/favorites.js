@@ -1,4 +1,5 @@
 console.log('djakdo');
+
 const data = [
   {
     _id: '64f389465ae26083f39b17a2',
@@ -142,37 +143,42 @@ const data = [
   },
 ];
 localStorage.setItem('DATA', JSON.stringify(data));
-// const refs = {
-//   favoritesContent: document.querySelector('.favorites-section'),
-// };
+const refs = {
+  favoritesContent: document.querySelector('.favorites-section'),
+  cont: document.querySelector('.favorites-content'),
+};
+console.log(refs.favoritesContent);
+console.log(refs.cont);
 
-// function createMarkup(resp) {
-//   return resp
-//     .map(data => {
-//       return `<li id=${data._id}>
-//       <div>
-//         <button>WORKOUT</button>
-//         <button>DELETE</button>
-//         <button>START</button>
-//       </div>
-//       <h2>${data.name}</h2>
-//       <p>Burned calories:<span>${data.burnedCalories}</span></p>
-//       <p>Body part:<span>${data.bodyPart}</span></p>
-//       <p>Target: <span>${data.target}</span></p>
-//     </li>`;
-//     })
-//     .join('');
-// }
+function createMarkup(resp) {
+  return resp
+    .map(data => {
+      return `<li id=${data._id}>
+      <div>
+        <button>WORKOUT</button>
+        <button>DELETE</button>
+        <button>START</button>
+      </div>
+      <h2>${data.name}</h2>
+      <p>Burned calories:<span>${data.burnedCalories}</span></p>
+      <p>Body part:<span>${data.bodyPart}</span></p>
+      <p>Target: <span>${data.target}</span></p>
+    </li>`;
+    })
+    .join('');
+}
 
 const getLocalStorage = localStorage.getItem('DATA');
-console.log(JSON.parse(getLocalStorage));
-// if (getLocalStorage) {
-//   const result = JSON.parse(getLocalStorage);
-//   refs.favoritesContent.innerHTML = `<ul>${createMarkup(result)}</ul>`;
-// } else {
-//   console.log('hello');
-//   //   ul.insertAdjacentHTML('beforeend', '<li>hello</li>');
-// }
+// console.log(JSON.parse(getLocalStorage));
+if (getLocalStorage) {
+  const result = JSON.parse(getLocalStorage);
+  console.log(result);
+  // refs.favoritesContent.innerHTML = '';
+  console.log(refs.favoritesContent);
+} else {
+  console.log('hello');
+  //   ul.insertAdjacentHTML('beforeend', '<li>hello</li>');
+}
 
 // function createMarkup(data) {
 //   return data
