@@ -1,9 +1,12 @@
 .gallery{
     min-height: 378px;
 }
+.ex-search{
+    display: none;
+}
 .head-small{
-    font-size: 24px;
-    line-height: 1.33;
+    font-size: 20px;
+    line-height: 1;
     letter-spacing: -0.02em;
     color: rgba(27, 27, 27, 0.5);
 }
@@ -147,6 +150,12 @@
 
 /* Media queries  */
 @media screen and (min-width: 768px) {
+    .head-small{
+        font-size: 24px;
+        line-height: 1.33;
+        letter-spacing: -0.02em;
+        color: rgba(27, 27, 27, 0.5);
+    }
     .exercises-card{
         row-gap: 20px;
     }

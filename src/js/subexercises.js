@@ -4,6 +4,7 @@ import 'tui-pagination/dist/tui-pagination.css';
 import {getLoader, showAlert} from "./common";
 import icons from '../img/icons.svg';
 
+
 const exParams = {
     page : 1,
     totalPages : 1,
@@ -45,7 +46,7 @@ function handleCardClick(event){
             clearObj.addEventListener('click', handleClearSearchInput);
             searchInput.addEventListener('input', handleSearchInput);
             filterBtns.addEventListener('click', handleClickOnFilterBtn);
-            searchFormBlock.classList.remove("visually-hidden");    
+            searchFormBlock.style.display = 'block';
         const filterBtn = document.querySelector(".exercises-button.active");
         exParams.filter = filterBtn.dataset.filter;
         exParams.filterGroup = event.target.closest('ul').dataset.exercises;
@@ -214,7 +215,7 @@ function handleSearchInput(){
 function handleClickOnFilterBtn(event){
     if(event.target.tagName === "BUTTON"){
         searchInput.value = '';
-        searchFormBlock.classList.add("visually-hidden");
+        searchFormBlock.style.display = 'none';
         galleryObj.innerHTML = '';
         galleryObj.classList.remove('exercises-card');
         searchObj.removeEventListener('click', handleSearchBtnClick);

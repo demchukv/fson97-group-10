@@ -149,6 +149,9 @@
     @media screen and (max-width: 767px) {
         .exercises-header {
             margin-bottom: 20px;
+            font-size: 32px;
+            letter-spacing: -0.02em;
+            line-height: 1;
         }
         .exercises-btns-div{
             gap:6px;
