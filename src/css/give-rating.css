@@ -120,6 +120,8 @@ label:hover ~ label .star,
     padding: 12px 14px 12px 14px;
     width: 100%;
     background: transparent;
+    font-size: 14px;
+    line-height: 1.29;
 }
 .rating-field::placeholder{
     font-size: 14px;
@@ -150,4 +152,25 @@ label:hover ~ label .star,
 .send-rating-btn:active,
 .send-rating-btn:focus{
     background: var(--hover-button-color);
+}
+
+
+/* Media queries  */
+@media screen and (min-width: 768px) {
+  .modal-rating{
+    width:450px;
+  }
+  .rating-field::placeholder{
+    font-size: 16px;
+    line-height: 1.5;
+    color: rgba(27, 27, 27, 0.6);    
+  }
+  .send-rating-btn{
+    font-size: 16px;
+    line-height: 1.5;
+  }
+  .rating-field{
+    font-size: 16px;
+    line-height: 1.5;
+  }
 }
