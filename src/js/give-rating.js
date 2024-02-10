@@ -98,10 +98,11 @@ function handleSendRatingBtnClick(event){
     }
     sendRatingData(rate, email, review)
     .then(function (response) {
-        console.log(response);
         showAlert('Thank you! Your rating has been sent!', 'OK');
         const ratingValue = document.querySelector('.rating-value');
         ratingValue.textContent = '0.0';
+        formData.reset();
+        closeRatingModal();
     })
     .catch(function (error) {
         if (error.response.status === 409) {
@@ -111,11 +112,8 @@ function handleSendRatingBtnClick(event){
         } else {
             showAlert(error.message, 'ERROR');
         }
-    })
-    .finally(() => {
-        getLoader('hide');
-        formData.reset();
     });
+    getLoader('hide');
 }
 
 /**
