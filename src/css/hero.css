@@ -1,0 +1,133 @@
+.hero-container {
+  display: flex;
+  padding: 0;
+  background-color: var(--page-bg-color);
+}
+
+.hero-background {
+  background-size: cover;
+  border-radius: 50px;
+}
+
+.hero-content {
+  background-color: var(--white-color);
+  border-radius: 50px;
+}
+
+.hero-title {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 56px;
+  line-height: 89%;
+  letter-spacing: -0.02em;
+  color: #1b1b1b;
+  margin-bottom: 20px;
+}
+
+.hero-title span {
+  font-style: italic;
+  color: #7e847f;
+}
+
+.hero-text {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 129%;
+  letter-spacing: -0.01em;
+  color: #1b1b1b;
+}
+
+/* MOBILE */
+
+@media screen and (max-width: 767px) {
+  .hero-background {
+    background-image: url(../img/hero/hero-mobile-min.png);
+    height: 387px;
+    width: 335px;
+  }
+  .hero-container {
+    flex-direction: column;
+  }
+  .hero-content {
+    margin-top: 20px;
+    padding-top: 70px;
+    padding-bottom: 70px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+}
+
+/* TABLET */
+@media screen and (min-width: 768px) {
+  .hero-background {
+    background-image: url(../img/hero/hero-tablet-min.png);
+    height: 900px;
+    width: 248px;
+    border-top-right-radius: 0px;
+  }
+
+  .hero-container {
+    flex-direction: row;
+  }
+
+  .hero-content {
+    width: 488px;
+    border-top-left-radius: 0px;
+    margin-top: 0;
+
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 211px;
+    padding-top: 211px;
+  }
+
+
+
+  .hero-title {
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 98px;
+    line-height: 97%;
+    letter-spacing: -0.02em;
+    color: #1b1b1b;
+    letter-spacing: 4px;
+  }
+
+  .hero-text {
+    padding-right: 140px;
+  }
+}
+/* DESKTOP */
+@media screen and (min-width: 1440px) {
+  .hero-background {
+    background-size: cover;
+    background-image: url(../img/hero/hero-desk-min.png);
+    height: 884px;
+    width: 704px;
+    border-top-right-radius: 0px;
+  }
+  .hero-container {
+    flex-direction: row;
+  }
+  .hero-content {
+    width: 704px;
+    border-top-left-radius: 0px;
+    margin-top: 0;
+  }
+
+  .hero-title {
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 120px;
+    line-height: 96%;
+    letter-spacing: 4px;
+    color: #1b1b1b;
+  }
+
+  .hero-text {
+    padding-right: 140px;
+    font-size: 18px;
+  }
+}
