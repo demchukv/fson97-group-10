@@ -107,6 +107,8 @@
 .ex-item-info{
     font-size: 12px;
     line-height: 1.5;
+    text-wrap: nowrap;
+    overflow: hidden;
     text-overflow: ellipsis;
 }
 .ex-info-group:not(:first-child){
