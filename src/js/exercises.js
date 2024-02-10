@@ -18,7 +18,7 @@ const params = {
   filter: 'Muscles',
   totalPages: 1,
   totalItems: 0,
-}
+};
 
 async function getData() {
   getLoader();
@@ -33,7 +33,7 @@ async function getData() {
 }
 
 function createMarkup(results) {
-  refs.gallery.innerHTML = "";
+  refs.gallery.innerHTML = '';
   const markup = results
     .map(
       ({ name, filter, imgUrl }) => `<li class="gallery-item">
@@ -53,7 +53,7 @@ function createMarkup(results) {
 }
 
 function handleSearch() {
-  params.page = 1
+  params.page = 1;
   getData()
     .then(data => {
       const { results, totalPages, page } = data;
@@ -75,30 +75,30 @@ handleSearch();
 refs.musclesBtn.classList.add('active');
 refs.musclesBtn.disabled = true;
 
-refs.buttons.addEventListener("click", (event) => {
-  selected(event)
+refs.buttons.addEventListener('click', event => {
+  selected(event);
   const targetMenu = event.target;
 
   if (targetMenu === event.currentTarget) {
-    return
+    return;
   } else if (targetMenu === refs.musclesBtn) {
     refs.musclesBtn.disabled = true;
     refs.bodypartsBtn.disabled = false;
     refs.equipBtn.disabled = false;
-    params.filter = 'Muscles'
+    params.filter = 'Muscles';
   } else if (targetMenu === refs.bodypartsBtn) {
     refs.musclesBtn.disabled = false;
     refs.bodypartsBtn.disabled = true;
     refs.equipBtn.disabled = false;
-    params.filter = 'Body parts'
+    params.filter = 'Body parts';
   } else if (targetMenu === refs.equipBtn) {
     refs.musclesBtn.disabled = false;
     refs.bodypartsBtn.disabled = false;
     refs.equipBtn.disabled = true;
-    params.filter = 'Equipment'
+    params.filter = 'Equipment';
   }
-  handleSearch()
-})
+  handleSearch();
+});
 
 let prevButton = null;
 
@@ -118,7 +118,7 @@ function selected(e) {
   prevButton = e.target;
 
   if (prevButton === prevButton) {
-    prevButton.classList.add('active')
+    prevButton.classList.add('active');
   }
 }
 
