@@ -73,6 +73,8 @@ function onClick() {
   backdrop.classList.add('visually-hidden');
   modalCard.innerHTML = '';
   document.removeEventListener('keydown', onEscape);
+  closeBtn.removeEventListener('click', onClick);
+  backdrop.removeEventListener('click', backdropOnClick);
 }
 
 function backdropOnClick(event) {
@@ -84,6 +86,8 @@ function backdropOnClick(event) {
   backdrop.classList.add('visually-hidden');
   modalCard.innerHTML = '';
   document.removeEventListener('keydown', onEscape);
+  closeBtn.removeEventListener('click', onClick);
+  backdrop.removeEventListener('click', backdropOnClick);
 }
 
 function onEscape(event) {
@@ -93,6 +97,8 @@ function onEscape(event) {
     backdrop.classList.add('visually-hidden');
     modalCard.innerHTML = '';
     document.removeEventListener('keydown', onEscape);
+    closeBtn.removeEventListener('click', onClick);
+    backdrop.removeEventListener('click', backdropOnClick);
   }
 }
 
@@ -111,14 +117,18 @@ function addInerHTML(value = 'add') {
   if (value === 'add') {
     return `Add to favorites
         <svg class="icon-heart" width="18" height="18">
-          <use href="./img/icons.svg#icon-heart"></use>
+          <use href="${icons}#icon-heart"></use>
         </svg>`;
   } else {
     return `Remove from
         <svg class="icon-heart" width="18" height="18">
-          <use href="./img/icons.svg#icon-heart"></use>
+          <use href="${icons}#icon-heart"></use>
         </svg>`;
   }
+}
+
+function spanToCapitalize(text) {
+  return text.charAt(0).toUpperCase() + text.slice(1);
 }
 
 function createMarkupExercisesCard({
@@ -142,7 +152,7 @@ function createMarkupExercisesCard({
     isAdded = favoriteList.some(item => item._id === _id);
   }
 
-  return `    <div class="modal-description-container">
+  return `<div class="modal-description-container">
       <button class="close-modal-btn">
         <svg class="close-modal-icon" width="24" height="24">
           <use href="${icons}#icon-cross"></use>
@@ -155,46 +165,48 @@ function createMarkupExercisesCard({
         width="295"
         height="258"
       />
-
-      <h4 class="modal-title">${name}</h4>
-      <div class="rating-container">
-        <p class="modal-exercises-rating">${rating}</p>
-        <svg class="star" width="18" height="18">
-          <use href="${icons}#icon-star"></use>
-        </svg>
+      <div class="text-container">
+        <h4 class="modal-title">${name}</h4>
+        <div class="rating-container">
+          <p class="modal-exercises-rating">${rating}</p>
+          <svg class="star" width="15" height="15">
+            <use href="${icons}#icon-star"></use>
+          </svg>
+        </div>
+        <ul class="description-list">
+          <li class="description-item">
+            <p>Target</p>
+            <span>${spanToCapitalize(target)}</span>
+          </li>
+          <li class="description-item">
+            <p>Body Part</p>
+            <span>${spanToCapitalize(bodyPart)}</span>
+          </li>
+          <li class="description-item">
+            <p>Equipment</p>
+            <span>${spanToCapitalize(equipment)}</span>
+          </li>
+          <li class="description-item">
+            <p>Popular</p>
+            <span>${popularity}</span>
+          </li>
+          <li class="description-item">
+            <p>Burned Calories</p>
+            <span>${burnedCalories}/${time} min</span>
+          </li>
+        </ul>
+        <p class="modal-description-text">${description}</p>
+        <div class="modal-buttons-container">
+          <button data-id="64f389465ae26083f39b17a4" class="add-favorite-btn">
+            ${isAdded ? 'Remove from' : 'Add to favorites'}
+            <svg class="icon-heart" width="18" height="18">
+              <use href="${icons}#icon-heart"></use>
+            </svg>
+          </button>
+          <button data-id="64f389465ae26083f39b17a4" class="give-rating-btn">
+            Give a rating
+          </button>
+        </div>
       </div>
-      <ul class="description-list">
-        <li class="description-item">
-          <p>Target</p>
-          <span>${target}</span>
-        </li>
-        <li class="description-item">
-          <p>Body Part</p>
-          <span>${bodyPart}</span>
-        </li>
-        <li class="description-item">
-          <p>Equipment</p>
-          <span>${equipment}</span>
-        </li>
-        <li class="description-item">
-          <p>Popular</p>
-          <span>${popularity}</span>
-        </li>
-        <li class="description-item">
-          <p>Burned Calories</p>
-          <span>${burnedCalories}/${time} min</span>
-        </li>
-      </ul>
-      <p class="modal-description-text">${description}</p>
-    </div>
-    <div class="modal-buttons-container">
-      <button data-id="${_id}" class="add-favorite-btn">${
-    isAdded ? 'Remove from' : 'Add to favorites'
-  }        
-      <svg class="icon-heart" width="18" height="18">
-          <use href="${icons}#icon-heart"></use>
-        </svg></button>
-      <button data-id="${_id}" class="give-rating-btn">Give a rating</button>
-    </div>
-  </div>`;
+    </div>`;
 }
