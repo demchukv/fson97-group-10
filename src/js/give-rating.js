@@ -22,8 +22,6 @@ export function addGiveRatingListener(){
     overlayRating.addEventListener('click', closeOnOverlayClick);
     starContainer.addEventListener('click', handleClickOnStar);
     sendRatingBtn.addEventListener('click', handleSendRatingBtnClick);
-    /*document.addEventListener('keydown', onPushEscape);*/
-    
 }
 
 /**
@@ -35,7 +33,6 @@ export function removeGiveRatingListener(){
     overlayRating.removeEventListener('click', closeOnOverlayClick);
     starContainer.removeEventListener('click', handleClickOnStar);
     sendRatingBtn.removeEventListener('click', handleSendRatingBtnClick);
-    /*document.removeEventListener('keydown', onPushEscape);*/
 }
 
 /**
@@ -157,17 +154,7 @@ function restoreExercisesModal(){
     modalCard.classList.remove('visually-hidden');
 }
 
-/**
- * Закриття модального вікна по натисканню на клавішу Esc
- * @param {*} event 
- */
-function onPushEscape(event) {
-    event.preventDefault();
-    if (event.key === 'Escape') {
-      closeRatingModal();
-    }
-  }
-  
+
   /**
  * Закриття модального вікна при кліку на оверлей
  * @param {*} event 
