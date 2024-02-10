@@ -1,0 +1,209 @@
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
+.backdrop {
+  overflow: auto;
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #1b1b1b99;
+}
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  min-width: 320px;
+  max-width: 335px;
+  padding: 40px 20px;
+  background-color: var(--page-bg-color);
+  border-radius: 20px;
+
+  .close-modal-btn {
+    position: absolute;
+    top: 14px;
+    right: 10px;
+    background-color: transparent;
+    border: none;
+
+    .close-modal-icon {
+      stroke: transparent;
+      fill: var(--text-base-color);
+    }
+  }
+  .modal-description-container {
+    .modal-gif {
+      border-radius: 12px;
+      margin-bottom: 20px;
+    }
+
+    .modal-title {
+      font-weight: 500;
+      font-size: 20px;
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+
+    .modal-title::first-letter {
+      text-transform: uppercase;
+    }
+
+    .rating-container {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+
+      .modal-exercises-rating {
+        font-size: 12px;
+        line-height: 18px;
+      }
+
+      .star {
+        stroke: var(--active-star-color);
+        fill: var(--active-star-color);
+      }
+    }
+    .description-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-bottom: 20px;
+      padding: 10px 0;
+      border-bottom: 1px solid #1b1b1b33;
+      border-top: 1px solid #1b1b1b33;
+
+      .description-item {
+        p {
+          font-size: 12px;
+          line-height: 0.66;
+          margin-bottom: 4px;
+          color: #1b1b1b66;
+        }
+
+        span {
+          font-weight: 500;
+          font-size: 14px;
+          line-height: 18px;
+        }
+      }
+    }
+
+    .modal-description-text {
+      font-size: 14px;
+      line-height: 18px;
+      color: #1b1b1b99;
+      margin-bottom: 40px;
+    }
+  }
+  .modal-buttons-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 9px;
+
+    button {
+      border: none;
+      border-radius: 30px;
+      padding: 12px 0;
+      transition: all 0.3s ease-in-out;
+      font-size: 14px;
+      line-height: 18px;
+    }
+
+    .add-favorite-btn {
+      color: var(--page-bg-color);
+      background-color: var(--base-button-color);
+      border: 1px solid var(--base-button-color);
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+
+      .icon-heart {
+        fill: transparent;
+        stroke: var(--page-bg-color);
+      }
+    }
+
+    .add-favorite-btn:hover,
+    .add-favorite-btn:focus {
+      background-color: var(--hover-button-color);
+      border-color: var(--hover-button-color);
+    }
+
+    .give-rating-btn {
+      color: var(--text-base-color);
+      background-color: transparent;
+      border: 1px solid var(--text-base-color);
+    }
+
+    .give-rating-btn:hover,
+    .give-rating-btn:focus {
+      border-color: #7e847f;
+      color: #7e847f;
+    }
+  }
+}
+
+/* **************************** */
+/* Styles for tablet */
+/* **************************** */
+
+@media screen and (min-width: 768px) {
+  .modal {
+    min-width: 716px;
+    padding: 40px;
+  }
+
+  .modal-description-container {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+  }
+
+  .modal-gif {
+    width: 270px;
+    height: 259px;
+  }
+
+  .modal-title {
+    font-size: 24px;
+    line-height: 32px;
+  }
+
+  .modal .modal-buttons-container {
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 7px;
+
+    button {
+      flex: auto;
+    }
+  }
+}
+
+/* **************************** */
+/* Styles for desktop */
+/* **************************** */
+
+@media screen and (min-width: 1440px) {
+  .modal {
+    min-width: 732px;
+  }
+}

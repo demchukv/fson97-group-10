@@ -1,0 +1,120 @@
+.useful-info-container {
+  display: flex;
+  padding: 0;
+  background-color: var(--page-bg-color);
+}
+
+.useful-info-background {
+  flex: 1;
+  background-size: cover;
+}
+
+.useful-info-icon-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 34px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: rgba(246, 246, 246, 0.1);
+}
+
+.useful-info-icon {
+  fill: #f6f6f6;
+  width: 20px;
+  height: 20px;
+  transition-property: fill;
+  transition-duration: 0.25s;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.useful-info-content {
+  display: flex;
+  gap: 16px;
+
+  background: var(--text-base-color);
+  color: rgba(246, 246, 246, 0.6);
+  border-top-left-radius: 50px;
+  border-top-right-radius: 50px;
+}
+
+.useful-info-header {
+  color: var(--page-bg-color);
+  margin-bottom: 2px;
+}
+
+/* Mobile */
+@media screen and (max-width: 767px) {
+  .useful-info-background {
+    background-image: url(../img/useful-info/info_bg_mobile-min.png);
+    flex: 1 2 269px;
+  }
+
+  .useful-info-container {
+    flex-direction: column;
+  }
+
+  .useful-info-content {
+    max-height: 269px;
+    padding: 40px 20px;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+  }
+
+  .useful-info-second-header {
+    margin-bottom: 14px;
+    font-size: 14px;
+    line-height: 1.29;
+  }
+
+  .useful-info-paragraph {
+    font-size: 14px;
+    line-height: 1.29;
+    max-width: 245px;
+  }
+}
+
+/* Tablet */
+@media screen and (min-width: 768px) {
+  .useful-info-background {
+    background-image: url(../img/useful-info/info_bg_tablet-min.png);
+    flex: 1 2 302px;
+  }
+
+  .useful-info-container {
+    flex-direction: column;
+  }
+
+  .useful-info-content {
+    padding: 64px;
+    border-top-left-radius: 50px;
+    border-bottom-left-radius: 50px;
+  }
+
+  .useful-info-text {
+    max-width: 526px;
+  }
+
+  .useful-info-header {
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 1.33;
+  }
+
+  .useful-info-second-header {
+    margin-bottom: 25px;
+    font-size: 14px;
+    line-height: 1.29;
+  }
+}
+
+/* Desktop */
+@media screen and (min-width: 1440px) {
+  .useful-info-background {
+    background-image: url(../img/useful-info/info_bg_desktop-min.png);
+  }
+
+  .useful-info-container {
+    flex-direction: row;
+  }
+}
