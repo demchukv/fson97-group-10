@@ -81,6 +81,9 @@
     color: var(--base-button-color);
   }
 
+  .fav-head .container{
+    position: relative;
+  }
   /*
   Loader styles
   */

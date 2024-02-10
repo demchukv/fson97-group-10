@@ -1,7 +1,11 @@
 /*-------------Mobile------------*/
-
 .header-container {
     padding-top: 20px;
+    position: absolute;
+    top:0;
+    left:0;
+    width: 100%;
+    background: none;
 }
 .header-logo {
     display: inline-block;
