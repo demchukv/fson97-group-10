@@ -65,6 +65,7 @@
 
     .rating-container {
       display: flex;
+      align-items: center;
       gap: 10px;
       margin-bottom: 20px;
 
@@ -74,6 +75,8 @@
       }
 
       .star {
+        width: 18px;
+        height: 18px;
         stroke: var(--active-star-color);
         fill: var(--active-star-color);
       }
