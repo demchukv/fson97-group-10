@@ -1,3 +1,4 @@
+console.log('djakdo');
 const data = [
   {
     _id: '64f389465ae26083f39b17a2',
@@ -141,9 +142,9 @@ const data = [
   },
 ];
 localStorage.setItem('DATA', JSON.stringify(data));
-const refs = {
-  favoritesContent: document.querySelector('.favorites-section'),
-};
+// const refs = {
+//   favoritesContent: document.querySelector('.favorites-section'),
+// };
 
 // function createMarkup(resp) {
 //   return resp
