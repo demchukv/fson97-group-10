@@ -52,19 +52,27 @@ async function addToFavoriteOnClick(event) {
         'favorites',
         JSON.stringify(favoriteList.filter(({ _id }) => _id !== elementId))
       );
-      element.innerHTML = addInerHTML();
+      element.innerHTML = addInnerHTML();
     } else {
-      const exercisesCardInfo = await getExercisesCardInfo(elementId);
-      localStorage.setItem(
-        'favorites',
-        JSON.stringify([...favoriteList, exercisesCardInfo])
-      );
-      element.innerHTML = addInerHTML('remove');
+      try {
+        const exercisesCardInfo = await getExercisesCardInfo(elementId);
+        localStorage.setItem(
+          'favorites',
+          JSON.stringify([...favoriteList, exercisesCardInfo])
+        );
+        element.innerHTML = addInnerHTML('remove');
+      } catch (error) {
+        console.error('Error fetching exercises card info:', error);
+      }
     }
   } else {
-    const exercisesCardInfo = await getExercisesCardInfo(elementId);
-    localStorage.setItem('favorites', JSON.stringify([exercisesCardInfo]));
-    element.innerHTML = addInerHTML('remove');
+    try {
+      const exercisesCardInfo = await getExercisesCardInfo(elementId);
+      localStorage.setItem('favorites', JSON.stringify([exercisesCardInfo]));
+      element.innerHTML = addInnerHTML('remove');
+    } catch (error) {
+      console.error('Error fetching exercises card info:', error);
+    }
   }
 }
 
@@ -73,7 +81,6 @@ function onClick() {
   backdrop.classList.add('visually-hidden');
   modalCard.innerHTML = '';
   document.removeEventListener('keydown', onEscape);
-  closeBtn.removeEventListener('click', onClick);
   backdrop.removeEventListener('click', backdropOnClick);
 }
 
@@ -86,7 +93,6 @@ function backdropOnClick(event) {
   backdrop.classList.add('visually-hidden');
   modalCard.innerHTML = '';
   document.removeEventListener('keydown', onEscape);
-  closeBtn.removeEventListener('click', onClick);
   backdrop.removeEventListener('click', backdropOnClick);
 }
 
@@ -97,7 +103,6 @@ function onEscape(event) {
     backdrop.classList.add('visually-hidden');
     modalCard.innerHTML = '';
     document.removeEventListener('keydown', onEscape);
-    closeBtn.removeEventListener('click', onClick);
     backdrop.removeEventListener('click', backdropOnClick);
   }
 }
@@ -113,7 +118,7 @@ async function getExercisesCardInfo(id) {
   }
 }
 
-function addInerHTML(value = 'add') {
+function addInnerHTML(value = 'add') {
   if (value === 'add') {
     return `Add to favorites
         <svg class="icon-heart" width="18" height="18">
@@ -197,13 +202,13 @@ function createMarkupExercisesCard({
         </ul>
         <p class="modal-description-text">${description}</p>
         <div class="modal-buttons-container">
-          <button data-id="64f389465ae26083f39b17a4" class="add-favorite-btn">
+          <button data-id="${_id}" class="add-favorite-btn">
             ${isAdded ? 'Remove from' : 'Add to favorites'}
             <svg class="icon-heart" width="18" height="18">
               <use href="${icons}#icon-heart"></use>
             </svg>
           </button>
-          <button data-id="64f389465ae26083f39b17a4" class="give-rating-btn">
+          <button data-id="${_id}" class="give-rating-btn">
             Give a rating
           </button>
         </div>
