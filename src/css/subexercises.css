@@ -107,13 +107,11 @@
 .ex-item-info{
     font-size: 12px;
     line-height: 1.5;
-
-    display: flex;
-    gap:16px;
-    row-gap: 4px;
-    flex-wrap: wrap;
+    text-overflow: ellipsis;
 }
-
+.ex-info-group:not(:first-child){
+    padding-left: 16px;
+}
 .ex-item-desc{
     color: rgba(27, 27, 27, 0.4);
 }
