@@ -17,8 +17,6 @@ function toggleMenu() {
   refs.menu.classList.toggle("is-hidden");
 }
 
-
-
     function setActiveButton(button, otherButton, mobMenuButton, otherMobMenuButton) {
         button.parentElement.classList.add('active');
         mobMenuButton.classList.add('home-mob-menu');
@@ -52,6 +50,15 @@ function toggleMenu() {
     mobMenuFavoritesButton.addEventListener('click', (event) => {
         setActiveButton(favoritesButton, homeButton, mobMenuFavoritesButton, mobMenuHomeButton);
     });
+
+    window.addEventListener('resize', function() {
+    const screenWidth = window.innerWidth;
+    if (screenWidth >= 768) {
+        const mobMenuBackground = document.querySelector('.mob-menu-background');
+        mobMenuBackground.classList.add('is-hidden');
+    }
+});
+
 
 });
 
