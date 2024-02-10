@@ -73,6 +73,8 @@ function onClick() {
   backdrop.classList.add('visually-hidden');
   modalCard.innerHTML = '';
   document.removeEventListener('keydown', onEscape);
+  closeBtn.removeEventListener('click', onClick);
+  backdrop.removeEventListener('click', backdropOnClick);
 }
 
 function backdropOnClick(event) {
@@ -84,6 +86,8 @@ function backdropOnClick(event) {
   backdrop.classList.add('visually-hidden');
   modalCard.innerHTML = '';
   document.removeEventListener('keydown', onEscape);
+  closeBtn.removeEventListener('click', onClick);
+  backdrop.removeEventListener('click', backdropOnClick);
 }
 
 function onEscape(event) {
@@ -93,6 +97,8 @@ function onEscape(event) {
     backdrop.classList.add('visually-hidden');
     modalCard.innerHTML = '';
     document.removeEventListener('keydown', onEscape);
+    closeBtn.removeEventListener('click', onClick);
+    backdrop.removeEventListener('click', backdropOnClick);
   }
 }
 
@@ -111,12 +117,12 @@ function addInerHTML(value = 'add') {
   if (value === 'add') {
     return `Add to favorites
         <svg class="icon-heart" width="18" height="18">
-          <use href="./img/icons.svg#icon-heart"></use>
+          <use href="${icons}#icon-heart"></use>
         </svg>`;
   } else {
     return `Remove from
         <svg class="icon-heart" width="18" height="18">
-          <use href="./img/icons.svg#icon-heart"></use>
+          <use href="${icons}#icon-heart"></use>
         </svg>`;
   }
 }
@@ -142,7 +148,7 @@ function createMarkupExercisesCard({
     isAdded = favoriteList.some(item => item._id === _id);
   }
 
-  return `    <div class="modal-description-container">
+  return `<div class="modal-description-container">
       <button class="close-modal-btn">
         <svg class="close-modal-icon" width="24" height="24">
           <use href="${icons}#icon-cross"></use>
