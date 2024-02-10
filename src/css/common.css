@@ -133,10 +133,12 @@ ul {
 a {
   color: currentColor;
   text-decoration: none;
+  transition: all 0.25s ease-in-out;
 }
 
 button {
   cursor: pointer;
+  transition: all 0.25s ease-in-out;
 }
 
 img {
