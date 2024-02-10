@@ -1,5 +1,6 @@
 import axios from "axios";
 import { getLoader, showAlert } from "./common";
+import { onEscape } from './modalExercises';
 
 let giveRatingBtn;
 let id;
@@ -22,6 +23,7 @@ export function addGiveRatingListener(){
     starContainer.addEventListener('click', handleClickOnStar);
     sendRatingBtn.addEventListener('click', handleSendRatingBtnClick);
     /*document.addEventListener('keydown', onPushEscape);*/
+    
 }
 
 /**
@@ -44,6 +46,7 @@ export function removeGiveRatingListener(){
  */
 function handleGiveRatingClick(event){
     event.preventDefault();
+    document.removeEventListener('keydown', onEscape);
     id = event.target.dataset.id;
     hideExercisesModal();
     openGiveRatingModal();
@@ -80,12 +83,15 @@ function handleSendRatingBtnClick(event){
     const rate = formData.elements["star"].value;
     const email =  formData.elements["email"].value.trim().toLowerCase();
     const review =  formData.elements["review"].value.trim();
+
+    const re = /\S+@\S+\.\S+/;
+
     if(rate === ""){
         showAlert("Please set your estimation!", "ERROR");
         getLoader('hide');
         return;
     }
-    if(email === ""){
+    if(email === "" || !re.test(email)){
         showAlert("Please enter your email!", "ERROR");
         getLoader('hide');
         return;
@@ -134,6 +140,7 @@ function closeRatingModal(){
     overlayRating.style.display = "none";
     backdrop.style.display = 'block';
     restoreExercisesModal();
+    document.addEventListener('keydown', onEscape);
 }
 
 /**
