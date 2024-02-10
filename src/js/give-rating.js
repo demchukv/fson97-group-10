@@ -23,6 +23,7 @@ export function addGiveRatingListener(){
     starContainer.addEventListener('click', handleClickOnStar);
     sendRatingBtn.addEventListener('click', handleSendRatingBtnClick);
     /*document.addEventListener('keydown', onPushEscape);*/
+    
 }
 
 /**
