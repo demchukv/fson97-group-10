@@ -1,5 +1,5 @@
 .gallery{
-    min-height: 378px;
+    min-height: auto;
 }
 .ex-search{
     display: none;
@@ -226,6 +226,7 @@
 #pagination, #pager{
     font-size: 24px;
     margin-bottom: 0;
+    height: auto;
 }
 #pagination .tui-page-btn, #pager .tui-page-btn{
     margin-left: 6px;    
