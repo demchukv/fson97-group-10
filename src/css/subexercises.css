@@ -116,7 +116,7 @@
 }
 .search-input{
     display: block;
-    padding: 12px 14px;
+    padding: 12px 50px 12px 14px;
     width: 295px;
     background-color: var(--page-bg-color);
     border-radius: 30px;
@@ -208,9 +208,13 @@
     margin-bottom: 0;
 }
 #pagination .tui-page-btn, #pager .tui-page-btn{
+    margin-left: 6px;    
     font-size: 24px;
     border:none;
     color: rgba(27, 27, 27, 0.4);
+}
+#pagination .tui-page-btn:not(:first-child), #pager .tui-page-btn:not(:first-child){
+    margin-left: 6px;    
 }
 #pagination .tui-page-btn:hover,
 #pager .tui-page-btn:hover{
