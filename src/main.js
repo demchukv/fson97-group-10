@@ -4,4 +4,3 @@ import './js/hero.js';
 import './js/exercises.js';
 import './js/subexercises.js';
 import './js/footer.js';
-import './js/favorites.js';
