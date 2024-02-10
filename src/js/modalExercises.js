@@ -1,6 +1,7 @@
 import axios from 'axios';
 import icons from '../img/icons.svg';
 import { getLoader } from './common';
+import { addGiveRatingListener, removeGiveRatingListener } from './give-rating';
 
 const gallery = document.querySelector('.gallery');
 const backdrop = document.querySelector('.backdrop');
@@ -25,6 +26,8 @@ async function onClickExercisesCard(event) {
   modalCard.innerHTML = '';
   const modalExercisesMarkup = createMarkupExercisesCard(exercisesInfo);
   modalCard.innerHTML = modalExercisesMarkup;
+
+  addGiveRatingListener();
 
   getLoader('none');
   modalCard.classList.remove('visually-hidden');
@@ -54,25 +57,17 @@ async function addToFavoriteOnClick(event) {
       );
       element.innerHTML = addInnerHTML();
     } else {
-      try {
-        const exercisesCardInfo = await getExercisesCardInfo(elementId);
-        localStorage.setItem(
-          'favorites',
-          JSON.stringify([...favoriteList, exercisesCardInfo])
-        );
-        element.innerHTML = addInnerHTML('remove');
-      } catch (error) {
-        console.error('Error fetching exercises card info:', error);
-      }
+      const exercisesCardInfo = await getExercisesCardInfo(elementId);
+      localStorage.setItem(
+        'favorites',
+        JSON.stringify([...favoriteList, exercisesCardInfo])
+      );
+      element.innerHTML = addInnerHTML('remove');
     }
   } else {
-    try {
-      const exercisesCardInfo = await getExercisesCardInfo(elementId);
-      localStorage.setItem('favorites', JSON.stringify([exercisesCardInfo]));
-      element.innerHTML = addInnerHTML('remove');
-    } catch (error) {
-      console.error('Error fetching exercises card info:', error);
-    }
+    const exercisesCardInfo = await getExercisesCardInfo(elementId);
+    localStorage.setItem('favorites', JSON.stringify([exercisesCardInfo]));
+    element.innerHTML = addInnerHTML('remove');
   }
 }
 
@@ -81,6 +76,10 @@ function onClick() {
   backdrop.classList.add('visually-hidden');
   modalCard.innerHTML = '';
   document.removeEventListener('keydown', onEscape);
+
+  removeGiveRatingListener();
+
+  closeBtn.removeEventListener('click', onClick);
   backdrop.removeEventListener('click', backdropOnClick);
 }
 
@@ -93,16 +92,24 @@ function backdropOnClick(event) {
   backdrop.classList.add('visually-hidden');
   modalCard.innerHTML = '';
   document.removeEventListener('keydown', onEscape);
+
+  removeGiveRatingListener();
+
+  closeBtn.removeEventListener('click', onClick);
   backdrop.removeEventListener('click', backdropOnClick);
 }
 
-function onEscape(event) {
+export function onEscape(event) {
   event.preventDefault();
   if (event.key === 'Escape') {
     modalCard.classList.add('visually-hidden');
     backdrop.classList.add('visually-hidden');
     modalCard.innerHTML = '';
     document.removeEventListener('keydown', onEscape);
+
+    removeGiveRatingListener();
+
+    closeBtn.removeEventListener('click', onClick);
     backdrop.removeEventListener('click', backdropOnClick);
   }
 }
@@ -174,7 +181,7 @@ function createMarkupExercisesCard({
         <h4 class="modal-title">${name}</h4>
         <div class="rating-container">
           <p class="modal-exercises-rating">${rating}</p>
-          <svg class="star" width="15" height="15">
+          <svg class="star" width="18" height="18">
             <use href="${icons}#icon-star"></use>
           </svg>
         </div>

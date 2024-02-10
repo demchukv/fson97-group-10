@@ -1,0 +1,56 @@
+<div class="overlay-rating">
+<div class="modal-rating visually-hidden">
+        <button class="close-modal-rating-btn">
+            <svg class="close-modal-rating-icon" width="24" height="24">
+              <use href="./img/icons.svg#icon-cross"></use>
+            </svg>
+          </button>
+    <div class="modal-rating-container">
+        <form name="ratingForm" class="rating-form" method="post" action="#">
+            <div class="rating-form-field">
+                Rating
+                <div class="rating-stars-group">
+                    <div class="rating-value">0.0</div>
+                    <div class="star-container">
+                        <input type="radio" name="star" id="five" value="5">
+                        <label class="star-label" for="five">
+                          <svg class="star" width="24" height="24">
+                            <use href="./img/icons.svg#icon-star "></use>
+                          </svg>
+                        </label>
+                        <input type="radio" name="star" id="four" value="4">
+                        <label class="star-label" for="four">
+                          <svg class="star" width="24" height="24">
+                            <use href="./img/icons.svg#icon-star "></use>
+                          </svg>
+                        </label>
+                        <input type="radio" name="star" id="three" value="3">
+                        <label class="star-label" for="three">
+                          <svg class="star" width="24" height="24">
+                            <use href="./img/icons.svg#icon-star "></use>
+                          </svg>
+                        </label>
+                        <input type="radio" name="star" id="two" value="2">
+                        <label class="star-label" for="two">
+                          <svg class="star" width="24" height="24">
+                            <use href="./img/icons.svg#icon-star "></use>
+                          </svg>
+                        </label>
+                        <input type="radio" name="star" id="one" value="1">
+                        <label class="star-label" for="one">
+                         <svg class="star" width="24" height="24">
+                            <use href="./img/icons.svg#icon-star "></use>
+                         </svg>
+                        </label>
+                      
+                    </div>
+                </div>
+            </div>
+            <input class="rating-field rating-input" type="email" name="email" id="email" pattern="[^@\s]+@[^@\s]+\.[^@\s]+" placeholder="Email">
+            <textarea class="rating-field rating-textarea" name="review" id="review" placeholder="Your comment"></textarea>
+            <button type="submit" name="submit" class="send-rating-btn">Send</button>
+        </form>
+    </div>
+
+</div>
+</div>
