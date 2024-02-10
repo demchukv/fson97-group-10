@@ -57,25 +57,17 @@ async function addToFavoriteOnClick(event) {
       );
       element.innerHTML = addInnerHTML();
     } else {
-      try {
-        const exercisesCardInfo = await getExercisesCardInfo(elementId);
-        localStorage.setItem(
-          'favorites',
-          JSON.stringify([...favoriteList, exercisesCardInfo])
-        );
-        element.innerHTML = addInnerHTML('remove');
-      } catch (error) {
-        console.error('Error fetching exercises card info:', error);
-      }
+      const exercisesCardInfo = await getExercisesCardInfo(elementId);
+      localStorage.setItem(
+        'favorites',
+        JSON.stringify([...favoriteList, exercisesCardInfo])
+      );
+      element.innerHTML = addInnerHTML('remove');
     }
   } else {
-    try {
-      const exercisesCardInfo = await getExercisesCardInfo(elementId);
-      localStorage.setItem('favorites', JSON.stringify([exercisesCardInfo]));
-      element.innerHTML = addInnerHTML('remove');
-    } catch (error) {
-      console.error('Error fetching exercises card info:', error);
-    }
+    const exercisesCardInfo = await getExercisesCardInfo(elementId);
+    localStorage.setItem('favorites', JSON.stringify([exercisesCardInfo]));
+    element.innerHTML = addInnerHTML('remove');
   }
 }
 
@@ -89,7 +81,6 @@ function onClick() {
 
   closeBtn.removeEventListener('click', onClick);
   backdrop.removeEventListener('click', backdropOnClick);
-
 }
 
 function backdropOnClick(event) {
@@ -106,7 +97,6 @@ function backdropOnClick(event) {
 
   closeBtn.removeEventListener('click', onClick);
   backdrop.removeEventListener('click', backdropOnClick);
-
 }
 
 function onEscape(event) {
@@ -121,7 +111,6 @@ function onEscape(event) {
 
     closeBtn.removeEventListener('click', onClick);
     backdrop.removeEventListener('click', backdropOnClick);
-
   }
 }
 
