@@ -29,11 +29,11 @@
 
 .header-btn-open {
     border: none;
-    background-color: var(--container-bg-color);
+    background-color: transparent;
 }
 .header-btn-close {
     border: none;
-    background-color: var(--base-button-color);
+    background-color: transparent;
 }
 
 
