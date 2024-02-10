@@ -78,11 +78,10 @@ function onClick() {
   modalCard.classList.add('visually-hidden');
   backdrop.classList.add('visually-hidden');
   modalCard.innerHTML = '';
-  document.removeEventListener('keydown', onEscape);
 
   removeGiveRatingListener();
 
-  closeBtn.removeEventListener('click', onClick);
+  document.removeEventListener('keydown', onEscape);
   backdrop.removeEventListener('click', backdropOnClick);
 }
 
@@ -94,11 +93,10 @@ function backdropOnClick(event) {
   modalCard.classList.add('visually-hidden');
   backdrop.classList.add('visually-hidden');
   modalCard.innerHTML = '';
-  document.removeEventListener('keydown', onEscape);
 
   removeGiveRatingListener();
 
-  closeBtn.removeEventListener('click', onClick);
+  document.removeEventListener('keydown', onEscape);
   backdrop.removeEventListener('click', backdropOnClick);
 }
 
@@ -108,11 +106,10 @@ export function onEscape(event) {
     modalCard.classList.add('visually-hidden');
     backdrop.classList.add('visually-hidden');
     modalCard.innerHTML = '';
-    document.removeEventListener('keydown', onEscape);
 
     removeGiveRatingListener();
 
-    closeBtn.removeEventListener('click', onClick);
+    document.removeEventListener('keydown', onEscape);
     backdrop.removeEventListener('click', backdropOnClick);
   }
 }
