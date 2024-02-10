@@ -5,4 +5,5 @@ import './js/exercises.js';
 import './js/subexercises.js';
 import './js/footer.js';
 import './js/modalExercises.js';
+import './js/give-rating.js';
 import './js/favorites.js';

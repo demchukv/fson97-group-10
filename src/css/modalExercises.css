@@ -28,8 +28,10 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  min-width: 320px;
-  max-width: 335px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  width: 335px;
   padding: 40px 20px;
   background-color: var(--page-bg-color);
   border-radius: 20px;
@@ -58,17 +60,13 @@
       line-height: 1;
       margin-bottom: 10px;
     }
-
-    .modal-title::first-letter {
-      text-transform: uppercase;
-    }
-
     .rating-container {
       display: flex;
       gap: 10px;
+      align-items: center;
       margin-bottom: 20px;
 
-      .modal-exercises-rating {
+      .exercises-rating {
         font-size: 12px;
         line-height: 18px;
       }
@@ -107,7 +105,6 @@
       font-size: 14px;
       line-height: 18px;
       color: #1b1b1b99;
-      margin-bottom: 40px;
     }
   }
   .modal-buttons-container {
@@ -121,8 +118,6 @@
       border-radius: 30px;
       padding: 12px 0;
       transition: all 0.3s ease-in-out;
-      font-size: 14px;
-      line-height: 18px;
     }
 
     .add-favorite-btn {
@@ -158,52 +153,5 @@
       border-color: #7e847f;
       color: #7e847f;
     }
-  }
-}
-
-/* **************************** */
-/* Styles for tablet */
-/* **************************** */
-
-@media screen and (min-width: 768px) {
-  .modal {
-    min-width: 716px;
-    padding: 40px;
-  }
-
-  .modal-description-container {
-    display: flex;
-    justify-content: center;
-    gap: 24px;
-  }
-
-  .modal-gif {
-    width: 270px;
-    height: 259px;
-  }
-
-  .modal-title {
-    font-size: 24px;
-    line-height: 32px;
-  }
-
-  .modal .modal-buttons-container {
-    flex-direction: row;
-    justify-content: space-between;
-    gap: 7px;
-
-    button {
-      flex: auto;
-    }
-  }
-}
-
-/* **************************** */
-/* Styles for desktop */
-/* **************************** */
-
-@media screen and (min-width: 1440px) {
-  .modal {
-    min-width: 732px;
   }
 }
