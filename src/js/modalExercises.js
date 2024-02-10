@@ -100,7 +100,7 @@ function backdropOnClick(event) {
   backdrop.removeEventListener('click', backdropOnClick);
 }
 
-function onEscape(event) {
+export function onEscape(event) {
   event.preventDefault();
   if (event.key === 'Escape') {
     modalCard.classList.add('visually-hidden');
@@ -182,7 +182,7 @@ function createMarkupExercisesCard({
         <h4 class="modal-title">${name}</h4>
         <div class="rating-container">
           <p class="modal-exercises-rating">${rating}</p>
-          <svg class="star" width="15" height="15">
+          <svg class="star" width="18" height="18">
             <use href="${icons}#icon-star"></use>
           </svg>
         </div>
