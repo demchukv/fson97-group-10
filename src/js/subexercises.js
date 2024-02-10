@@ -173,7 +173,7 @@ function makePagination(){
         const pagination = new Pagination('pager', {
             totalItems : exParams.totalItems,
             itemsPerPage: exParams.limit,
-            visiblePages: 5
+            visiblePages: 3
         });
         pagination.on('afterMove', function(eventData) {
             exParams.page = eventData.page;

@@ -132,7 +132,7 @@ function makeCardsPagination(){
       const pagination = new Pagination('pagination', {
           totalItems : params.totalItems,
           itemsPerPage: params.perPage,
-          visiblePages: 5
+          visiblePages: 3
       });
       pagination.on('afterMove', function(eventData) {
           params.page = eventData.page;
