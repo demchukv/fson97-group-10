@@ -49,7 +49,7 @@ import{i as w,a as h,P as de}from"./vendor-e8675f53.js";(function(){const t=docu
         <h4 class="modal-title">${a}</h4>
         <div class="rating-container">
           <p class="modal-exercises-rating">${ie}</p>
-          <svg class="star" width="15" height="15">
+          <svg class="star" width="18" height="18">
             <use href="${f}#icon-star"></use>
           </svg>
         </div>
@@ -89,4 +89,4 @@ import{i as w,a as h,P as de}from"./vendor-e8675f53.js";(function(){const t=docu
         </div>
       </div>
     </div>`}
-//# sourceMappingURL=main-e267cc73.js.map
+//# sourceMappingURL=main-800ca336.js.map
