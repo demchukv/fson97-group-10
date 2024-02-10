@@ -50,6 +50,12 @@ function createMarkup(results) {
 
   refs.gallery.innerHTML = markup;
   getLoader('hide');
+  const rect = refs.buttons.getBoundingClientRect();
+  window.scrollBy({
+      top: rect.y + rect.height,
+      left: 0,
+      behavior: "smooth",
+    });
 }
 
 function handleSearch() {

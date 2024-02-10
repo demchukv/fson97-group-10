@@ -4,7 +4,6 @@ import 'tui-pagination/dist/tui-pagination.css';
 import {getLoader, showAlert} from "./common";
 import icons from '../img/icons.svg';
 
-
 const exParams = {
     page : 1,
     totalPages : 1,
