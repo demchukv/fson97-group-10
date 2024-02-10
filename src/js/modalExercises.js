@@ -1,6 +1,7 @@
 import axios from 'axios';
 import icons from '../img/icons.svg';
 import { getLoader } from './common';
+import { addGiveRatingListener, removeGiveRatingListener } from './give-rating';
 
 const gallery = document.querySelector('.gallery');
 const backdrop = document.querySelector('.backdrop');
@@ -25,6 +26,8 @@ async function onClickExercisesCard(event) {
   modalCard.innerHTML = '';
   const modalExercisesMarkup = createMarkupExercisesCard(exercisesInfo);
   modalCard.innerHTML = modalExercisesMarkup;
+
+  addGiveRatingListener();
 
   getLoader('none');
   modalCard.classList.remove('visually-hidden');
@@ -73,6 +76,7 @@ function onClick() {
   backdrop.classList.add('visually-hidden');
   modalCard.innerHTML = '';
   document.removeEventListener('keydown', onEscape);
+  removeGiveRatingListener();
 }
 
 function backdropOnClick(event) {
@@ -84,6 +88,7 @@ function backdropOnClick(event) {
   backdrop.classList.add('visually-hidden');
   modalCard.innerHTML = '';
   document.removeEventListener('keydown', onEscape);
+  removeGiveRatingListener();
 }
 
 function onEscape(event) {
@@ -93,6 +98,7 @@ function onEscape(event) {
     backdrop.classList.add('visually-hidden');
     modalCard.innerHTML = '';
     document.removeEventListener('keydown', onEscape);
+    removeGiveRatingListener();
   }
 }
 
