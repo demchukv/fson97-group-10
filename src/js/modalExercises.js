@@ -28,6 +28,7 @@ async function onClickExercisesCard(event) {
   modalCard.innerHTML = modalExercisesMarkup;
 
   addGiveRatingListener();
+  
 
   getLoader('none');
   modalCard.classList.remove('visually-hidden');
