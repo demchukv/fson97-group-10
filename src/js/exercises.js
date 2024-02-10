@@ -73,7 +73,6 @@ function handleSearch() {
 
 handleSearch();
 refs.musclesBtn.classList.add('active');
-refs.musclesBtn.disabled = true;
 
 refs.buttons.addEventListener("click", (event) => {
   selected(event);
@@ -84,19 +83,10 @@ refs.buttons.addEventListener("click", (event) => {
   if (targetMenu === event.currentTarget) {
     return
   } else if (targetMenu === refs.musclesBtn) {
-    refs.musclesBtn.disabled = true;
-    refs.bodypartsBtn.disabled = false;
-    refs.equipBtn.disabled = false;
     params.filter = 'Muscles'
   } else if (targetMenu === refs.bodypartsBtn) {
-    refs.musclesBtn.disabled = false;
-    refs.bodypartsBtn.disabled = true;
-    refs.equipBtn.disabled = false;
     params.filter = 'Body parts'
   } else if (targetMenu === refs.equipBtn) {
-    refs.musclesBtn.disabled = false;
-    refs.bodypartsBtn.disabled = false;
-    refs.equipBtn.disabled = true;
     params.filter = 'Equipment'
   }
   handleSearch();
