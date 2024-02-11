@@ -1,6 +1,6 @@
-import{i}from"./assets/scroll-up-906e25d3.js";import"./assets/vendor-ecc6328a.js";const n={favoritesContent:document.querySelector(".favorites-card-content")},a="favorites";let t=null;try{if(localStorage.getItem(a)){const s=JSON.parse(localStorage.getItem(a));Array.isArray(s)&&s.length===0?console.log(""):n.favoritesContent.innerHTML=`<ul class="favorites-group">${d(s)}</ul> 
+import{i as t}from"./assets/scroll-up-906e25d3.js";import"./assets/vendor-ecc6328a.js";const n={favoritesContent:document.querySelector(".favorites-card-content")},a="favorites";let r=null;try{if(localStorage.getItem(a)){const s=JSON.parse(localStorage.getItem(a));Array.isArray(s)&&s.length===0?console.log(""):n.favoritesContent.innerHTML=`<ul class="favorites-group">${d(s)}</ul> 
 
-    `}t=document.querySelectorAll(".favorites-delete")}catch(s){console.log(s)}t&&t.forEach(s=>{s.addEventListener("click",e=>{let c=localStorage.getItem(a),l=JSON.parse(c);const r=e.target.closest(".favorites-item"),p=r.dataset.id;localStorage.setItem(a,JSON.stringify(l.filter(({_id:f})=>f!==p)));const o=document.querySelector(".favorites-group");o.removeChild(r),o.children.length===0&&(n.favoritesContent.innerHTML=` <div class="favorites-content">
+    `}r=document.querySelectorAll(".favorites-delete")}catch(s){console.log(s)}r&&r.forEach(s=>{s.addEventListener("click",e=>{let c=localStorage.getItem(a),l=JSON.parse(c);const o=e.target.closest(".favorites-item"),p=o.dataset.id;localStorage.setItem(a,JSON.stringify(l.filter(({_id:f})=>f!==p)));const i=document.querySelector(".favorites-group");i.removeChild(o),i.children.length===0&&(n.favoritesContent.innerHTML=` <div class="favorites-content">
         <img
           srcset="./public/favorites.png 1x, ./public/favorites.2x.png 2x"
           src="./public/favorites.png"
@@ -21,19 +21,19 @@ import{i}from"./assets/scroll-up-906e25d3.js";import"./assets/vendor-ecc6328a.js
                 <span class="favorites-item-workout">WORKOUT</span>
                   <button class="favorites-delete">
                     <svg class="delete-icon" width="12" height="13">
-                      <use href="./img/icons.svg#icon-trash"></use>
+                      <use href="${t}#icon-trash"></use>
                     </svg>
                   </button>
                   <a class="ex-item-start" href="" data-id="${e._id}">
                     <span>Start</span>
                      <svg class="favorites-arrow-icon" width="14" height="14">
-                      <use href="${i}#icon-arrow-start"></use>
+                      <use href="${t}#icon-arrow-start"></use>
                     </svg>
                   </a>
              </p>
               <span class="favorites-card-title">
                 <span class="favorites-run-men"><svg class="ex-icon-run" width="14" height="14">
-                  <use href="${i}#icon-running_man"></use>
+                  <use href="${t}#icon-running_man"></use>
                 </svg>
               </span>
             <h3 class="favorites-item-name">${e.name.charAt(0).toUpperCase()+e.name.slice(1)}</h3>
