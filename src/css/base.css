@@ -30,7 +30,9 @@
     -moz-osx-font-smoothing: grayscale;
     -webkit-text-size-adjust: 100%;
   }
-  
+  html{
+    scroll-behavior: smooth;
+  }
   .section {
     padding-bottom: 20px;
     padding-left: 20px;
@@ -79,13 +81,18 @@
     color: var(--base-button-color);
   }
 
+  .fav-head .container{
+    position: relative;
+  }
   /*
   Loader styles
   */
   .loader {
     position: fixed;
+    z-index: 1001;
     left: 50%;
     top: 50%;
+    transform: translate(-50%, -50%);
     width: 48px;
     height: 48px;
     border-radius: 50%;
@@ -116,3 +123,17 @@
       transform: rotate(360deg);
     }
   } 
+
+  .visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    border: 0;
+    padding: 0;
+  
+    white-space: nowrap;
+    clip-path: inset(100%);
+    clip: rect(0 0 0 0);
+    overflow: hidden;
+  }

@@ -1,7 +1,11 @@
 /*-------------Mobile------------*/
-
 .header-container {
     padding-top: 20px;
+    position: absolute;
+    top:0;
+    left:0;
+    width: 100%;
+    background: none;
 }
 .header-logo {
     display: inline-block;
@@ -15,6 +19,7 @@
 
 .header-container {
     display: flex;
+    align-items: center;
 }
 
 
@@ -24,11 +29,11 @@
 
 .header-btn-open {
     border: none;
-    background-color: var(--container-bg-color);
+    background-color: transparent;
 }
 .header-btn-close {
     border: none;
-    background-color: var(--base-button-color);
+    background-color: transparent;
 }
 
 
@@ -233,7 +238,6 @@ ul {
 
 .header-logo {
         display: inline-block;
-        font-weight: 700px;
         font-size: 28px;
         font-weight: 700;
         line-height: 28px;

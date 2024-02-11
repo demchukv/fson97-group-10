@@ -1,17 +1,34 @@
 <section class="section">
     <div class="container">
         <h2 class="exercises-header">Exercises</h2>
-        <div class="exercises-btns-div">    
-            <button class="exercises-button" data-filter="muscles">Muscles</button>
-            <button class="exercises-button" data-filter="bodyparts">Body Parts</button>
-            <button class="exercises-button" data-filter="equipment">Equipment</button>
+        <div class="exercises-filter">
+            <div class="exercises-btns-div">    
+                <button class="exercises-button" data-filter="muscles">Muscles</button>
+                <button class="exercises-button" data-filter="bodypart">Body Parts</button>
+                <button class="exercises-button" data-filter="equipment">Equipment</button>
+            </div>
+            <div class="ex-search">
+                <form name="searchForm" class="search-form">
+                    <input type="search" class="search-input" placeholder="Search">
+                    <button type="button" class="search-clear-btn">
+                        <svg class="search-icon" width="18" height="18">
+                            <use href="./img/icons.svg#icon-cross"></use>
+                          </svg>
+                    </button>
+                    <button type="submit" class="search-btn">
+                        <svg class="search-icon" width="18" height="18">
+                            <use href="./img/icons.svg#icon-search"></use>
+                          </svg>
+                    </button>
+                </form>
+            </div>
         </div>
         <ul class="gallery">
             <!--<li class="gallery-item></li>"-->
         </ul>
-        <div class="number-btns">
-            <button class="number-btn">1</button>
-            <button class="number-btn">2</button>
-        </div>
+        <div id="pagination" class="tui-pagination"></div>
+        <div id="pager" class="tui-pagination"></div>
     </div>
     </section>
+
+ 
