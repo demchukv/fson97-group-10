@@ -31,15 +31,19 @@ export function showAlert( msg, type = "info" ) {
  */
 export function getLoader( act = 'show' ){
     const loader = document.querySelector(".loader");
+    const overlayRating = document.querySelector('.overlay-rating');
     if(act === 'show'){
         loader.style.display = 'inline-block';
+        overlayRating.style.display = "block";
     }else{
         loader.style.display = 'none';
+        overlayRating.style.display = "none";
     }
 }
 /**
  * Встановлює висоту контейнера на момент завантаження нового контенту для запобігання різким ривкам
  * @param {*} selector 
+ * @param {*} action - set and unset
  */
 export function preserveBlockHeight(selector, action){
     const block = document.querySelector(selector);
