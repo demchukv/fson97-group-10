@@ -50,6 +50,8 @@
     .modal-gif {
       border-radius: 12px;
       margin-bottom: 20px;
+      width: 295px;
+      height: 258px;
     }
 
     .modal-title {
@@ -65,7 +67,8 @@
 
     .rating-container {
       display: flex;
-      gap: 10px;
+      align-items: center;
+      gap: 2px;
       margin-bottom: 20px;
 
       .modal-exercises-rating {
@@ -73,9 +76,30 @@
         line-height: 18px;
       }
 
-      .star {
-        stroke: var(--active-star-color);
-        fill: var(--active-star-color);
+      .star-outer {
+        position: relative;
+        font-size: 18px;
+        display: inline-block;
+      }
+
+      .star-outer::before {
+        content: '\2605 \2605 \2605 \2605 \2605';
+        color: #1b1b1b33;
+      }
+
+      .star-inner {
+        position: absolute;
+        font-size: 18px;
+        top: 0;
+        left: 0;
+
+        width: 0%;
+        overflow: hidden;
+      }
+
+      .star-inner::before {
+        content: '\2605 \2605 \2605 \2605 \2605';
+        color: var(--active-star-color);
       }
     }
     .description-list {
@@ -176,8 +200,8 @@
     justify-content: center;
     gap: 24px;
   }
-
-  .modal-gif {
+  .modal-gif-container {
+    flex-shrink: 0;
     width: 270px;
     height: 259px;
   }

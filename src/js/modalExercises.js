@@ -1,8 +1,9 @@
 import axios from 'axios';
 import icons from '../img/icons.svg';
 import { getLoader } from './common';
+import { addGiveRatingListener, removeGiveRatingListener } from './give-rating';
 
-const gallery = document.querySelector('.gallery');
+const gallery = document.querySelector('.gallery, .favorites-card-content');
 const backdrop = document.querySelector('.backdrop');
 const modalCard = document.querySelector('.modal');
 
@@ -26,7 +27,12 @@ async function onClickExercisesCard(event) {
   const modalExercisesMarkup = createMarkupExercisesCard(exercisesInfo);
   modalCard.innerHTML = modalExercisesMarkup;
 
+  addGiveRatingListener();
+
   getLoader('none');
+
+  document.querySelector('.star-inner').style.width =
+    (exercisesInfo.rating / 5) * 100 + '%';
   modalCard.classList.remove('visually-hidden');
 
   const addToFavoriteBtn = document.querySelector('.add-favorite-btn');
@@ -36,42 +42,31 @@ async function onClickExercisesCard(event) {
   closeBtn.addEventListener('click', onClick);
   backdrop.addEventListener('click', backdropOnClick);
   document.addEventListener('keydown', onEscape);
-}
 
-async function addToFavoriteOnClick(event) {
-  const element = event.target.closest('.add-favorite-btn');
-  const elementId = element.dataset.id;
-  const favorites = localStorage.getItem('favorites');
+  function addToFavoriteOnClick(event) {
+    const element = event.target.closest('.add-favorite-btn');
+    const elementId = element.dataset.id;
+    const favorites = localStorage.getItem('favorites');
 
-  if (favorites) {
-    const favoriteList = JSON.parse(favorites);
-    const condition = favoriteList.some(({ _id }) => _id === elementId);
-
-    if (condition) {
-      localStorage.setItem(
-        'favorites',
-        JSON.stringify(favoriteList.filter(({ _id }) => _id !== elementId))
-      );
-      element.innerHTML = addInnerHTML();
-    } else {
-      try {
-        const exercisesCardInfo = await getExercisesCardInfo(elementId);
+    if (favorites) {
+      const favoriteList = JSON.parse(favorites);
+      const condition = favoriteList.some(({ _id }) => _id === elementId);
+      if (condition) {
         localStorage.setItem(
           'favorites',
-          JSON.stringify([...favoriteList, exercisesCardInfo])
+          JSON.stringify(favoriteList.filter(({ _id }) => _id !== elementId))
+        );
+        element.innerHTML = addInnerHTML();
+      } else {
+        localStorage.setItem(
+          'favorites',
+          JSON.stringify([...favoriteList, exercisesInfo])
         );
         element.innerHTML = addInnerHTML('remove');
-      } catch (error) {
-        console.error('Error fetching exercises card info:', error);
       }
-    }
-  } else {
-    try {
-      const exercisesCardInfo = await getExercisesCardInfo(elementId);
-      localStorage.setItem('favorites', JSON.stringify([exercisesCardInfo]));
+    } else {
+      localStorage.setItem('favorites', JSON.stringify([exercisesInfo]));
       element.innerHTML = addInnerHTML('remove');
-    } catch (error) {
-      console.error('Error fetching exercises card info:', error);
     }
   }
 }
@@ -80,6 +75,9 @@ function onClick() {
   modalCard.classList.add('visually-hidden');
   backdrop.classList.add('visually-hidden');
   modalCard.innerHTML = '';
+
+  removeGiveRatingListener();
+
   document.removeEventListener('keydown', onEscape);
   backdrop.removeEventListener('click', backdropOnClick);
 }
@@ -92,16 +90,22 @@ function backdropOnClick(event) {
   modalCard.classList.add('visually-hidden');
   backdrop.classList.add('visually-hidden');
   modalCard.innerHTML = '';
+
+  removeGiveRatingListener();
+
   document.removeEventListener('keydown', onEscape);
   backdrop.removeEventListener('click', backdropOnClick);
 }
 
-function onEscape(event) {
+export function onEscape(event) {
   event.preventDefault();
   if (event.key === 'Escape') {
     modalCard.classList.add('visually-hidden');
     backdrop.classList.add('visually-hidden');
     modalCard.innerHTML = '';
+
+    removeGiveRatingListener();
+
     document.removeEventListener('keydown', onEscape);
     backdrop.removeEventListener('click', backdropOnClick);
   }
@@ -158,25 +162,39 @@ function createMarkupExercisesCard({
   }
 
   return `<div class="modal-description-container">
-      <button class="close-modal-btn">
+      <button class="close-modal-btn" title="Close window">
         <svg class="close-modal-icon" width="24" height="24">
           <use href="${icons}#icon-cross"></use>
         </svg>
       </button>
-      <img
-        class="modal-gif"
-        src="${gifUrl}"
-        alt="${name}"
-        width="295"
-        height="258"
-      />
+      <div class="modal-gif-container">
+        <picture>
+          <source
+            media="(max-width:767.98px)"
+            type="image/gif"
+            width="295"
+            height="258"
+          />
+          <source
+            media="(min-width:768px)"
+            type="image/gif"
+            width="270"
+            height="259"
+          />
+          <img
+            class="modal-gif"
+            src="${gifUrl}"
+            alt="${name}"
+            width="295"
+            height="258"
+          />
+        </picture>
+      </div>
       <div class="text-container">
         <h4 class="modal-title">${name}</h4>
         <div class="rating-container">
-          <p class="modal-exercises-rating">${rating}</p>
-          <svg class="star" width="15" height="15">
-            <use href="${icons}#icon-star"></use>
-          </svg>
+          <p class="modal-exercises-rating">${rating.toFixed(1)}</p>
+          <div class="star-outer"><div class="star-inner"></div></div>
         </div>
         <ul class="description-list">
           <li class="description-item">
