@@ -3,7 +3,7 @@ import icons from '../img/icons.svg';
 import { getLoader } from './common';
 import { addGiveRatingListener, removeGiveRatingListener } from './give-rating';
 
-const gallery = document.querySelector('.gallery');
+const gallery = document.querySelector('.gallery, .favorites-card-content');
 const backdrop = document.querySelector('.backdrop');
 const modalCard = document.querySelector('.modal');
 
