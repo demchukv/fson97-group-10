@@ -1,5 +1,7 @@
 import axios from 'axios';
-import { getLoader, showAlert } from './common';
+import Pagination from "tui-pagination";
+import 'tui-pagination/dist/tui-pagination.css';
+import { getLoader, showAlert, preserveBlockHeight } from './common';
 
 const refs = {
   gallery: document.querySelector('.gallery'),
@@ -9,7 +11,7 @@ const refs = {
   bodypartsBtn: document.querySelector('[data-filter="bodypart"]'),
   equipBtn: document.querySelector('[data-filter="equipment"]'),
 };
-
+let redrawPagination = true;
 axios.defaults.baseURL = 'https://energyflow.b.goit.study/api';
 
 const params = {
@@ -21,6 +23,8 @@ const params = {
 }
 
 async function getData() {
+  preserveBlockHeight('.gallery', 'set');
+  refs.gallery.innerHTML = "";
   getLoader();
   const data = await axios.get('/filters', {
     params: {
@@ -33,7 +37,6 @@ async function getData() {
 }
 
 function createMarkup(results) {
-  refs.gallery.innerHTML = "";
   const markup = results
     .map(
       ({ name, filter, imgUrl }) => `<li class="gallery-item">
@@ -53,16 +56,15 @@ function createMarkup(results) {
 }
 
 function handleSearch() {
-  params.page = 1
   getData()
     .then(data => {
       const { results, totalPages, page } = data;
       createMarkup(results);
-      if (totalPages > 1) {
-        const pag = paginationPages(page, totalPages);
-        refs.pagination.innerHTML = pag;
-      } else {
-        refs.pagination.innerHTML = '';
+      preserveBlockHeight('.gallery', 'unset');
+      if(redrawPagination){
+        params.totalPages = totalPages;
+        params.totalItems = totalPages * params.perPage;
+        makeCardsPagination();
       }
     })
     .catch(error => {
@@ -73,31 +75,25 @@ function handleSearch() {
 
 handleSearch();
 refs.musclesBtn.classList.add('active');
-refs.musclesBtn.disabled = true;
 
 refs.buttons.addEventListener("click", (event) => {
-  selected(event)
+  selected(event);
   const targetMenu = event.target;
+  params.page = 1;
+  redrawPagination = true;
 
   if (targetMenu === event.currentTarget) {
     return
   } else if (targetMenu === refs.musclesBtn) {
-    refs.musclesBtn.disabled = true;
-    refs.bodypartsBtn.disabled = false;
-    refs.equipBtn.disabled = false;
     params.filter = 'Muscles'
   } else if (targetMenu === refs.bodypartsBtn) {
-    refs.musclesBtn.disabled = false;
-    refs.bodypartsBtn.disabled = true;
-    refs.equipBtn.disabled = false;
     params.filter = 'Body parts'
   } else if (targetMenu === refs.equipBtn) {
-    refs.musclesBtn.disabled = false;
-    refs.bodypartsBtn.disabled = false;
-    refs.equipBtn.disabled = true;
     params.filter = 'Equipment'
   }
-  handleSearch()
+  handleSearch();
+
+  scrollToFilters();
 })
 
 let prevButton = null;
@@ -118,28 +114,35 @@ function selected(e) {
   prevButton = e.target;
 
   if (prevButton === prevButton) {
-    prevButton.classList.add('active')
+    prevButton.classList.add('active');
   }
 }
 
-refs.pagination.addEventListener('click', handlePagination);
-
-function paginationPages(page, totalPages) {
-  let paginationHtml = '';
-  for (; page <= totalPages; page++) {
-    paginationHtml += `<button class="pagination-btn" type="button">${page}</button>`;
-  }
-  return paginationHtml;
-}
-
-async function handlePagination(e) {
-  params.page = e.target.textContent;
-  refs.gallery.innerHTML = '';
-  try {
-    const { results } = await getData();
-
-    createMarkup(results);
-  } catch (error) {
-    console.log(error);
+function makeCardsPagination(){
+  redrawPagination = false;
+  if(params.totalItems > params.perPage){
+      const pagination = new Pagination('pagination', {
+          totalItems : params.totalItems,
+          itemsPerPage: params.perPage,
+          visiblePages: 3
+      });
+      pagination.on('afterMove', function(eventData) {
+          params.page = eventData.page;
+          handleSearch();
+          scrollToFilters()
+      });
+  }else{
+      const paginationContainer = document.querySelector("#pagination");
+      paginationContainer.innerHTML = '';
   }
 }
+
+function scrollToFilters(){
+  const rect = refs.buttons.getBoundingClientRect();
+  window.scrollBy({
+    top: rect.y,
+    left: 0,
+    behavior: "smooth",
+  });
+}
+

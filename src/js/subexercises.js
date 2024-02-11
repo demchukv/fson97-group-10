@@ -1,9 +1,8 @@
 import axios from "axios";
 import Pagination from "tui-pagination";
 import 'tui-pagination/dist/tui-pagination.css';
-import {getLoader, showAlert} from "./common";
+import {getLoader, showAlert, preserveBlockHeight} from "./common";
 import icons from '../img/icons.svg';
-
 
 const exParams = {
     page : 1,
@@ -79,6 +78,7 @@ function handleSearchBtnClick(event){
  * @param {*} newPagination 
  */
 function updateExercisesList(filter, newPagination = true){
+    preserveBlockHeight('.gallery', 'set');
     galleryObj.innerHTML = '';
     loadExercisesList(filter)
     .then(data => {
@@ -89,6 +89,7 @@ function updateExercisesList(filter, newPagination = true){
             makePagination();
         }else{
             markupExercisesList(data.results);
+            preserveBlockHeight('.gallery', 'unset');
             if(newPagination){
                 makePagination();
             }
@@ -160,7 +161,7 @@ function markupExercisesList(data){
 
     const rect = filterBtns.getBoundingClientRect();
     window.scrollBy({
-        top: rect.y + rect.height,
+        top: rect.y,
         left: 0,
         behavior: "smooth",
       });
