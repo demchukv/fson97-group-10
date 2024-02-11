@@ -108,12 +108,9 @@
 .ex-item-info{
     font-size: 12px;
     line-height: 1.5;
-    text-wrap: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
 }
-.ex-info-group:not(:first-child){
-    padding-left: 16px;
+.ex-info-group:not(:last-child){
+    padding-right: 16px;
 }
 .ex-item-desc{
     color: rgba(27, 27, 27, 0.4);
@@ -197,7 +194,7 @@
         font-size: 24px;
         line-height: 1.33;
     }
-       
+          
 }
 
 @media screen and (min-width: 1440px) {
@@ -216,6 +213,11 @@
     .exercise-item{
         width: 424px;
         height: 141px;
+    }
+    .ex-item-info{
+        text-wrap: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 }
 
