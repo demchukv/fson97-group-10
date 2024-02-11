@@ -2,6 +2,7 @@
   display: flex;
   padding: 0;
   background-color: var(--page-bg-color);
+  position: relative;
 }
 
 .hero-background {

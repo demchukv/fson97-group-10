@@ -23,15 +23,11 @@
   fill: #f6f6f6;
   width: 20px;
   height: 20px;
-  transition-property: fill;
-  transition-duration: 0.25s;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .useful-info-content {
   display: flex;
   gap: 16px;
-
   background: var(--text-base-color);
   color: rgba(246, 246, 246, 0.6);
   border-top-left-radius: 50px;

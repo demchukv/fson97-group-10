@@ -81,11 +81,15 @@
     color: var(--base-button-color);
   }
 
+  .fav-head .container{
+    position: relative;
+  }
   /*
   Loader styles
   */
   .loader {
     position: fixed;
+    z-index: 1001;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
