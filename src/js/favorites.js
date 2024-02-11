@@ -7,11 +7,18 @@ const KEY = 'favorites';
 let dltBtnsCards = null;
 
 try {
-  let getLocalStorageData = localStorage.getItem(KEY);
-  let data = JSON.parse(getLocalStorageData);
-  refs.favoritesContent.innerHTML = `<ul class="favorites-group">${createMarkup(
-    data
-  )}</ul>`;
+  if (localStorage.getItem(KEY)) {
+    const storedData = JSON.parse(localStorage.getItem(KEY));
+    if (Array.isArray(storedData) && storedData.length === 0) {
+      console.log('');
+    } else {
+      refs.favoritesContent.innerHTML = `<ul class="favorites-group">${createMarkup(
+        storedData
+      )}</ul> 
+
+    `;
+    }
+  }
   dltBtnsCards = document.querySelectorAll('.favorites-delete');
 } catch (e) {
   console.log(e);
@@ -31,6 +38,23 @@ if (dltBtnsCards) {
       );
       const cardList = document.querySelector('.favorites-group');
       cardList.removeChild(card);
+      if (cardList.children.length === 0) {
+        refs.favoritesContent.innerHTML = ` <div class="favorites-content">
+        <img
+          srcset="./public/favorites.png 1x, ./public/favorites.2x.png 2x"
+          src="./public/favorites.png"
+          alt="Image favorites"
+          width="85"
+          height="52"
+        />
+
+        <p class="favorites-text">
+          It appears that you haven't added any exercises to your favorites yet.
+          To get started, you can add exercises that you like to your favorites
+          for easier access in the future.
+        </p>
+      </div>`;
+      }
     });
   });
 }
@@ -47,7 +71,7 @@ function createMarkup(data) {
                 <span class="favorites-item-workout">WORKOUT</span>
                   <button class="favorites-delete">
                     <svg class="delete-icon" width="12" height="13">
-                      <use href="${icons}#icon-trash"></use>
+                      <use href="./img/icons.svg#icon-trash"></use>
                     </svg>
                   </button>
                   <a class="ex-item-start" href="#" data-id="${i._id}">
@@ -89,3 +113,14 @@ function createMarkup(data) {
     )
     .join('');
 }
+// document.addEventListener('DOMContentLoaded', function () {
+//   if (!navigator.userAgent.toLowerCase().includes('webkit')) {
+//     document.querySelector('.wrapper').innerHTML =
+//       '<p>Sorry! Non webkit users. :(</p>';
+//   }
+// });
+// document.addEventListener('DOMContentLoaded', function () {
+//   var scrollbar = document.querySelector('.scrollbar');
+
+//   scrollbar.style.height = '100%';
+// });
