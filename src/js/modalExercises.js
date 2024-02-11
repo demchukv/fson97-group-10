@@ -10,6 +10,7 @@ const modalCard = document.querySelector('.modal');
 gallery.addEventListener('click', onClickExercisesCard);
 
 async function onClickExercisesCard(event) {
+  event.preventDefault();
   if (event.target === event.curentTarget) {
     return;
   }
