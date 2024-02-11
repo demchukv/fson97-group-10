@@ -65,7 +65,7 @@ function createMarkup(data) {
     .map(
       i =>
         `
-        <li class="favorites-item" data-id="${i._id}">
+        <li class="favorites-item" data-id="${i._id}" id="card-${i._id}">
            <p class="favorites-item-head">
               <span class="favorites-item-head-wrapper">
                 <span class="favorites-item-workout">WORKOUT</span>

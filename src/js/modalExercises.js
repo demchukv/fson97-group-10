@@ -57,6 +57,11 @@ async function onClickExercisesCard(event) {
           JSON.stringify(favoriteList.filter(({ _id }) => _id !== elementId))
         );
         element.innerHTML = addInnerHTML();
+        /* Remove card from DOM in favirite page */
+        if(location.pathname = "/favorites.html"){
+          const favCard = document.getElementById('card-' + elementId);
+          favCard.remove();
+        }
       } else {
         localStorage.setItem(
           'favorites',
@@ -67,6 +72,7 @@ async function onClickExercisesCard(event) {
     } else {
       localStorage.setItem('favorites', JSON.stringify([exercisesInfo]));
       element.innerHTML = addInnerHTML('remove');
+      
     }
   }
 }
