@@ -1,4 +1,6 @@
 import axios from 'axios';
+import Pagination from "tui-pagination";
+import 'tui-pagination/dist/tui-pagination.css';
 import { getLoader, showAlert } from './common';
 
 const refs = {
@@ -9,7 +11,7 @@ const refs = {
   bodypartsBtn: document.querySelector('[data-filter="bodypart"]'),
   equipBtn: document.querySelector('[data-filter="equipment"]'),
 };
-
+let redrawPagination = true;
 axios.defaults.baseURL = 'https://energyflow.b.goit.study/api';
 
 const params = {
@@ -18,9 +20,10 @@ const params = {
   filter: 'Muscles',
   totalPages: 1,
   totalItems: 0,
-};
+}
 
 async function getData() {
+  refs.gallery.innerHTML = "";
   getLoader();
   const data = await axios.get('/filters', {
     params: {
@@ -33,7 +36,6 @@ async function getData() {
 }
 
 function createMarkup(results) {
-  refs.gallery.innerHTML = '';
   const markup = results
     .map(
       ({ name, filter, imgUrl }) => `<li class="gallery-item">
@@ -53,16 +55,14 @@ function createMarkup(results) {
 }
 
 function handleSearch() {
-  params.page = 1;
   getData()
     .then(data => {
       const { results, totalPages, page } = data;
       createMarkup(results);
-      if (totalPages > 1) {
-        const pag = paginationPages(page, totalPages);
-        refs.pagination.innerHTML = pag;
-      } else {
-        refs.pagination.innerHTML = '';
+      if(redrawPagination){
+        params.totalPages = totalPages;
+        params.totalItems = totalPages * params.perPage;
+        makeCardsPagination();
       }
     })
     .catch(error => {
@@ -73,32 +73,26 @@ function handleSearch() {
 
 handleSearch();
 refs.musclesBtn.classList.add('active');
-refs.musclesBtn.disabled = true;
 
-refs.buttons.addEventListener('click', event => {
+refs.buttons.addEventListener("click", (event) => {
   selected(event);
   const targetMenu = event.target;
+  params.page = 1;
+  redrawPagination = true;
 
   if (targetMenu === event.currentTarget) {
-    return;
+    return
   } else if (targetMenu === refs.musclesBtn) {
-    refs.musclesBtn.disabled = true;
-    refs.bodypartsBtn.disabled = false;
-    refs.equipBtn.disabled = false;
-    params.filter = 'Muscles';
+    params.filter = 'Muscles'
   } else if (targetMenu === refs.bodypartsBtn) {
-    refs.musclesBtn.disabled = false;
-    refs.bodypartsBtn.disabled = true;
-    refs.equipBtn.disabled = false;
-    params.filter = 'Body parts';
+    params.filter = 'Body parts'
   } else if (targetMenu === refs.equipBtn) {
-    refs.musclesBtn.disabled = false;
-    refs.bodypartsBtn.disabled = false;
-    refs.equipBtn.disabled = true;
-    params.filter = 'Equipment';
+    params.filter = 'Equipment'
   }
   handleSearch();
-});
+
+  scrollToFilters();
+})
 
 let prevButton = null;
 
@@ -122,24 +116,30 @@ function selected(e) {
   }
 }
 
-refs.pagination.addEventListener('click', handlePagination);
-
-function paginationPages(page, totalPages) {
-  let paginationHtml = '';
-  for (; page <= totalPages; page++) {
-    paginationHtml += `<button class="pagination-btn" type="button">${page}</button>`;
+function makeCardsPagination(){
+  redrawPagination = false;
+  if(params.totalItems > params.perPage){
+      const pagination = new Pagination('pagination', {
+          totalItems : params.totalItems,
+          itemsPerPage: params.perPage,
+          visiblePages: 3
+      });
+      pagination.on('afterMove', function(eventData) {
+          params.page = eventData.page;
+          handleSearch();
+          scrollToFilters()
+      });
+  }else{
+      const paginationContainer = document.querySelector("#pagination");
+      paginationContainer.innerHTML = '';
   }
-  return paginationHtml;
 }
 
-async function handlePagination(e) {
-  params.page = e.target.textContent;
-  refs.gallery.innerHTML = '';
-  try {
-    const { results } = await getData();
-
-    createMarkup(results);
-  } catch (error) {
-    console.log(error);
-  }
+function scrollToFilters(){
+  const rect = refs.buttons.getBoundingClientRect();
+  window.scrollBy({
+    top: rect.y + rect.height,
+    left: 0,
+    behavior: "smooth",
+  });
 }

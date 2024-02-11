@@ -1,5 +1,6 @@
 import axios from "axios";
 import { getLoader, showAlert } from "./common";
+import { onEscape } from './modalExercises';
 
 let giveRatingBtn;
 let id;
@@ -21,7 +22,6 @@ export function addGiveRatingListener(){
     overlayRating.addEventListener('click', closeOnOverlayClick);
     starContainer.addEventListener('click', handleClickOnStar);
     sendRatingBtn.addEventListener('click', handleSendRatingBtnClick);
-    /*document.addEventListener('keydown', onPushEscape);*/
 }
 
 /**
@@ -33,7 +33,6 @@ export function removeGiveRatingListener(){
     overlayRating.removeEventListener('click', closeOnOverlayClick);
     starContainer.removeEventListener('click', handleClickOnStar);
     sendRatingBtn.removeEventListener('click', handleSendRatingBtnClick);
-    /*document.removeEventListener('keydown', onPushEscape);*/
 }
 
 /**
@@ -44,6 +43,7 @@ export function removeGiveRatingListener(){
  */
 function handleGiveRatingClick(event){
     event.preventDefault();
+    document.removeEventListener('keydown', onEscape);
     id = event.target.dataset.id;
     hideExercisesModal();
     openGiveRatingModal();
@@ -80,22 +80,26 @@ function handleSendRatingBtnClick(event){
     const rate = formData.elements["star"].value;
     const email =  formData.elements["email"].value.trim().toLowerCase();
     const review =  formData.elements["review"].value.trim();
+
+    const re = /\S+@\S+\.\S+/;
+
     if(rate === ""){
         showAlert("Please set your estimation!", "ERROR");
         getLoader('hide');
         return;
     }
-    if(email === ""){
+    if(email === "" || !re.test(email)){
         showAlert("Please enter your email!", "ERROR");
         getLoader('hide');
         return;
     }
     sendRatingData(rate, email, review)
     .then(function (response) {
-        console.log(response);
         showAlert('Thank you! Your rating has been sent!', 'OK');
         const ratingValue = document.querySelector('.rating-value');
         ratingValue.textContent = '0.0';
+        formData.reset();
+        closeRatingModal();
     })
     .catch(function (error) {
         if (error.response.status === 409) {
@@ -105,11 +109,8 @@ function handleSendRatingBtnClick(event){
         } else {
             showAlert(error.message, 'ERROR');
         }
-    })
-    .finally(() => {
-        getLoader('hide');
-        formData.reset();
     });
+    getLoader('hide');
 }
 
 /**
@@ -134,6 +135,7 @@ function closeRatingModal(){
     overlayRating.style.display = "none";
     backdrop.style.display = 'block';
     restoreExercisesModal();
+    document.addEventListener('keydown', onEscape);
 }
 
 /**
@@ -152,17 +154,7 @@ function restoreExercisesModal(){
     modalCard.classList.remove('visually-hidden');
 }
 
-/**
- * Закриття модального вікна по натисканню на клавішу Esc
- * @param {*} event 
- */
-function onPushEscape(event) {
-    event.preventDefault();
-    if (event.key === 'Escape') {
-      closeRatingModal();
-    }
-  }
-  
+
   /**
  * Закриття модального вікна при кліку на оверлей
  * @param {*} event 

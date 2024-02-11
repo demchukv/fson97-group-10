@@ -30,6 +30,9 @@ async function onClickExercisesCard(event) {
   addGiveRatingListener();
 
   getLoader('none');
+
+  document.querySelector('.star-inner').style.width =
+    (exercisesInfo.rating / 5) * 100 + '%';
   modalCard.classList.remove('visually-hidden');
 
   const addToFavoriteBtn = document.querySelector('.add-favorite-btn');
@@ -75,11 +78,10 @@ function onClick() {
   modalCard.classList.add('visually-hidden');
   backdrop.classList.add('visually-hidden');
   modalCard.innerHTML = '';
-  document.removeEventListener('keydown', onEscape);
 
   removeGiveRatingListener();
 
-  closeBtn.removeEventListener('click', onClick);
+  document.removeEventListener('keydown', onEscape);
   backdrop.removeEventListener('click', backdropOnClick);
 }
 
@@ -91,11 +93,10 @@ function backdropOnClick(event) {
   modalCard.classList.add('visually-hidden');
   backdrop.classList.add('visually-hidden');
   modalCard.innerHTML = '';
-  document.removeEventListener('keydown', onEscape);
 
   removeGiveRatingListener();
 
-  closeBtn.removeEventListener('click', onClick);
+  document.removeEventListener('keydown', onEscape);
   backdrop.removeEventListener('click', backdropOnClick);
 }
 
@@ -105,11 +106,10 @@ export function onEscape(event) {
     modalCard.classList.add('visually-hidden');
     backdrop.classList.add('visually-hidden');
     modalCard.innerHTML = '';
-    document.removeEventListener('keydown', onEscape);
 
     removeGiveRatingListener();
 
-    closeBtn.removeEventListener('click', onClick);
+    document.removeEventListener('keydown', onEscape);
     backdrop.removeEventListener('click', backdropOnClick);
   }
 }
@@ -180,10 +180,8 @@ function createMarkupExercisesCard({
       <div class="text-container">
         <h4 class="modal-title">${name}</h4>
         <div class="rating-container">
-          <p class="modal-exercises-rating">${rating}</p>
-          <svg class="star" width="18" height="18">
-            <use href="${icons}#icon-star"></use>
-          </svg>
+          <p class="modal-exercises-rating">${rating.toFixed(1)}</p>
+          <div class="star-outer"><div class="star-inner"></div></div>
         </div>
         <ul class="description-list">
           <li class="description-item">
