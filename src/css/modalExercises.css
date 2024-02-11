@@ -50,6 +50,8 @@
     .modal-gif {
       border-radius: 12px;
       margin-bottom: 20px;
+      width: 295px;
+      height: 258px;
     }
 
     .modal-title {
@@ -198,8 +200,8 @@
     justify-content: center;
     gap: 24px;
   }
-
-  .modal-gif {
+  .modal-gif-container {
+    flex-shrink: 0;
     width: 270px;
     height: 259px;
   }
