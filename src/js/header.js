@@ -1,4 +1,3 @@
-document.addEventListener('DOMContentLoaded', () => {
     const currentPage = location.pathname.split('/').pop();
     const homeButton = document.querySelector('.page-home a');
     const favoritesButton = document.querySelector('.page-favorites a');
@@ -50,7 +49,8 @@ function toggleMenu() {
     mobMenuFavoritesButton.addEventListener('click', (event) => {
         setActiveButton(favoritesButton, homeButton, mobMenuFavoritesButton, mobMenuHomeButton);
     });
-
+    
+/*
     window.addEventListener('resize', function() {
     const screenWidth = window.innerWidth;
     if (screenWidth >= 768) {
@@ -59,14 +59,4 @@ function toggleMenu() {
     }
 });
 
-
-});
-
-
-
-
-
-
-
-
-
+*/
