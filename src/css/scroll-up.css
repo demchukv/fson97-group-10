@@ -1,24 +1,28 @@
 .scroll-up-btn {
   position: fixed;
-  bottom: 35px;
-  right: 35px;
-  border: none;
-  border-radius: 100%;
-  background: var(--base-button-color);
   height: 100px;
   width: 100px;
   display: none;
   justify-content: center;
   align-items: center;
-  transition: opacity 0.5s ease;
+  bottom: -100px;
+  right: 35px;
+  border: none;
+  border-radius: 100%;
+  background-color: var(--base-button-color);
+  opacity: 0.5;
+  transition: bottom 0.5s ease;
 }
 
 .scroll-up-btn--show {
+  bottom: 35px;
   display: block;
 }
 
-.scroll-up-btn:hover {
-  background: var(--hover-button-color);
+.scroll-up-btn:hover,
+.scroll-up-btn:active {
+  background-color: var(--hover-button-color);
+  opacity: 1;
 }
 
 .scroll-up-arrow {
