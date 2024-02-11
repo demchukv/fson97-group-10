@@ -42,35 +42,32 @@ async function onClickExercisesCard(event) {
   closeBtn.addEventListener('click', onClick);
   backdrop.addEventListener('click', backdropOnClick);
   document.addEventListener('keydown', onEscape);
-}
 
-async function addToFavoriteOnClick(event) {
-  const element = event.target.closest('.add-favorite-btn');
-  const elementId = element.dataset.id;
-  const favorites = localStorage.getItem('favorites');
+  function addToFavoriteOnClick(event) {
+    const element = event.target.closest('.add-favorite-btn');
+    const elementId = element.dataset.id;
+    const favorites = localStorage.getItem('favorites');
 
-  if (favorites) {
-    const favoriteList = JSON.parse(favorites);
-    const condition = favoriteList.some(({ _id }) => _id === elementId);
-
-    if (condition) {
-      localStorage.setItem(
-        'favorites',
-        JSON.stringify(favoriteList.filter(({ _id }) => _id !== elementId))
-      );
-      element.innerHTML = addInnerHTML();
+    if (favorites) {
+      const favoriteList = JSON.parse(favorites);
+      const condition = favoriteList.some(({ _id }) => _id === elementId);
+      if (condition) {
+        localStorage.setItem(
+          'favorites',
+          JSON.stringify(favoriteList.filter(({ _id }) => _id !== elementId))
+        );
+        element.innerHTML = addInnerHTML();
+      } else {
+        localStorage.setItem(
+          'favorites',
+          JSON.stringify([...favoriteList, exercisesInfo])
+        );
+        element.innerHTML = addInnerHTML('remove');
+      }
     } else {
-      const exercisesCardInfo = await getExercisesCardInfo(elementId);
-      localStorage.setItem(
-        'favorites',
-        JSON.stringify([...favoriteList, exercisesCardInfo])
-      );
+      localStorage.setItem('favorites', JSON.stringify([exercisesInfo]));
       element.innerHTML = addInnerHTML('remove');
     }
-  } else {
-    const exercisesCardInfo = await getExercisesCardInfo(elementId);
-    localStorage.setItem('favorites', JSON.stringify([exercisesCardInfo]));
-    element.innerHTML = addInnerHTML('remove');
   }
 }
 
