@@ -140,7 +140,7 @@ function makeCardsPagination(){
 function scrollToFilters(){
   const rect = refs.buttons.getBoundingClientRect();
   window.scrollBy({
-    top: rect.y + rect.height,
+    top: rect.y,
     left: 0,
     behavior: "smooth",
   });

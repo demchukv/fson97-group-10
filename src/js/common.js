@@ -50,8 +50,10 @@ export function preserveBlockHeight(selector, action){
     const rect = block.getBoundingClientRect();
     if(rect.height > 100 && action === 'set'){
         block.setAttribute('style', 'height:' + rect.height + 'px');
+        block.style.height = rect.height+'px';
     }
     if(action === 'unset'){
         block.removeAttribute('style');
+        block.style.height = 'auto';
     }
   }

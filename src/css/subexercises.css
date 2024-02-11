@@ -1,3 +1,7 @@
+.gallery{
+    max-height: auto;
+    transition: height 1.95s ease;
+}
 .ex-search{
     display: none;
 }
