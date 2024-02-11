@@ -5,16 +5,17 @@
   display: none;
   justify-content: center;
   align-items: center;
-  bottom: 35px;
+  bottom: -100px;
   right: 35px;
   border: none;
   border-radius: 100%;
   background-color: var(--base-button-color);
   opacity: 0.5;
-  transition: opacity 0.5s ease;
+  transition: bottom 0.5s ease;
 }
 
 .scroll-up-btn--show {
+  bottom: 35px;
   display: block;
 }
 
