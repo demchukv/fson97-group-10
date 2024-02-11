@@ -2,7 +2,7 @@
   position: fixed;
   height: 100px;
   width: 100px;
-  display: none;
+  visibility: hidden;
   justify-content: center;
   align-items: center;
   bottom: -100px;
@@ -10,13 +10,14 @@
   border: none;
   border-radius: 100%;
   background-color: var(--base-button-color);
-  opacity: 0.5;
-  transition: bottom 0.5s ease;
+  opacity: 0;
+  transition: opacity 0.3s ease, bottom 0.3s ease, visibility 0.3s ease;
 }
 
 .scroll-up-btn--show {
   bottom: 35px;
-  display: block;
+  opacity: 0.5;
+  visibility: visible;
 }
 
 .scroll-up-btn:hover,
