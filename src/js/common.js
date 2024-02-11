@@ -37,3 +37,17 @@ export function getLoader( act = 'show' ){
         loader.style.display = 'none';
     }
 }
+/**
+ * Встановлює висоту контейнера на момент завантаження нового контенту для запобігання різким ривкам
+ * @param {*} selector 
+ */
+export function preserveBlockHeight(selector, action){
+    const block = document.querySelector(selector);
+    const rect = block.getBoundingClientRect();
+    if(rect.height > 100 && action === 'set'){
+        block.setAttribute('style', 'height:' + rect.height + 'px');
+    }
+    if(action === 'unset'){
+        block.removeAttribute('style');
+    }
+  }
