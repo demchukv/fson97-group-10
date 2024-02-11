@@ -74,7 +74,7 @@ function createMarkup(data) {
                       <use href="./img/icons.svg#icon-trash"></use>
                     </svg>
                   </button>
-                  <a class="ex-item-start" href="#" data-id="${i._id}">
+                  <a class="ex-item-start" href="" data-id="${i._id}">
                     <span>Start</span>
                      <svg class="favorites-arrow-icon" width="14" height="14">
                       <use href="${icons}#icon-arrow-start"></use>
