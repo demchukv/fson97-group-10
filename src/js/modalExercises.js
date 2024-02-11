@@ -170,13 +170,29 @@ function createMarkupExercisesCard({
           <use href="${icons}#icon-cross"></use>
         </svg>
       </button>
-      <img
-        class="modal-gif"
-        src="${gifUrl}"
-        alt="${name}"
-        width="295"
-        height="258"
-      />
+      <div class="modal-gif-container">
+        <picture>
+          <source
+            media="(max-width:767.98px)"
+            type="image/gif"
+            width="295"
+            height="258"
+          />
+          <source
+            media="(min-width:768px)"
+            type="image/gif"
+            width="270"
+            height="259"
+          />
+          <img
+            class="modal-gif"
+            src="${gifUrl}"
+            alt="${name}"
+            width="295"
+            height="258"
+          />
+        </picture>
+      </div>
       <div class="text-container">
         <h4 class="modal-title">${name}</h4>
         <div class="rating-container">
