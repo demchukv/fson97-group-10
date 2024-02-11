@@ -47,7 +47,7 @@ function createMarkup(data) {
                 <span class="favorites-item-workout">WORKOUT</span>
                   <button class="favorites-delete">
                     <svg class="delete-icon" width="12" height="13">
-                      <use href="./img/icons.svg#icon-trash"></use>
+                      <use href="${icons}#icon-trash"></use>
                     </svg>
                   </button>
                   <a class="ex-item-start" href="#" data-id="${i._id}">
