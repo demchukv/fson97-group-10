@@ -57,7 +57,7 @@ async function onClickExercisesCard(event) {
           JSON.stringify(favoriteList.filter(({ _id }) => _id !== elementId))
         );
         element.innerHTML = addInnerHTML();
-        /* Remove card from DOM in favirite page */
+        /* Remove card from DOM in favorite page */
         if(location.pathname === "/favorites.html"){
           const favCard = document.getElementById('card-' + elementId);
           favCard.remove();
