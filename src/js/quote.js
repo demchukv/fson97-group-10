@@ -1,6 +1,6 @@
 const quoteContainer = document.querySelector('.generated-quote-container');
 
-document.addEventListener('DOMContentLoaded', addOrUpdateQuote);
+/*document.addEventListener('DOMContentLoaded', addOrUpdateQuote);*/
 
 function addOrUpdateQuote() {
 
@@ -47,3 +47,5 @@ function createMarkup(author, quote) {
     <h3 class="quote-author">${author}</h3>`;
   quoteContainer.innerHTML = markup;
 }
+
+addOrUpdateQuote();
