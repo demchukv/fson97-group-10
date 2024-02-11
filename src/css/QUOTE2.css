@@ -1,0 +1,48 @@
+/* MOBILE */
+
+@media screen and (max-width: 767px) {
+    .quote-background {
+      background-image: url(../img);
+      /* height: 387px;
+      width: 335px; */
+    }
+
+  }
+  
+  @media (min-resolution: 192dpi) {
+    .footer-container {
+      background-image: url(../img);
+    }
+  }
+  
+  /* TABLET */
+  @media screen and (min-width: 768px) {
+    .quote-background {
+      background-image: url(../img/);
+      /* height: 900px;
+      width: 248px;
+      border-radius: 50px;
+      border-top-right-radius: 0px; */
+    }
+    @media (min-resolution: 192dpi) {
+      .footer-container {
+        background-image: url(../img);
+      }
+    }
+
+  }
+  /* DESKTOP */
+  @media screen and (min-width: 1440px) {
+    .quote-background {
+
+      background-image: url(../img);
+
+    }
+  
+    @media (min-resolution: 192dpi) {
+      .quote-container {
+        background-image: url(../img);
+      }
+    }
+
+  }
