@@ -1,7 +1,7 @@
 import axios from 'axios';
 import Pagination from "tui-pagination";
 import 'tui-pagination/dist/tui-pagination.css';
-import { getLoader, showAlert } from './common';
+import { getLoader, showAlert, preserveBlockHeight } from './common';
 
 const refs = {
   gallery: document.querySelector('.gallery'),
@@ -23,6 +23,7 @@ const params = {
 }
 
 async function getData() {
+  preserveBlockHeight('.gallery', 'set');
   refs.gallery.innerHTML = "";
   getLoader();
   const data = await axios.get('/filters', {
@@ -59,6 +60,7 @@ function handleSearch() {
     .then(data => {
       const { results, totalPages, page } = data;
       createMarkup(results);
+      preserveBlockHeight('.gallery', 'unset');
       if(redrawPagination){
         params.totalPages = totalPages;
         params.totalItems = totalPages * params.perPage;
@@ -143,3 +145,4 @@ function scrollToFilters(){
     behavior: "smooth",
   });
 }
+
