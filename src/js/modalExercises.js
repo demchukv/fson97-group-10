@@ -165,7 +165,7 @@ function createMarkupExercisesCard({
   }
 
   return `<div class="modal-description-container">
-      <button class="close-modal-btn">
+      <button class="close-modal-btn" title="Close window">
         <svg class="close-modal-icon" width="24" height="24">
           <use href="${icons}#icon-cross"></use>
         </svg>
