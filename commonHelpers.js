@@ -1,4 +1,4 @@
-import{i}from"./assets/scroll-up-8168caf0.js";import"./assets/vendor-ecc6328a.js";const n={favoritesContent:document.querySelector(".favorites-card-content")},a="favorites";let t=null;try{if(localStorage.getItem(a)){const s=JSON.parse(localStorage.getItem(a));Array.isArray(s)&&s.length===0?console.log(""):n.favoritesContent.innerHTML=`<ul class="favorites-group">${d(s)}</ul> 
+import{i}from"./assets/scroll-up-e00aa517.js";import"./assets/vendor-ecc6328a.js";const n={favoritesContent:document.querySelector(".favorites-card-content")},a="favorites";let t=null;try{if(localStorage.getItem(a)){const s=JSON.parse(localStorage.getItem(a));Array.isArray(s)&&s.length===0?console.log(""):n.favoritesContent.innerHTML=`<ul class="favorites-group">${d(s)}</ul> 
 
     `}t=document.querySelectorAll(".favorites-delete")}catch(s){console.log(s)}t&&t.forEach(s=>{s.addEventListener("click",e=>{let c=localStorage.getItem(a),l=JSON.parse(c);const r=e.target.closest(".favorites-item"),p=r.dataset.id;localStorage.setItem(a,JSON.stringify(l.filter(({_id:f})=>f!==p)));const o=document.querySelector(".favorites-group");o.removeChild(r),o.children.length===0&&(n.favoritesContent.innerHTML=` <div class="favorites-content">
         <img
@@ -15,7 +15,7 @@ import{i}from"./assets/scroll-up-8168caf0.js";import"./assets/vendor-ecc6328a.js
           for easier access in the future.
         </p>
       </div>`)})});function d(s){return s.map(e=>`
-        <li class="favorites-item" data-id="${e._id}">
+        <li class="favorites-item" data-id="${e._id}" id="card-${e._id}">
            <p class="favorites-item-head">
               <span class="favorites-item-head-wrapper">
                 <span class="favorites-item-workout">WORKOUT</span>
