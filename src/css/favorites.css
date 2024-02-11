@@ -21,6 +21,7 @@
 }
 .favorites-card-content {
   margin-top: 20px;
+  display: flex;
 }
 .favorites-text {
   font-size: 14px;
@@ -32,7 +33,7 @@
 /** TABLET STYLES */
 @media only screen and (min-width: 768px) {
   .favorites-section {
-    padding: 64px 48px;
+    padding: 48px 8px 64px 16px;
   }
 }
 
@@ -144,7 +145,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.ex-info-group:not(:first-child){
+.ex-info-group:not(:first-child) {
   padding-left: 16px;
 }
 
@@ -152,6 +153,7 @@
   color: rgba(27, 27, 27, 0.4);
 }
 .favorites-group {
+  scrollbar-width: 4px;
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
