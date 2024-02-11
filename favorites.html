@@ -10,9 +10,10 @@
     <title>Energy.Flow - Favorite exercises</title>
     <meta name="description" content="Transforming your body shape with us" />
     
-    <script type="module" crossorigin src="/fson97-group-10/assets/scroll-up-fd5b9059.js"></script>
-    <script type="module" crossorigin src="/fson97-group-10/assets/vendor-e8675f53.js"></script>
-    <link rel="stylesheet" href="/fson97-group-10/assets/scroll-up-e834d461.css">
+    <script type="module" crossorigin src="/fson97-group-10/commonHelpers.js"></script>
+    <link rel="modulepreload" crossorigin href="/fson97-group-10/assets/scroll-up-84ef2aa3.js">
+    <link rel="modulepreload" crossorigin href="/fson97-group-10/assets/vendor-ecc6328a.js">
+    <link rel="stylesheet" href="/fson97-group-10/assets/scroll-up-32d21764.css">
     <link rel="stylesheet" href="/fson97-group-10/assets/vendor-a18337f1.css">
   </head>
   <body>
@@ -92,36 +93,28 @@
   </li>
 </ul>
 </div></section>
-    
-<!-- <div>
-    <ul>
-        <li id=${data._id}>
-            <div>
-                <button>WORKOUT</button>
-                <button>DELETE</button>
-                <button>START</button>
-            </div>
-            <h2>${data.name}</h2>
-            <p>Burned calories:<span>${data.burnedCalories}</span></p>
-            <p>Body part:<span>${data.bodyPart}</span></p>
-            <p>Target: <span>${data.target}</span></p>
-        </li>
-    </ul>
-</div> -->
-<section class="section">
-    <div class="favorites-section container">
-        <h1 class="favorites-title">Favorites</h1>
-        <div class="favorites-content">
-            <img srcset="../public/favorites.png 1x, ../public/favorites.2x.png 2x" src="../public/favorites.png"
-                alt="Image favorites" width="85" height="52">
-    
-            <p class="favorites-text">It appears that you haven't added any exercises to your favorites yet. To get started,
-                you can add exercises that you
-                like to your favorites for easier access in the future.</p>
-        </div>
-    </div>
-</section>
+    <section class="section">
+  <div class="favorites-section container">
+    <h1 class="favorites-title">Favorites</h1>
+    <div class="favorites-card-content">
+      <div class="favorites-content">
+        <img
+          srcset="../public/favorites.png 1x, ../public/favorites.2x.png 2x"
+          src="../public/favorites.png"
+          alt="Image favorites"
+          width="85"
+          height="52"
+        />
 
+        <p class="favorites-text">
+          It appears that you haven't added any exercises to your favorites yet.
+          To get started, you can add exercises that you like to your favorites
+          for easier access in the future.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
 
     <button class="scroll-up-btn" type="button">
   <svg class="scroll-up-arrow" width="33" height="33">
