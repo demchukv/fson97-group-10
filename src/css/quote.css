@@ -18,63 +18,173 @@
 }
 
 @media (min-resolution: 192dpi) {
+  .footer-container {
+    background-image: url(../img/quote/quote-mobile-transformed-min.png);
+  }
+}
+
+/* TABLET */
+@media screen and (min-width: 768px) {
+  .quote-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .quote-box {
+    height: 302px;
+    width: 736px;
+    border-radius: 50px;
+  }
+  .quote-background {
+    height: 302px;
+    width: 736px;
+    border-radius: 50px;
+    background-image: url(../img/quote/quote-tablet-min.png);
+  }
+
+  @media (min-resolution: 192dpi) {
     .footer-container {
-      background-image: url(../img/quote/quote-mobile-transformed-min.png);
+      background-image: url(../img/quote/quote-tablet-transformed-min.png);
     }
   }
+}
 
-
-  /* TABLET */
-  @media screen and (min-width: 768px) {
-    .quote-container {
-        display: flex;
-        flex-direction: column;
-        
-    }
-
-    .quote-box {
-        height: 302px;
-        width: 736px;
-        border-radius: 50px;
-    }
-    .quote-background {
-        height: 302px;
-        width: 736px;
-        border-radius: 50px;
-        background-image: url(../img/quote/quote-tablet-min.png);
-    }
-
-    @media (min-resolution: 192dpi) {
-        .footer-container {
-          background-image: url(../img/quote/quote-tablet-transformed-min.png);
-        }
-      }
+/* DESKTOP */
+@media screen and (min-width: 1440px) {
+  .quote-container {
+    flex-direction: row;
   }
 
-   /* DESKTOP */
-   @media screen and (min-width: 1440px) {
-    .quote-container {
-        
-       flex-direction: row;
-        
-    }
-
-    .quote-box {
-        height: 302px;
-        width: 704px;
-        border-radius: 50px;
-    }
-    .quote-background {
-        height: 302px;
-        width: 704px;
-        border-radius: 50px;
-        background-image: url(../img/quote/quote-desktop-min.png);
-    }
-
-    @media (min-resolution: 192dpi) {
-        .footer-container {
-          background-image: url(../img/quote/quote-desktop-transformed-min.png);
-        }
-      }
-
+  .quote-box {
+    height: 302px;
+    width: 704px;
+    border-radius: 50px;
   }
+  .quote-background {
+    height: 302px;
+    width: 704px;
+    border-radius: 50px;
+    background-image: url(../img/quote/quote-desktop-min.png);
+  }
+
+  @media (min-resolution: 192dpi) {
+    .footer-container {
+      background-image: url(../img/quote/quote-desktop-transformed-min.png);
+    }
+  }
+}
+
+/* ICONS */
+
+.quote-box {
+  position: relative;
+}
+
+.quote-icon-man {
+  fill: var(--page-bg-color);
+  border-radius: 100%;
+  background-color: rgba(246, 246, 246, 0.1);
+  padding-left: 6px;
+  padding-right: 6px;
+  position: absolute;
+  left: 20px;
+  top: 40px;
+}
+
+.quote-icon-quotes {
+  width: 28px;
+  height: 28px;
+  fill: var(--page-bg-color);
+  position: absolute;
+  right: 20px;
+  top: 40px;
+}
+
+/* generated quote */
+
+.generated-quote-container {
+  padding-top: 42px;
+  padding-left: 66px;
+  padding-right: 20px;
+  padding-bottom: 40px;
+}
+
+.quote-header {
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 140%;
+  color: #f6f6f6;
+  margin-bottom: 14px;
+}
+
+.quote-text {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 129%;
+  color: rgba(246, 246, 246, 0.6);
+  margin-bottom: 14px;
+}
+
+.quote-author {
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+  color: #f6f6f6;
+}
+
+/* TABLET */
+@media screen and (min-width: 768px) {
+  .quote-icon-man {
+    left: 80px;
+    top: 64px;
+  }
+
+  .quote-icon-quotes {
+    width: 48px;
+    height: 48px;
+    right: 80px;
+    top: 32px;
+  }
+
+  .generated-quote-container {
+    padding-top: 64px;
+    padding-left: 130px;
+    padding-right: 80px;
+    padding-bottom: 64px;
+  }
+
+  .quote-header {
+    margin-bottom: 16px;
+    font-size: 24px;
+    line-height: 133%;
+  }
+
+  .quote-text {
+    margin-bottom: 25px;
+    font-size: 16px;
+    line-height: 150%;
+  }
+
+  .quote-author {
+    font-size: 16px;
+    line-height: 150%;
+  }
+}
+
+/* DESKTOP */
+@media screen and (min-width: 1440px) {
+  .quote-icon-man {
+    left: 64px;
+  }
+  .quote-icon-quotes {
+    right: 64px;
+  }
+
+  .generated-quote-container {
+    padding-left: 114px;
+    padding-right: 64px;
+  }
+}
