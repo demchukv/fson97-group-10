@@ -140,10 +140,12 @@
 .favorites-item-info {
   font-size: 12px;
   line-height: 1.5;
-  display: flex;
-  gap: 16px;
-  row-gap: 6px;
-  flex-wrap: wrap;
+  text-wrap: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.ex-info-group:not(:first-child){
+  padding-left: 16px;
 }
 
 .favorites-item-desc {
