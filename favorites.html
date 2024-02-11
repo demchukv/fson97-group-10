@@ -12,9 +12,9 @@
     
     <script type="module" crossorigin src="/fson97-group-10/commonHelpers.js"></script>
     <link rel="modulepreload" crossorigin href="/fson97-group-10/assets/vendor-ecc6328a.js">
-    <link rel="modulepreload" crossorigin href="/fson97-group-10/assets/scroll-up-0df70787.js">
+    <link rel="modulepreload" crossorigin href="/fson97-group-10/assets/scroll-up-5f43bc88.js">
     <link rel="stylesheet" href="/fson97-group-10/assets/vendor-a18337f1.css">
-    <link rel="stylesheet" href="/fson97-group-10/assets/scroll-up-10c97c08.css">
+    <link rel="stylesheet" href="/fson97-group-10/assets/scroll-up-0ae04cc7.css">
   </head>
   <body>
     <section class="section fav-head">  <div class="container header-container">
@@ -124,13 +124,31 @@
           <use href="./img/icons.svg#icon-cross"></use>
         </svg>
       </button>
-      <img
-        class="modal-gif"
-        src="https://ftp.goit.study/img/power-pulse/gifs/0003.gif"
-        alt="air bike"
-        width="295"
-        height="258"
-      />
+      <div class="modal-gif-container">
+        <picture>
+          <source
+            media="(max-width:767.98px)"
+            type="image/gif"
+            width="295"
+            height="258"
+            src="https://ftp.goit.study/img/power-pulse/gifs/0003.gif"
+          />
+          <source
+            media="(min-width:768px)"
+            type="image/gif"
+            width="270"
+            height="259"
+            src="https://ftp.goit.study/img/power-pulse/gifs/0003.gif"
+          />
+          <img
+            class="modal-gif"
+            src="https://ftp.goit.study/img/power-pulse/gifs/0003.gif"
+            alt="air bike"
+            width="295"
+            height="258"
+          />
+        </picture>
+      </div>
       <div class="text-container">
         <h4 class="modal-title">Air bake</h4>
         <div class="rating-container">
