@@ -199,7 +199,7 @@
   }
   .favorites-card-content{
     max-height: 720px;
-    overflow-y: scroll;
+    overflow-y: auto;
   }
   .favorites-card-content::-webkit-scrollbar{
     width: 8px;
