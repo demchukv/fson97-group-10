@@ -5,12 +5,28 @@ const refs = {
 };
 const KEY = 'favorites';
 let dltBtnsCards = null;
+const noFavorites = ` <div class="favorites-content">
+<img
+  srcset="./public/favorites.png 1x, ./public/favorites.2x.png 2x"
+  src="./public/favorites.png"
+  alt="Image favorites"
+  width="85"
+  height="52"
+/>
+
+<p class="favorites-text">
+  It appears that you haven't added any exercises to your favorites yet.
+  To get started, you can add exercises that you like to your favorites
+  for easier access in the future.
+</p>
+</div>`;
 
 try {
   if (localStorage.getItem(KEY)) {
     const storedData = JSON.parse(localStorage.getItem(KEY));
     if (Array.isArray(storedData) && storedData.length === 0) {
       console.log('');
+      refs.favoritesContent.innerHTML = noFavorites;
     } else {
       refs.favoritesContent.innerHTML = `<ul class="favorites-group">${createMarkup(
         storedData
@@ -18,8 +34,11 @@ try {
 
     `;
     }
+    dltBtnsCards = document.querySelectorAll('.favorites-delete');
+  }else{
+    refs.favoritesContent.innerHTML = noFavorites;
   }
-  dltBtnsCards = document.querySelectorAll('.favorites-delete');
+  
 } catch (e) {
   console.log(e);
 }
@@ -39,21 +58,7 @@ if (dltBtnsCards) {
       const cardList = document.querySelector('.favorites-group');
       cardList.removeChild(card);
       if (cardList.children.length === 0) {
-        refs.favoritesContent.innerHTML = ` <div class="favorites-content">
-        <img
-          srcset="./public/favorites.png 1x, ./public/favorites.2x.png 2x"
-          src="./public/favorites.png"
-          alt="Image favorites"
-          width="85"
-          height="52"
-        />
-
-        <p class="favorites-text">
-          It appears that you haven't added any exercises to your favorites yet.
-          To get started, you can add exercises that you like to your favorites
-          for easier access in the future.
-        </p>
-      </div>`;
+        refs.favoritesContent.innerHTML = noFavorites;
       }
     });
   });
