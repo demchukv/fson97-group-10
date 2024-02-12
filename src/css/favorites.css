@@ -34,7 +34,8 @@
 /** TABLET STYLES */
 @media only screen and (min-width: 768px) {
   .favorites-section {
-    padding: 48px 8px 64px 16px;
+    /*padding: 48px 8px 64px 16px;*/
+    padding: 64px 48px 64px 48px;
   }
 }
 
@@ -47,7 +48,7 @@
 @media only screen and (min-width: 768px) {
   .favorites-content {
     width: 554px;
-    margin-top: 208px;
+    margin-top: 209px;
   }
 }
 @media only screen and (min-width: 768px) {
@@ -262,3 +263,29 @@
     height: 141px;
   }
 }
+
+.favorites-empty-img{
+  width: 85px;
+  height: 52px;
+  background-image: url(../img/favorite/favorites.mobile1x.png);
+  background-size: contain;
+}
+@media (min-resolution: 192dpi) {
+  .favorites-empty-img{
+    background-image: url(../img/favorite/favorites.mobile2x.png);
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .favorites-empty-img{
+    width: 115px;
+    height: 71px;
+    background-image: url(../img/favorite/favorites.desktop.tablet1x.png);
+    background-size: contain;
+  }
+  @media (min-resolution: 192dpi) {
+    .favorites-empty-img{
+      background-image: url(../img/favorite/favorites.desktop.tablet2x.png);
+    }
+  }
+  }

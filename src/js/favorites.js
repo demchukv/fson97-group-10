@@ -1,20 +1,13 @@
 /*import Handlebars from 'handlebars';*/
 import icons from '../img/icons.svg';
-import fv from '../img/favorite/favorites.png';
-import fvs from '../img/favorite/favorites.2x.png';
+
 const refs = {
   favoritesContent: document.querySelector('.favorites-card-content'),
 };
 const KEY = 'favorites';
 let dltBtnsCards = null;
 const noFavorites = ` <div class="favorites-content">
-<img
-  srcset="${fv} 1x, ${fvs} 2x"
-  src="${fv}"
-  alt="Image favorites"
-  width="85"
-  height="52"
-/>
+<div class="favorites-empty-img"></div>
 
 <p class="favorites-text">
   It appears that you haven't added any exercises to your favorites yet.
