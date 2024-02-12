@@ -62,6 +62,7 @@ async function onClickExercisesCard(event) {
         const favCard = document.getElementById('card-' + elementId);
         if(favCard){
           favCard.remove();
+          onClick();
         }
       } else {
         localStorage.setItem(
