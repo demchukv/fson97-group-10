@@ -28,6 +28,8 @@ try {
 if (dltBtnsCards) {
   dltBtnsCards.forEach(dltBtnCard => {
     dltBtnCard.addEventListener('click', e => {
+      //   dltBtnCard.style.transitionDelay = '2500ms';
+
       let getLocalStorageData = localStorage.getItem(KEY);
       let data = JSON.parse(getLocalStorageData);
       const card = e.target.closest('.favorites-item');

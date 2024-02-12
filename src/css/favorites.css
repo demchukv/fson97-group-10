@@ -33,7 +33,7 @@
 /** TABLET STYLES */
 @media only screen and (min-width: 768px) {
   .favorites-section {
-    padding: 48px 8px 64px 16px;
+    padding: 64px 48px 64px 48px;
   }
 }
 
@@ -46,7 +46,7 @@
 @media only screen and (min-width: 768px) {
   .favorites-content {
     width: 554px;
-    margin-top: 208px;
+    margin-top: 209px;
   }
 }
 @media only screen and (min-width: 768px) {
