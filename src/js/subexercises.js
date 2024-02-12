@@ -19,6 +19,7 @@ if(galleryObj){
     galleryObj.addEventListener('click', handleCardClick);
     galleryObj.classList.add('exercises-card');
 }
+const container = document.querySelector('.exercises-container');
 const searchObj = document.querySelector(".search-btn");
 const clearObj = document.querySelector(".search-clear-btn");
 const searchInput = document.querySelector(".search-input");
@@ -159,7 +160,7 @@ function markupExercisesList(data){
     
     galleryObj.innerHTML = markup;
 
-    const rect = filterBtns.getBoundingClientRect();
+    const rect = container.getBoundingClientRect();
     window.scrollBy({
         top: rect.y,
         left: 0,

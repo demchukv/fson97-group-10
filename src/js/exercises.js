@@ -4,6 +4,7 @@ import 'tui-pagination/dist/tui-pagination.css';
 import { getLoader, showAlert, preserveBlockHeight } from './common';
 
 const refs = {
+  container: document.querySelector('.exercises-container'),
   gallery: document.querySelector('.gallery'),
   buttons: document.querySelector('.exercises-btns-div'),
   pagination: document.getElementById('pagination'),
@@ -138,7 +139,7 @@ function makeCardsPagination(){
 }
 
 function scrollToFilters(){
-  const rect = refs.buttons.getBoundingClientRect();
+  const rect = refs.container.getBoundingClientRect();
   window.scrollBy({
     top: rect.y,
     left: 0,
