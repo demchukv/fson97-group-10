@@ -1,0 +1,158 @@
+.qt-container{
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    background: none;
+}
+
+.qt-box{
+    position: relative;
+    padding: 0;
+    border-radius: 30px;
+    background: var(--base-button-color);
+}
+
+.qt-icon-man{
+    fill: var(--page-bg-color);
+    position: absolute;
+    top:40px;
+    left:20px;
+    border-radius: 100%;
+    padding: 6px;
+    background: rgba(246, 246, 246, 0.1);
+    height: 32px;
+    width: 32px;
+}
+.qt-icon-quotes{
+    fill: var(--page-bg-color);
+    position: absolute;
+    top:40px;
+    right: 20px;
+    height: 28px;
+    width: 28px;
+}
+
+.qt-outer{
+    display: flex;
+    flex-direction: column;
+}
+
+.qt-background{
+    height: 272px;
+    background-image: url(../img/quote-fav/qt-mobile.png);
+    background-position: bottom center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+@media (min-resolution: 192dpi) {
+    .qt-background {
+      background-image: url(../img/quote-fav/qt-mobile@2x.png);
+    }
+  }
+
+.qt-time{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content:center;
+    border-radius: 30px;
+    background-color: var(--white-color);
+    padding: 96px 101px;
+  }
+  .qt-icon-container{
+    display: block;
+    margin-bottom: 15px;
+  }
+  .qt-icon{
+    stroke:var(--text-base-color);
+    width: 20px;
+    height: 20px;
+  }
+  .qt-time-span{
+    display: block;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 1;
+    color: var(--text-base-color);
+    margin-bottom: 6px;
+  }
+  .qt-norm-span{
+    display: block;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.29;
+    color: rgba(27, 27, 27, 0.6);
+  }
+  
+
+  @media screen and (min-width: 768px) {
+    .qt-container{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap:16px;
+    }
+    .qt-icon-man{
+        top:64px;
+        left:80px;
+    }
+    .qt-icon-quotes{
+        top:32px;
+        right: 80px;
+        height: 48px;
+        width: 48px;
+    }
+    .qt-box, .qt-outer{
+        width: 100%;
+    }
+    .qt-outer{
+        display: flex;
+        flex-direction: row;
+    }
+    .qt-background{
+        background-image: url(../img/quote-fav/qt-tablet.png);
+        min-width: 368px;
+        height: 302px;
+    }
+    .qt-time{
+        flex-grow: 1;
+        padding: 105px 118px;
+    }
+    @media (min-resolution: 192dpi) {
+        .qt-background {
+          background-image: url(../img/quote-fav/qt-tablet@2x.png);
+        }
+      }
+            
+  }
+
+
+  @media screen and (min-width: 1440px) {
+    .qt-container{
+        flex-wrap: nowrap;
+        gap:0;
+    }
+    .qt-icon-man{
+        top:64px;
+        left:64px;
+    }
+    .qt-icon-quotes{
+        top:32px;
+        right: 64px;
+    }
+    .qt-background{
+        width: 352px;
+        height: 302px;
+        background-image: url(../img/quote-fav/qt-tablet.png);
+        background-size:cover;
+    }
+    .qt-time{
+        flex-grow: 0;
+        padding: 105px 110px;
+    }
+    @media (min-resolution: 192dpi) {
+        .qt-background {
+          background-image: url(../img/quote-fav/qt-tablet@2x.png);
+        }
+      }
+  }
