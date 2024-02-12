@@ -1,6 +1,6 @@
 import axios from 'axios';
 import icons from '../img/icons.svg';
-import { getLoader } from './common';
+import { getLoader, showAlert } from './common';
 import { addGiveRatingListener, removeGiveRatingListener } from './give-rating';
 
 const gallery = document.querySelector('.gallery, .favorites-card-content');
@@ -63,6 +63,7 @@ async function onClickExercisesCard(event) {
         if(favCard){
           favCard.remove();
           onClick();
+          showAlert("Card removed from favorites!");
         }
       } else {
         localStorage.setItem(
