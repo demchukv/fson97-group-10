@@ -75,4 +75,4 @@ import{i as x,a as H}from"./vendor-ecc6328a.js";(function(){const t=document.cre
         </div>
       </div>
     </div>`}const T=document.querySelector(".scroll-up-btn");window.addEventListener("scroll",re);function re(){window.scrollY>200?T.classList.add("scroll-up-btn--show"):T.classList.remove("scroll-up-btn--show")}T.addEventListener("click",()=>{window.scrollTo({top:0,behavior:"smooth"})});export{y as g,b as i,ce as p,g as s};
-//# sourceMappingURL=scroll-up-0599c843.js.map
+//# sourceMappingURL=scroll-up-c7bcf666.js.map
