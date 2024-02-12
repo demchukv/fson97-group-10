@@ -166,6 +166,16 @@ ul {
     margin: 0;
     padding: 0;
 }
+.header-logo {
+    display: inline-block;
+    font-weight: 700px;
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 28px;
+    letter-spacing: -0.02em;
+    margin-right: auto;
+    color: var(--text-base-color);
+}
 .mob-menu-background {
     display: none;
 }
