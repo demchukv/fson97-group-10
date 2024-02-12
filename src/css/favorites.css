@@ -189,8 +189,32 @@
   gap: 16px;
   align-items: center;
 }
+
 /** TABLET STYLES  */
 @media screen and (min-width: 768px) {
+  /* scroll styles */
+  .favorites-section{
+    padding-left: 48px;
+    padding-right: 16px;
+  }
+  .favorites-card-content{
+    max-height: 720px;
+    overflow-y: scroll;
+  }
+  .favorites-card-content::-webkit-scrollbar{
+    width: 8px;
+    border-radius: 12px;
+  }
+  .favorites-card-content::-webkit-scrollbar-track{
+    border-radius: 12px;
+    background: rgba(27, 27, 27, 0.1);
+  }
+  .favorites-card-content::-webkit-scrollbar-thumb {
+    border-radius: 12px;
+    background: var(--base-button-color);
+}
+
+
   .favorites-item {
     width: 313px;
     height: 165px;
@@ -218,6 +242,9 @@
 }
 /* *DESKTOP STYLES */
 @media screen and (min-width: 1440px) {
+  .favorites-card-content{
+    max-height: 480px;
+  }
   .favorites-group {
     column-gap: 20px;
     row-gap: 28px;

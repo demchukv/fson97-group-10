@@ -1,4 +1,4 @@
-import Handlebars from 'handlebars';
+/*import Handlebars from 'handlebars';*/
 import icons from '../img/icons.svg';
 const refs = {
   favoritesContent: document.querySelector('.favorites-card-content'),
