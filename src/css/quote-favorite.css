@@ -116,7 +116,8 @@
     }
     .qt-time{
         flex-grow: 1;
-        padding: 105px 118px;
+        padding: 105px 110px;
+        width: 352px;
     }
     @media (min-resolution: 192dpi) {
         .qt-background {
