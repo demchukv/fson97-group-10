@@ -19,6 +19,7 @@ if(galleryObj){
     galleryObj.addEventListener('click', handleCardClick);
     galleryObj.classList.add('exercises-card');
 }
+const container = document.querySelector('.exercises-container');
 const searchObj = document.querySelector(".search-btn");
 const clearObj = document.querySelector(".search-clear-btn");
 const searchInput = document.querySelector(".search-input");
@@ -142,7 +143,7 @@ function markupExercisesList(data){
       <svg class="ex-star-icon" width="18" height="18"><use href="${icons}#icon-star"></use></svg>
       </span>
       </span>
-      <a class="ex-item-start" href="#" data-id="${i._id}"><span>Start</span> <svg class="ex-arrow-icon" width="14" height="14"><use href="${icons}#icon-arrow-start"></use></svg></a>
+      <a class="ex-item-start" href="" data-id="${i._id}"><span>Start</span> <svg class="ex-arrow-icon" width="14" height="14"><use href="${icons}#icon-arrow-start"></use></svg></a>
       </p>
       <span class="ex-title">
       <span class="ex-run-men"><svg class="ex-icon-run" width="14" height="14"><use href="${icons}#icon-running_man"></use></svg></span>
@@ -159,9 +160,9 @@ function markupExercisesList(data){
     
     galleryObj.innerHTML = markup;
 
-    const rect = filterBtns.getBoundingClientRect();
+    const rect = container.getBoundingClientRect();
     window.scrollBy({
-        top: rect.y,
+        top: rect.y + 60,
         left: 0,
         behavior: "smooth",
       });

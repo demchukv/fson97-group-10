@@ -24,6 +24,13 @@
 }
 
 .modal {
+  /* Можна додати для мобілки */
+  max-height: 90vh;
+  overflow-y: auto;
+
+  scrollbar-width: thin;
+  scrollbar-color: #888 #f1f1f1;
+  /* Можна додати для мобілки */
   position: fixed;
   top: 50%;
   left: 50%;

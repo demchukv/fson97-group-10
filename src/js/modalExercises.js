@@ -1,6 +1,6 @@
 import axios from 'axios';
 import icons from '../img/icons.svg';
-import { getLoader } from './common';
+import { getLoader, showAlert } from './common';
 import { addGiveRatingListener, removeGiveRatingListener } from './give-rating';
 
 const gallery = document.querySelector('.gallery, .favorites-card-content');
@@ -10,6 +10,7 @@ const modalCard = document.querySelector('.modal');
 gallery.addEventListener('click', onClickExercisesCard);
 
 async function onClickExercisesCard(event) {
+  event.preventDefault();
   if (event.target === event.curentTarget) {
     return;
   }
@@ -23,7 +24,6 @@ async function onClickExercisesCard(event) {
 
   backdrop.classList.remove('visually-hidden');
 
-  modalCard.innerHTML = '';
   const modalExercisesMarkup = createMarkupExercisesCard(exercisesInfo);
   modalCard.innerHTML = modalExercisesMarkup;
 
@@ -57,6 +57,13 @@ async function onClickExercisesCard(event) {
           JSON.stringify(favoriteList.filter(({ _id }) => _id !== elementId))
         );
         element.innerHTML = addInnerHTML();
+        /* Remove card from DOM in favorite page */
+        const favCard = document.getElementById('card-' + elementId);
+        if (favCard) {
+          favCard.remove();
+          onClick();
+          showAlert('Card removed from favorites!');
+        }
       } else {
         localStorage.setItem(
           'favorites',
@@ -72,21 +79,24 @@ async function onClickExercisesCard(event) {
 }
 
 function onClick() {
-  modalCard.classList.add('visually-hidden');
-  backdrop.classList.add('visually-hidden');
-  modalCard.innerHTML = '';
-
-  removeGiveRatingListener();
-
-  document.removeEventListener('keydown', onEscape);
-  backdrop.removeEventListener('click', backdropOnClick);
+  closeModal();
 }
 
 function backdropOnClick(event) {
   if (event.target.closest('.modal')) {
     return;
   }
+  closeModal();
+}
 
+export function onEscape(event) {
+  event.preventDefault();
+  if (event.key === 'Escape') {
+    closeModal();
+  }
+}
+
+function closeModal() {
   modalCard.classList.add('visually-hidden');
   backdrop.classList.add('visually-hidden');
   modalCard.innerHTML = '';
@@ -95,20 +105,6 @@ function backdropOnClick(event) {
 
   document.removeEventListener('keydown', onEscape);
   backdrop.removeEventListener('click', backdropOnClick);
-}
-
-export function onEscape(event) {
-  event.preventDefault();
-  if (event.key === 'Escape') {
-    modalCard.classList.add('visually-hidden');
-    backdrop.classList.add('visually-hidden');
-    modalCard.innerHTML = '';
-
-    removeGiveRatingListener();
-
-    document.removeEventListener('keydown', onEscape);
-    backdrop.removeEventListener('click', backdropOnClick);
-  }
 }
 
 async function getExercisesCardInfo(id) {

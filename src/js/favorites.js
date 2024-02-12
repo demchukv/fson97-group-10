@@ -1,16 +1,34 @@
-import Handlebars from 'handlebars';
+/*import Handlebars from 'handlebars';*/
 import icons from '../img/icons.svg';
+import fv from '../img/favorite/favorites.png';
+import fvs from '../img/favorite/favorites.2x.png';
 const refs = {
   favoritesContent: document.querySelector('.favorites-card-content'),
 };
 const KEY = 'favorites';
 let dltBtnsCards = null;
+const noFavorites = ` <div class="favorites-content">
+<img
+  srcset="${fv} 1x, ${fvs} 2x"
+  src="${fv}"
+  alt="Image favorites"
+  width="85"
+  height="52"
+/>
+
+<p class="favorites-text">
+  It appears that you haven't added any exercises to your favorites yet.
+  To get started, you can add exercises that you like to your favorites
+  for easier access in the future.
+</p>
+</div>`;
 
 try {
   if (localStorage.getItem(KEY)) {
     const storedData = JSON.parse(localStorage.getItem(KEY));
     if (Array.isArray(storedData) && storedData.length === 0) {
       console.log('');
+      refs.favoritesContent.innerHTML = noFavorites;
     } else {
       refs.favoritesContent.innerHTML = `<ul class="favorites-group">${createMarkup(
         storedData
@@ -18,8 +36,11 @@ try {
 
     `;
     }
+    dltBtnsCards = document.querySelectorAll('.favorites-delete');
+  }else{
+    refs.favoritesContent.innerHTML = noFavorites;
   }
-  dltBtnsCards = document.querySelectorAll('.favorites-delete');
+  
 } catch (e) {
   console.log(e);
 }
@@ -41,21 +62,7 @@ if (dltBtnsCards) {
       const cardList = document.querySelector('.favorites-group');
       cardList.removeChild(card);
       if (cardList.children.length === 0) {
-        refs.favoritesContent.innerHTML = ` <div class="favorites-content">
-        <img
-          srcset="./public/favorites.png 1x, ./public/favorites.2x.png 2x"
-          src="./public/favorites.png"
-          alt="Image favorites"
-          width="85"
-          height="52"
-        />
-
-        <p class="favorites-text">
-          It appears that you haven't added any exercises to your favorites yet.
-          To get started, you can add exercises that you like to your favorites
-          for easier access in the future.
-        </p>
-      </div>`;
+        refs.favoritesContent.innerHTML = noFavorites;
       }
     });
   });
@@ -67,16 +74,16 @@ function createMarkup(data) {
     .map(
       i =>
         `
-        <li class="favorites-item" data-id="${i._id}">
+        <li class="favorites-item" data-id="${i._id}" id="card-${i._id}">
            <p class="favorites-item-head">
               <span class="favorites-item-head-wrapper">
                 <span class="favorites-item-workout">WORKOUT</span>
                   <button class="favorites-delete">
                     <svg class="delete-icon" width="12" height="13">
-                      <use href="./img/icons.svg#icon-trash"></use>
+                      <use href="${icons}#icon-trash"></use>
                     </svg>
                   </button>
-                  <a class="ex-item-start" href="#" data-id="${i._id}">
+                  <a class="ex-item-start" href="" data-id="${i._id}">
                     <span>Start</span>
                      <svg class="favorites-arrow-icon" width="14" height="14">
                       <use href="${icons}#icon-arrow-start"></use>

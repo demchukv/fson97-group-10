@@ -100,7 +100,8 @@
 .ex-item-name{
     font-size: 20px;
     line-height: 1.2;
-    text-wrap: nowrap;
+    
+    white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
@@ -215,7 +216,7 @@
         height: 141px;
     }
     .ex-item-info{
-        text-wrap: nowrap;
+        white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
     }

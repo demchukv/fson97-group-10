@@ -3,18 +3,18 @@
     const favoritesButton = document.querySelector('.page-favorites a');
     const mobMenuHomeButton = document.querySelector('.home-mob-menu');
     const mobMenuFavoritesButton = document.querySelector('.favorites-mob-menu');
-const refs = {
-  openMenuBtn: document.querySelector("[data-menu-open]"),
-  closeMenuBtn: document.querySelector("[data-menu-close]"),
-  menu: document.querySelector("[data-menu]"),
-}; 
+    const refs = {
+    openMenuBtn: document.querySelector("[data-menu-open]"),
+    closeMenuBtn: document.querySelector("[data-menu-close]"),
+    menu: document.querySelector("[data-menu]"),
+    }; 
 
-refs.openMenuBtn.addEventListener("click", toggleMenu);
-refs.closeMenuBtn.addEventListener("click", toggleMenu);
+    refs.openMenuBtn.addEventListener("click", toggleMenu);
+    refs.closeMenuBtn.addEventListener("click", toggleMenu);
 
-function toggleMenu() {
-  refs.menu.classList.toggle("is-hidden");
-}
+    function toggleMenu() {
+    refs.menu.classList.toggle("is-hidden");
+    }
 
     function setActiveButton(button, otherButton, mobMenuButton, otherMobMenuButton) {
         button.parentElement.classList.add('active');
@@ -49,14 +49,3 @@ function toggleMenu() {
     mobMenuFavoritesButton.addEventListener('click', (event) => {
         setActiveButton(favoritesButton, homeButton, mobMenuFavoritesButton, mobMenuHomeButton);
     });
-    
-/*
-    window.addEventListener('resize', function() {
-    const screenWidth = window.innerWidth;
-    if (screenWidth >= 768) {
-        const mobMenuBackground = document.querySelector('.mob-menu-background');
-        mobMenuBackground.classList.add('is-hidden');
-    }
-});
-
-*/

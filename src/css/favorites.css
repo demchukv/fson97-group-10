@@ -18,6 +18,7 @@
   flex-direction: column;
   gap: 28px;
   margin-top: 80px;
+  padding-bottom: 88px;
 }
 .favorites-card-content {
   margin-top: 20px;
@@ -132,7 +133,7 @@
 .favorites-item-name {
   font-size: 20px;
   line-height: 1.2;
-  text-wrap: nowrap;
+  white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   letter-spacing: 0.5px;
@@ -141,12 +142,9 @@
 .favorites-item-info {
   font-size: 12px;
   line-height: 1.5;
-  text-wrap: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
-.ex-info-group:not(:first-child) {
-  padding-left: 16px;
+.ex-info-group:not(:last-child) {
+  padding-right: 16px;
 }
 
 .favorites-item-desc {
@@ -189,8 +187,31 @@
   gap: 16px;
   align-items: center;
 }
+
 /** TABLET STYLES  */
 @media screen and (min-width: 768px) {
+  /* scroll styles */
+  .favorites-section{
+    padding-left: 48px;
+    padding-right: 16px;
+  }
+  .favorites-card-content{
+    max-height: 720px;
+    overflow-y: auto;
+  }
+  .favorites-card-content::-webkit-scrollbar{
+    width: 8px;
+    border-radius: 12px;
+  }
+  .favorites-card-content::-webkit-scrollbar-track{
+    border-radius: 12px;
+    background: rgba(27, 27, 27, 0.1);
+  }
+  .favorites-card-content::-webkit-scrollbar-thumb {
+    border-radius: 12px;
+    background: var(--base-button-color);
+}
+
   .favorites-item {
     width: 313px;
     height: 165px;
@@ -218,6 +239,9 @@
 }
 /* *DESKTOP STYLES */
 @media screen and (min-width: 1440px) {
+  .favorites-card-content{
+    max-height: 480px;
+  }
   .favorites-group {
     column-gap: 20px;
     row-gap: 28px;
@@ -229,7 +253,9 @@
     row-gap: 28px;
   }
   .favorites-item-info {
-    gap: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
   .favorites-item {
     width: 424px;

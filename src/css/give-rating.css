@@ -2,7 +2,7 @@
     overflow: auto;
     position: fixed;
     display: none;
-    z-index: 1;
+    z-index: 998;
     top: 0;
     left: 0;
     width: 100%;
@@ -13,7 +13,7 @@
     position: fixed;
     top: 50%;
     left: 50%;
-    z-index: 2;
+    z-index: 999;
     transform: translate(-50%, -50%);
     width: 335px;
     padding: 20px 20px 40px;
