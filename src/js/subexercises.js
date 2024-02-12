@@ -162,7 +162,7 @@ function markupExercisesList(data){
 
     const rect = container.getBoundingClientRect();
     window.scrollBy({
-        top: rect.y,
+        top: rect.y + 60,
         left: 0,
         behavior: "smooth",
       });
