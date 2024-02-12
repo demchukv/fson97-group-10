@@ -1,5 +1,7 @@
 /*import Handlebars from 'handlebars';*/
 import icons from '../img/icons.svg';
+import fv from '../img/favorite/favorites.png';
+import fvs from '../img/favorite/favorites.2x.png';
 const refs = {
   favoritesContent: document.querySelector('.favorites-card-content'),
 };
@@ -7,8 +9,8 @@ const KEY = 'favorites';
 let dltBtnsCards = null;
 const noFavorites = ` <div class="favorites-content">
 <img
-  srcset="./public/favorites.png 1x, ./public/favorites.2x.png 2x"
-  src="./public/favorites.png"
+  srcset="${fv} 1x, ${fvs} 2x"
+  src="${fv}"
   alt="Image favorites"
   width="85"
   height="52"
