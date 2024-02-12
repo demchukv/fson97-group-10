@@ -211,11 +211,6 @@
     background: var(--base-button-color);
 }
 
-  .favorites-item-info {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
   .favorites-item {
     width: 313px;
     height: 165px;
@@ -257,7 +252,9 @@
     row-gap: 28px;
   }
   .favorites-item-info {
-    gap: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
   .favorites-item {
     width: 424px;
