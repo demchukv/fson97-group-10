@@ -132,7 +132,7 @@
 .favorites-item-name {
   font-size: 20px;
   line-height: 1.2;
-  text-wrap: nowrap;
+  white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   letter-spacing: 0.5px;
@@ -141,12 +141,9 @@
 .favorites-item-info {
   font-size: 12px;
   line-height: 1.5;
-  text-wrap: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
-.ex-info-group:not(:first-child) {
-  padding-left: 16px;
+.ex-info-group:not(:last-child) {
+  padding-right: 16px;
 }
 
 .favorites-item-desc {
@@ -214,7 +211,11 @@
     background: var(--base-button-color);
 }
 
-
+  .favorites-item-info {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
   .favorites-item {
     width: 313px;
     height: 165px;
