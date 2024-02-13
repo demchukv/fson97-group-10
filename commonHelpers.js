@@ -1,4 +1,4 @@
-import{i as r}from"./assets/scroll-up-6d69c1cb.js";import"./assets/vendor-e8675f53.js";const t={favoritesContent:document.querySelector(".favorites-card-content")},a="favorites";let o=null;const i=` <div class="favorites-content">
+import{i as r}from"./assets/scroll-up-8b6eeb00.js";import"./assets/vendor-e8675f53.js";const t={favoritesContent:document.querySelector(".favorites-card-content")},a="favorites";let o=null;const i=` <div class="favorites-content">
 <div class="favorites-empty-img"></div>
 
 <p class="favorites-text">
