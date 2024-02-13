@@ -4,6 +4,7 @@ import icons from '../img/icons.svg';
 const refs = {
   favoritesContent: document.querySelector('.favorites-card-content'),
 };
+
 const KEY = 'favorites';
 let dltBtnsCards = null;
 const noFavorites = ` <div class="favorites-content">
@@ -113,14 +114,3 @@ function createMarkup(data) {
     )
     .join('');
 }
-// document.addEventListener('DOMContentLoaded', function () {
-//   if (!navigator.userAgent.toLowerCase().includes('webkit')) {
-//     document.querySelector('.wrapper').innerHTML =
-//       '<p>Sorry! Non webkit users. :(</p>';
-//   }
-// });
-// document.addEventListener('DOMContentLoaded', function () {
-//   var scrollbar = document.querySelector('.scrollbar');
-
-//   scrollbar.style.height = '100%';
-// });

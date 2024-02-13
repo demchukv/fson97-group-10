@@ -3,10 +3,11 @@
     const favoritesButton = document.querySelector('.page-favorites a');
     const mobMenuHomeButton = document.querySelector('.home-mob-menu');
     const mobMenuFavoritesButton = document.querySelector('.favorites-mob-menu');
+
     const refs = {
-    openMenuBtn: document.querySelector("[data-menu-open]"),
-    closeMenuBtn: document.querySelector("[data-menu-close]"),
-    menu: document.querySelector("[data-menu]"),
+        openMenuBtn: document.querySelector("[data-menu-open]"),
+        closeMenuBtn: document.querySelector("[data-menu-close]"),
+        menu: document.querySelector("[data-menu]"),
     }; 
 
     refs.openMenuBtn.addEventListener("click", toggleMenu);

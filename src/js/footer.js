@@ -11,7 +11,7 @@ form.addEventListener('submit', onSubmit);
 
 function onSubmit(evt) {
   evt.preventDefault();
-  const userEmail = evt.currentTarget.email.value.trim().toLowerCase();
+  const userEmail = evt.currentTarget.email.value.trim();
 
   if (userEmail === '') {
     showAlert('The email field is empty!', 'ERROR');

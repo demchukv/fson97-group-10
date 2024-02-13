@@ -78,7 +78,7 @@ function handleSendRatingBtnClick(event){
     getLoader();
     const formData = document.querySelector('.rating-form');
     const rate = formData.elements["star"].value;
-    const email =  formData.elements["email"].value.trim().toLowerCase();
+    const email =  formData.elements["email"].value.trim();
     const review =  formData.elements["review"].value.trim();
 
     const re = /\S+@\S+\.\S+/;
@@ -123,7 +123,7 @@ async function sendRatingData(rate, email, review){
        const BASE_URL = 'https://energyflow.b.goit.study/api';
        const ENDPOINT = 'exercises';
        rate = Number(rate);
-       return  await axios.patch(`${BASE_URL}/${ENDPOINT}/${id}/rating/`, {rate, email, review});
+       return axios.patch(`${BASE_URL}/${ENDPOINT}/${id}/rating/`, {rate, email, review});
 }
 
 /**

@@ -3,6 +3,7 @@ import Pagination from "tui-pagination";
 import 'tui-pagination/dist/tui-pagination.css';
 import { getLoader, showAlert, preserveBlockHeight } from './common';
 
+
 const refs = {
   container: document.querySelector('.exercises-container'),
   gallery: document.querySelector('.gallery'),
